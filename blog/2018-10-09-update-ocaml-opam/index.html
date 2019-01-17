@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.53" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Update OCaml and OPAM along with packages &middot; Wu Sun, Ph.D.</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Wu Sun, Ph.D." />
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "$", right: "$", display: false},
+              {left: "\\[", right: "\\]", display: true}
+          ]
+      });
+  });
+</script>
+
+</head>
+
+  <body class="theme-base-08 ">
+  <link href="/css/academicons.min.css" rel="stylesheet">
+<link href="/css/fontawesome.css" rel="stylesheet">
+<link href="/css/brands.css" rel="stylesheet">
+<link href="/css/solid.css" rel="stylesheet">
+
+<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://wusun.name/"><h1>Wu Sun, Ph.D.</h1></a>
+      <p class="lead">
+       carbon cycle, climate, photosynthesis, soils, and exotic trace gases 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        
+        
+        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-about">
+      <font size="3">
+      <p>
+        
+        <a href="https://github.com/wusunlab">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span class="username">wusunlab</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ">
+          <i class="ai ai-google-scholar-square" aria-hidden="true"></i>
+          <span class="username">Google Scholar</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://orcid.org/0000-0002-2333-6282">
+          <i class="ai ai-orcid-square" aria-hidden="true"></i>
+          <span class="username">ORCID</span>
+        </a>
+        
+        <br>
+        
+        <a class="u-email" href="mailto:wusun@protonmail.com">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span class="username">wusun@protonmail.com</span>
+        </a>
+        
+      </p>
+      </font>
+    </div>
+
+    <p>© 2019 Wu Sun. All rights reserved.</p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Update OCaml and OPAM along with packages</h1>
+  <time datetime=2018-10-08T22:01:07-0700 class="post-date">Mon, Oct 8, 2018</time>
+  <p>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my
+current environment (OCaml + OPAM + packages). I knew there was not a single
+command that does all the tasks like <code>conda</code> for Python. Luckily, it was not so
+difficult with OPAM&rsquo;s import/export function [<a href="https://discuss.ocaml.org/t/right-way-to-upgrade-my-ocaml-packages/1070/2">1</a>]. I upgraded my OCaml
+environment with all installed packages retained following these steps without
+much trouble.</p>
+
+<ol>
+<li>Export the list of currently installed packages:</li>
+</ol>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   opam switch <span style="color:#b58900">export</span> opam-pkg-list.txt</code></pre></div>
+<ol>
+<li>Update OCaml &amp; OPAM with the system package manager (e.g., Homebrew on macOS
+or <code>apt-get</code> on a major Linux distribution).</li>
+</ol>
+
+<p>Now the system OCaml should be upgraded to the latest version. If the
+   updated version is not set as the system OCaml, use <code>opam switch &lt;version&gt;</code>
+   to switch to it.
+3. Import the list of installed packages. Pay attention to the warnings and
+   error messages because some packages may not be installed automatically and
+   therefore need intervention.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">   opam switch import opam-pkg-list.txt</code></pre></div>
+<ol>
+<li>Whatever package that cannot be automatically imported in the previous step
+needs to be manually installed with OPAM. Deal one error message at a time.
+Once those packages that give error messages are manually installed, run
+<code>opam switch import</code> again to import the rest of uninstalled packages.</li>
+</ol>
+
+<!-- links -->
+
+</div>
+
+
+    </main>
+
+    
+  </body>
+</html>

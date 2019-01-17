@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Wu Sun, Ph.D.</title>
+    <link>http://wusun.name/tags/python/</link>
+    <description>Recent content in Python on Wu Sun, Ph.D.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://wusun.name/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A simple fix to a common issue with Anaconda libgfortran on macOS</title>
+      <link>http://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</link>
+      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</guid>
+      <description>To compile some Fortran code that used features newer than Fortran 95, I switched the default gfortran from the conda one (version 4.8) to the latest GCC one (version 7.3). After that, I found that I could no longer execute some previously compiled Fortran programs and I also ran into troubles with some Anaconda Python packages. (Maybe it was my fault not to statically link them.) I got the same error for all of them:</description>
+    </item>
+    
+    <item>
+      <title>Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature</title>
+      <link>http://wusun.name/blog/2017-12-18-python-zerodiv/</link>
+      <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
+      <description>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
+&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero  This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
+    </item>
+    
+  </channel>
+</rss>

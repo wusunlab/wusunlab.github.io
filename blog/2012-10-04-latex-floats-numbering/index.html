@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.53" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Adding section numbers to LaTeX floats numbering and other tips &middot; Wu Sun, Ph.D.</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Wu Sun, Ph.D." />
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "$", right: "$", display: false},
+              {left: "\\[", right: "\\]", display: true}
+          ]
+      });
+  });
+</script>
+
+</head>
+
+  <body class="theme-base-08 ">
+  <link href="/css/academicons.min.css" rel="stylesheet">
+<link href="/css/fontawesome.css" rel="stylesheet">
+<link href="/css/brands.css" rel="stylesheet">
+<link href="/css/solid.css" rel="stylesheet">
+
+<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://wusun.name/"><h1>Wu Sun, Ph.D.</h1></a>
+      <p class="lead">
+       carbon cycle, climate, photosynthesis, soils, and exotic trace gases 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        
+        
+        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-about">
+      <font size="3">
+      <p>
+        
+        <a href="https://github.com/wusunlab">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span class="username">wusunlab</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ">
+          <i class="ai ai-google-scholar-square" aria-hidden="true"></i>
+          <span class="username">Google Scholar</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://orcid.org/0000-0002-2333-6282">
+          <i class="ai ai-orcid-square" aria-hidden="true"></i>
+          <span class="username">ORCID</span>
+        </a>
+        
+        <br>
+        
+        <a class="u-email" href="mailto:wusun@protonmail.com">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span class="username">wusun@protonmail.com</span>
+        </a>
+        
+      </p>
+      </font>
+    </div>
+
+    <p>© 2019 Wu Sun. All rights reserved.</p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Adding section numbers to LaTeX floats numbering and other tips</h1>
+  <time datetime=2012-10-04T12:00:00-0700 class="post-date">Thu, Oct 4, 2012</time>
+  
+
+<p>I have been learning to use LaTeX for some time. Now I do most of my homework
+assignments in LaTeX. It wears quite well on me. I have encountered some
+issues, but most of the time I was able to find elegant solutions on TeX
+StackExchange. Here are a few tips I learned recently.</p>
+
+<h2 id="1-show-chapter-or-section-numbers-in-equation-figure-table-numbering">1. Show chapter or section numbers in equation/figure/table numbering</h2>
+
+<p>By default, LaTeX assigns equation numbers continually across different
+sections. If you need the equation to be numbered like &ldquo;Eq. (3.5)&rdquo; for the 5th
+equation in section 3, add this to the preamble:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\usepackage</span><span style="color:#b58900">{</span>amsmath<span style="color:#b58900">}</span>
+<span style="color:#719e07">\numberwithin</span><span style="color:#b58900">{</span>equation<span style="color:#b58900">}{</span>section<span style="color:#b58900">}</span></code></pre></div>
+<p>To include also the subsection number, change the second line to</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\numberwithin</span><span style="color:#b58900">{</span>equation<span style="color:#b58900">}{</span>subsection<span style="color:#b58900">}</span></code></pre></div>
+<p>For figures and tables, it is similar.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\usepackage</span><span style="color:#b58900">{</span>amsmath<span style="color:#b58900">}</span>
+<span style="color:#719e07">\numberwithin</span><span style="color:#b58900">{</span>table<span style="color:#b58900">}{</span>section<span style="color:#b58900">}</span>
+<span style="color:#719e07">\numberwithin</span><span style="color:#b58900">{</span>figure<span style="color:#b58900">}{</span>section<span style="color:#b58900">}</span></code></pre></div>
+<h2 id="2-scientific-notation">2. Scientific notation</h2>
+
+<p>The most elegant solution for scientific notation of numbers is to use the
+<code>siunitx</code> package.</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\usepackage</span><span style="color:#b58900">{</span>siunitx<span style="color:#b58900">}</span>
+...
+<span style="color:#719e07">\num</span><span style="color:#b58900">{</span>6.022e23<span style="color:#b58900">}</span></code></pre></div>
+<p><code>\num{6.022e23}</code> will be rendered as &ldquo;6.022 × 10<sup>23</sup>&rdquo;.</p>
+
+<p>An alternative solution that does not depend on <code>siunitx</code> is:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\newcommand</span><span style="color:#b58900">{</span><span style="color:#719e07">\e</span><span style="color:#b58900">}</span>[1]<span style="color:#b58900">{</span><span style="color:#719e07">\ensuremath</span><span style="color:#b58900">{</span><span style="color:#719e07">\times</span> 10<span style="color:#b58900">^{</span>#1<span style="color:#b58900">}}}</span></code></pre></div>
+<p>This new command can be used like <code>6.022\e{23}</code> to produce &ldquo;6.022 ×
+10<sup>23</sup>&rdquo;.</p>
+
+<h2 id="3-upright-differential-operator">3. Upright differential operator</h2>
+
+<p>The differential operator <code>d</code> in <code>dy / dx</code> should be typeset in upright not
+italic shape, because it is not a variable (Beccari, 1997, <em>TUGboat</em>). The
+upright differential operator is not provided by the <code>amsmath</code> package, and to
+do it properly requires much low-level TeX programming due to spacing
+requirements. An out-of-the-box solution is to use the <code>commath</code> package, which
+provides the following commands:</p>
+
+<ul>
+<li><code>\dif</code>: This produces an upright <code>d</code>.</li>
+<li><code>\Dif</code>: This produces an upright <code>D</code> (e.g., for Lagrangian derivative).</li>
+<li><code>\od</code>: This takes two arguments for the function and the variable,
+respectively, and an optional argument for the order, e.g., <code>\od[2]{f}{x}</code>
+produces $\dfrac{\mathrm{d}^2 f}{\mathrm{d} x^2}$.</li>
+<li><code>\pd</code>: This works similarly to <code>\od</code> but produces partial derivatives.</li>
+</ul>
+
+<p>There are also many other useful commands in this package.</p>
+
+<p>Alternatively, a minimalist and nearly as good solution without using <code>commath</code>
+can be</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\newcommand</span><span style="color:#b58900">{</span><span style="color:#719e07">\dif</span><span style="color:#b58900">}{</span><span style="color:#719e07">\mathrm</span><span style="color:#b58900">{</span>d<span style="color:#b58900">}}</span>
+<span style="color:#719e07">\newcommand</span><span style="color:#b58900">{</span><span style="color:#719e07">\Dif</span><span style="color:#b58900">}{</span><span style="color:#719e07">\mathrm</span><span style="color:#b58900">{</span>D<span style="color:#b58900">}}</span>
+<span style="color:#719e07">\newcommand</span><span style="color:#b58900">{</span><span style="color:#719e07">\od</span><span style="color:#b58900">}</span>[3][]<span style="color:#b58900">{</span><span style="color:#719e07">\ensuremath</span><span style="color:#b58900">{</span><span style="color:#719e07">\dfrac</span><span style="color:#b58900">{</span><span style="color:#719e07">\dif</span><span style="color:#b58900">^{</span>#1<span style="color:#b58900">}</span>#2<span style="color:#b58900">}{</span><span style="color:#719e07">\dif</span> #3<span style="color:#b58900">^{</span>#1<span style="color:#b58900">}}}}</span>
+<span style="color:#719e07">\newcommand</span><span style="color:#b58900">{</span><span style="color:#719e07">\pd</span><span style="color:#b58900">}</span>[3][]<span style="color:#b58900">{</span><span style="color:#719e07">\ensuremath</span><span style="color:#b58900">{</span><span style="color:#719e07">\dfrac</span><span style="color:#b58900">{</span><span style="color:#719e07">\partial</span><span style="color:#b58900">^{</span>#1<span style="color:#b58900">}</span>#2<span style="color:#b58900">}{</span><span style="color:#719e07">\partial</span> #3<span style="color:#b58900">^{</span>#1<span style="color:#b58900">}}}}</span></code></pre></div>
+<h2 id="references">References</h2>
+
+<ol>
+<li>Beccari, C. (1997). Typesetting mathematics for science and technology
+according to ISO 31/XI. <em>TUGboat</em>, 18(1), 39&ndash;48.
+[<a href="http://www.tug.org/TUGboat/Articles/tb18-1/tb54becc.pdf">link</a>]</li>
+</ol>
+
+</div>
+
+
+    </main>
+
+    
+  </body>
+</html>

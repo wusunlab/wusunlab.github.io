@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.53" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A comparison of some markdown publishing systems &middot; Wu Sun, Ph.D.</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Wu Sun, Ph.D." />
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "$", right: "$", display: false},
+              {left: "\\[", right: "\\]", display: true}
+          ]
+      });
+  });
+</script>
+
+</head>
+
+  <body class="theme-base-08 ">
+  <link href="/css/academicons.min.css" rel="stylesheet">
+<link href="/css/fontawesome.css" rel="stylesheet">
+<link href="/css/brands.css" rel="stylesheet">
+<link href="/css/solid.css" rel="stylesheet">
+
+<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://wusun.name/"><h1>Wu Sun, Ph.D.</h1></a>
+      <p class="lead">
+       carbon cycle, climate, photosynthesis, soils, and exotic trace gases 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        
+        
+        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-about">
+      <font size="3">
+      <p>
+        
+        <a href="https://github.com/wusunlab">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span class="username">wusunlab</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ">
+          <i class="ai ai-google-scholar-square" aria-hidden="true"></i>
+          <span class="username">Google Scholar</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://orcid.org/0000-0002-2333-6282">
+          <i class="ai ai-orcid-square" aria-hidden="true"></i>
+          <span class="username">ORCID</span>
+        </a>
+        
+        <br>
+        
+        <a class="u-email" href="mailto:wusun@protonmail.com">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span class="username">wusun@protonmail.com</span>
+        </a>
+        
+      </p>
+      </font>
+    </div>
+
+    <p>© 2019 Wu Sun. All rights reserved.</p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>A comparison of some markdown publishing systems</h1>
+  <time datetime=2018-07-15T20:32:00-0700 class="post-date">Sun, Jul 15, 2018</time>
+  <p>Markdown is the new LaTeX for technical and academic writing. Although LaTeX is
+still the gold standard, if your writing does not involve a whole lot of
+theorems and proofs, drawing diagrams in TikZ and PGF, or some heavy tweaking
+of the page styles, Markdown may suffice for your use cases. A lightly marked
+text format like Markdown helps the writer concentrate on the contents rather
+than the styles.</p>
+
+<p>In the past few years, I have gradually replaced some of my writing tasks in
+LaTeX with automated generation of LaTeX and PDF from Markdown by <code>pandoc</code>. The
+workflow is simple and quite reliable. You need to spend time making a nice
+LaTeX template first. Once you have it, you can keep using the same template
+until you are bored with it.</p>
+
+<p>Out of curiosity, I searched over the landscape of tools for writing papers,
+e-books, and documentation in Markdown or other similar text formats. My
+requirement is rather simple: a document generator that takes lightweight
+markup text formats as the input and outputs HTML, LaTeX, and PDF. BibTeX
+citations and bibliographies would be a bonus.</p>
+
+<p>My conclusion is that <code>pandoc</code> is the best <em>generic</em> tool for writing papers
+and technical books. But it is not the only one out there. Which tool is the
+best depends on the requirements of the task. For example, if you are writing a
+tutorial for a programming language or a package, you may be interested in
+writing in a <a href="https://en.wikipedia.org/wiki/Literate_programming">literate
+programming</a> manner, which
+may be best done in the Markdown variant of that language (e.g., R Markdown for
+R), or in the versatile Jupyter Notebook. And once you have rendered your book
+in HTML, you may use Jekyll to publish it on GitHub Pages. The moral is to use
+the right tool for the right task.</p>
+
+<p>Below is a list of some popular tools that render Markdown or other text-based
+formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Input</th>
+<th>HTML</th>
+<th>LaTeX</th>
+<th>PDF</th>
+<th>BibTeX citation</th>
+<th>Literate programming</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="https://pandoc.org"><code>pandoc</code></a></td>
+<td>Multiple markup formats<sup id="a1"><a href="#f1">[1]</a></sup></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td><a href="http://www.sphinx-doc.org"><code>sphinx</code></a></td>
+<td>reStructuredText, Markdown<sup id="a2"><a href="#f2">[2]</a></sup></td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes<sup id="a3"><a href="#f3">[3]</a></sup></td>
+<td>No</td>
+</tr>
+
+<tr>
+<td><a href="http://www.stack.nl/~dimitri/doxygen/"><code>doxygen</code></a></td>
+<td>Markdown, self-documented source code</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/yihui/knitr"><code>knitr</code></a><sup id="a4"><a href="#f4">[4]</a></sup></td>
+<td>R Markdown</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>R, Python, and SQL</td>
+</tr>
+
+<tr>
+<td><a href="https://bookdown.org"><code>bookdown</code></a><sup id="a5"><a href="#f5">[5]</a></sup></td>
+<td>R Markdown</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>R, C/C++, Python, and SQL</td>
+</tr>
+
+<tr>
+<td><a href="https://jekyllrb.com/"><code>jekyll</code></a><sup id="a6"><a href="#f6">[6]</a></sup></td>
+<td>Markdown, Liquid, HTML</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+
+<tr>
+<td><a href="https://docs.racket-lang.org/scribble/index.html"><code>scribble</code></a></td>
+<td>Racket, <code>scrbl</code> files</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Racket</td>
+</tr>
+
+<tr>
+<td><a href="https://docs.racket-lang.org/pollen/index.html"><code>pollen</code></a></td>
+<td>Pollen and Pollen Markdown</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Racket</td>
+</tr>
+
+<tr>
+<td><a href="https://github.com/mpastell/Weave.jl"><code>Weave.jl</code></a><sup id="a7"><a href="#f7">[7]</a></sup></td>
+<td>Julia Markdown</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Julia</td>
+</tr>
+
+<tr>
+<td><a href="http://jupyter.org/">Jupyter Notebook</a></td>
+<td>Jupyter Notebook <code>ipynb</code> files</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Languages with a Jupyter kernel<sup id="a8"><a href="#f8">[8]</a></sup></td>
+</tr>
+</tbody>
+</table>
+
+<p>Footnotes</p>
+
+<ul>
+<li><b id="f1"><a href="#a1">[1]</a></b> <code>pandoc</code> supports several markdown variants
+including CommonMark and GitHub Flavored Markdown, and other lightweight
+markup languages.</li>
+<li><b id="f2"><a href="#a2">[2]</a></b> Markdown support for <code>sphinx</code> requires the
+<code>recommonmark</code> package.</li>
+<li><b id="f3"><a href="#a3">[3]</a></b> To use BibTeX citations in <code>sphinx</code> documentation
+requires the <code>sphinxcontrib-bibtex</code> package.</li>
+<li><b id="f4"><a href="#a4">[4]</a></b> <code>knitr</code> can be considered as a preprocessor for R
+Markdown. Once it processes R Markdown into Markdown, the rest of the
+rendering job is handled by <code>pandoc</code>.</li>
+<li><b id="f5"><a href="#a5">[5]</a></b> From the same developer of <code>knitr</code>, <code>bookdown</code>
+offers more advanced features for writing technical and academic books.</li>
+<li><b id="f6"><a href="#a6">[6]</a></b> To be honest this comparison is not fair for Jekyll
+because it is used as a <em>static site generator</em>. It is best suited for
+serving your digital book as a website. There are great examples of online
+textbooks served with Jekyll.</li>
+<li><b id="f7"><a href="#a7">[7]</a></b> Like R markdown, <code>Weave.jl</code> requires <code>pandoc</code> for
+rendering Markdown.</li>
+<li><b id="f8"><a href="#a8">[8]</a></b> Languages with officially supported Jupyter kernels
+include Python, R, Julia, and C++. There are more than 100 different language
+kernels supported through community efforts (see <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Jupyter
+kernels</a>).</li>
+</ul>
+
+<p>Additional notes</p>
+
+<ol>
+<li>My focus is on generating HTML and PDF output. However, many of these tools
+also support other e-book formats like <code>epub</code> and <code>mobi</code>.</li>
+<li>Some tools listed here are better suited for building software
+documentation than for writing a paper or book, for example, <code>doxygen</code> and
+<code>sphinx</code>. However, there are indeed technical books written with <code>sphinx</code>,
+for example, <a href="https://github.com/certik/theoretical-physics"><em>Theoretical Physics Reference</em></a>
+and <a href="https://pedrokroger.net/using-sphinx-write-technical-books/"><em>Music for Geeks and Nerds</em></a>.</li>
+<li>Jekyll is useful for publishing your e-book as a website hosted on GitHub
+Pages.</li>
+<li>Literate programming seems to be most popular in dynamic languages like R,
+Python, and Julia. But theoretically, you can do it in any language that is
+supported by Jupyter Notebook.</li>
+<li>Racket has good-looking documentation (in my opinion, better than Python&rsquo;s).
+However, the documentation tools (Scribble and Pollen) require basic
+understanding of Racket syntax. I&rsquo;m not well versed in any Lisp dialect and
+therefore did not look at them in detail. Maybe I&rsquo;ll revisit them in a few
+years.</li>
+</ol>
+
+<!-- links -->
+
+</div>
+
+
+    </main>
+
+    
+  </body>
+</html>

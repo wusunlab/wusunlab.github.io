@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Site Meta on Wu Sun, Ph.D.</title>
+    <link>http://wusun.name/tags/site-meta/</link>
+    <description>Recent content in Site Meta on Wu Sun, Ph.D.</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Jun 2018 19:25:00 -0700</lastBuildDate>
+    
+	<atom:link href="http://wusun.name/tags/site-meta/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Random thoughts on optimizing code for scientific computations</title>
+      <link>http://wusun.name/blog/2018-06-13-optimizing-scientific-code/</link>
+      <pubDate>Wed, 13 Jun 2018 19:25:00 -0700</pubDate>
+      
+      <guid>http://wusun.name/blog/2018-06-13-optimizing-scientific-code/</guid>
+      <description>I have no time to write an essay, so here are some fragmentary thoughts.
+ Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:   Premature optimization is the root of all evil.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;m updating my website</title>
+      <link>http://wusun.name/blog/2018-06-02-update-website/</link>
+      <pubDate>Sat, 02 Jun 2018 19:41:02 -0700</pubDate>
+      
+      <guid>http://wusun.name/blog/2018-06-02-update-website/</guid>
+      <description>I&amp;rsquo;m refactoring my academic website using the Minimal Mistakes theme to get a cleaner look. Stay tuned!
+Added on 2018-11-30: In the end I settled on the Minima theme. I like its minimalist design and it&amp;rsquo;s a good fit for a simple academic website with a blog.</description>
+    </item>
+    
+  </channel>
+</rss>

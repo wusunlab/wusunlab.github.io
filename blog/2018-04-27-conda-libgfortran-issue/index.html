@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.53" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>A simple fix to a common issue with Anaconda libgfortran on macOS &middot; Wu Sun, Ph.D.</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Wu Sun, Ph.D." />
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "$", right: "$", display: false},
+              {left: "\\[", right: "\\]", display: true}
+          ]
+      });
+  });
+</script>
+
+</head>
+
+  <body class="theme-base-08 ">
+  <link href="/css/academicons.min.css" rel="stylesheet">
+<link href="/css/fontawesome.css" rel="stylesheet">
+<link href="/css/brands.css" rel="stylesheet">
+<link href="/css/solid.css" rel="stylesheet">
+
+<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://wusun.name/"><h1>Wu Sun, Ph.D.</h1></a>
+      <p class="lead">
+       carbon cycle, climate, photosynthesis, soils, and exotic trace gases 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        
+        
+        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-about">
+      <font size="3">
+      <p>
+        
+        <a href="https://github.com/wusunlab">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span class="username">wusunlab</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ">
+          <i class="ai ai-google-scholar-square" aria-hidden="true"></i>
+          <span class="username">Google Scholar</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://orcid.org/0000-0002-2333-6282">
+          <i class="ai ai-orcid-square" aria-hidden="true"></i>
+          <span class="username">ORCID</span>
+        </a>
+        
+        <br>
+        
+        <a class="u-email" href="mailto:wusun@protonmail.com">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span class="username">wusun@protonmail.com</span>
+        </a>
+        
+      </p>
+      </font>
+    </div>
+
+    <p>© 2019 Wu Sun. All rights reserved.</p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>A simple fix to a common issue with Anaconda libgfortran on macOS</h1>
+  <time datetime=2018-04-27T00:00:00Z class="post-date">Fri, Apr 27, 2018</time>
+  <p>To compile some Fortran code that used features newer than Fortran 95, I
+switched the default <code>gfortran</code> from the conda one (version 4.8) to the latest
+GCC one (version 7.3). After that, I found that I could no longer execute some
+previously compiled Fortran programs and I also ran into troubles with some
+Anaconda Python packages. (Maybe it was my fault not to statically link them.)
+I got the same error for all of them:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dyld: Library not loaded: @rpath/./libgfortran.3.dylib</code></pre></div>
+<p>I searched it and there were quite a few people who ran into the same error
+message with the <code>gfortran</code> in Anaconda Python Distribution. However,
+discussions on the GitHub issues page were not always helpful. I tried some
+possible solutions, including the simpleminded &ldquo;uninstall and reinstall&rdquo; way,
+but none of them helped. Well, lucky for me that a solution appeared after
+flipping through three pages in the Google search results:
+<a href="https://github.com/conda-forge/libgfortran-feedstock/issues/1">https://github.com/conda-forge/libgfortran-feedstock/issues/1</a>.</p>
+
+<p>The fix is simple. Switch the default <code>gfortran</code> back to the Anaconda one.
+Check the path of <code>DYLD_FALLBACK_LIBRARY_PATH</code>. If it is empty, set it to the
+Anaconda lib directory, e.g., something like <code>/Users/&lt;your_name&gt;/anaconda/lib</code>.
+That&rsquo;s it. You may want to add it to the <code>.bash_profile</code> because macOS seems to
+constantly clear it. (Though I suspect that there may be a more elegant
+solution, at the moment this solved my problem.)</p>
+
+<p>I&rsquo;m still not quite happy with the fact that <code>conda</code> on macOS is stuck at
+gfortran 4.8. That just means a lot of new features added in the Fortran 2008
+standard cannot be used to build a portable Python package. Of course, there is
+another limitation that is <code>f2py</code>, which does not seem to support any feature
+added after Fortran 90 for the time being. In general, I feel that wrapping C
+code in Python is much more natural and robust than wrapping Fortran code.</p>
+
+<p>(Wrote this while waiting for <em>God of War 4</em> to be downloaded on my PS4 Pro.
+:D)</p>
+
+</div>
+
+
+    </main>
+
+    
+  </body>
+</html>
