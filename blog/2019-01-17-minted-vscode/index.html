@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Update OCaml and OPAM along with packages &middot; Wu Sun, Ph.D.</title>
+  <title>Use minted syntax highlighting in LaTeX with Visual Studio Code LaTeX Workshop &middot; Wu Sun, Ph.D.</title>
 
   
   <link type="text/css" rel="stylesheet" href="http://wusun.name/css/print.css" media="print">
@@ -111,38 +111,62 @@
 
     <main class="content container">
     <div class="post">
-  <h1>Update OCaml and OPAM along with packages</h1>
-  <time datetime=2018-10-08T22:01:07-0700 class="post-date">Mon, Oct 8, 2018</time>
-  <p>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my
-current environment (OCaml + OPAM + packages). I knew there was not a single
-command that does all the tasks like <code>conda</code> for Python. Luckily, it was not so
-difficult with OPAM&rsquo;s import/export function [<a href="https://discuss.ocaml.org/t/right-way-to-upgrade-my-ocaml-packages/1070/2">1</a>]. I upgraded my OCaml
-environment with all installed packages retained following these steps without
-much trouble.</p>
+  <h1>Use minted syntax highlighting in LaTeX with Visual Studio Code LaTeX Workshop</h1>
+  <time datetime=2019-01-17T22:03:00-0800 class="post-date">Thu, Jan 17, 2019</time>
+  <p>Syntax highlighting in LaTeX is traditionally done with
+<a href="https://ctan.org/pkg/listings"><code>listings</code></a>. However, as many pointed out, this
+is a defective solution because the <code>listings</code> package does not have a lexer.
+Recently, the <a href="https://ctan.org/pkg/listings"><code>minted</code></a> package seems to emerge
+as a standard and preferred solution to syntax highlighting in LaTeX. This
+package is now part of the TeXLive distribution.</p>
 
-<ol>
-<li><p>Export the list of currently installed packages:</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch <span style="color:#b58900">export</span> opam-pkg-list.txt</code></pre></div></li>
+<p><code>minted</code> package uses <a href="http://pygments.org/">Pygments</a> as an external lexer and
+highlighter. As a result, to use it properly requires enabling <code>--shell-escape</code>
+option on LaTeX compilers (<code>latexmk</code> and <code>pdflatex</code>). Otherwise, it cannot find
+the <code>pygmentize</code> command. This is a trivial problem if you use LaTeX compilers
+as standalone programs under a terminal environment. However, if you use an IDE
+to write LaTeX, this can be quite a hassle. I found a way to configure the
+VSCode extension LaTeX Workshop so that it can properly compile sources that
+use the <code>minted</code> package, from a <a href="https://tex.stackexchange.com/questions/432459/pygmentize-not-installed-error-on-visual-studio-code">TeX StackExchange
+post</a>.</p>
 
-<li><p>Update OCaml &amp; OPAM with the system package manager (e.g., Homebrew on
-macOS or <code>apt-get</code> on a major Linux distribution).</p>
+<p>Add the following to the VSCode user settings:</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#2aa198">&#34;latex-workshop.latex.tools&#34;</span>: [
+    {
+        <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;latexmk&#34;</span>,
+        <span style="color:#268bd2">&#34;command&#34;</span>: <span style="color:#2aa198">&#34;latexmk&#34;</span>,
+        <span style="color:#268bd2">&#34;args&#34;</span>: [
+            <span style="color:#2aa198">&#34;--shell-escape&#34;</span>,
+            <span style="color:#2aa198">&#34;-synctex=1&#34;</span>,
+            <span style="color:#2aa198">&#34;-interaction=nonstopmode&#34;</span>,
+            <span style="color:#2aa198">&#34;-file-line-error&#34;</span>,
+            <span style="color:#2aa198">&#34;-pdf&#34;</span>,
+            <span style="color:#2aa198">&#34;-outdir=%OUTDIR%&#34;</span>,
+            <span style="color:#2aa198">&#34;%DOC%&#34;</span>
+        ]
+    },
+    {
+        <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;pdflatex&#34;</span>,
+        <span style="color:#268bd2">&#34;command&#34;</span>: <span style="color:#2aa198">&#34;pdflatex&#34;</span>,
+        <span style="color:#268bd2">&#34;args&#34;</span>: [
+            <span style="color:#2aa198">&#34;--shell-escape&#34;</span>,
+            <span style="color:#2aa198">&#34;-synctex=1&#34;</span>,
+            <span style="color:#2aa198">&#34;-interaction=nonstopmode&#34;</span>,
+            <span style="color:#2aa198">&#34;-file-line-error&#34;</span>,
+            <span style="color:#2aa198">&#34;%DOC%&#34;</span>
+        ]
+    },
+    {
+        <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;bibtex&#34;</span>,
+        <span style="color:#268bd2">&#34;command&#34;</span>: <span style="color:#2aa198">&#34;bibtex&#34;</span>,
+        <span style="color:#268bd2">&#34;args&#34;</span>: [
+            <span style="color:#2aa198">&#34;%DOCFILE%&#34;</span>
+        ]
+    }
+]</code></pre></div>
+<p>This works for VSCode 1.30.2 and LaTeX-Workshop 5.20.1.</p>
 
-<p>Now the system OCaml should be upgraded to the latest version. If the
-updated version is not set as the system OCaml, use <code>opam switch &lt;version&gt;</code>
-to switch to it.</p></li>
-
-<li><p>Import the list of installed packages. Pay attention to the warnings and
-error messages because some packages may not be installed automatically and
-therefore need intervention.</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch import opam-pkg-list.txt</code></pre></div></li>
-
-<li><p>Whatever package that cannot be automatically imported in the previous step
-needs to be manually installed with OPAM. Deal one error message at a time.
-Once those packages that give error messages are manually installed, run
-<code>opam switch import</code> again to import the rest of uninstalled packages.</p></li>
-</ol>
-
-<!-- links -->
+<p><img src="minted-beamer-example.png" alt="Beamer example of syntax highlighting using minted" /></p>
 
 </div>
 

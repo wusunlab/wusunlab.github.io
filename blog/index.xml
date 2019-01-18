@@ -6,10 +6,20 @@
     <description>Recent content in Blog on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Oct 2018 22:01:07 -0700</lastBuildDate>
+    <lastBuildDate>Thu, 17 Jan 2019 22:03:00 -0800</lastBuildDate>
     
 	<atom:link href="http://wusun.name/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Use minted syntax highlighting in LaTeX with Visual Studio Code LaTeX Workshop</title>
+      <link>http://wusun.name/blog/2019-01-17-minted-vscode/</link>
+      <pubDate>Thu, 17 Jan 2019 22:03:00 -0800</pubDate>
+      
+      <guid>http://wusun.name/blog/2019-01-17-minted-vscode/</guid>
+      <description>Syntax highlighting in LaTeX is traditionally done with listings. However, as many pointed out, this is a defective solution because the listings package does not have a lexer. Recently, the minted package seems to emerge as a standard and preferred solution to syntax highlighting in LaTeX. This package is now part of the TeXLive distribution.
+minted package uses Pygments as an external lexer and highlighter. As a result, to use it properly requires enabling --shell-escape option on LaTeX compilers (latexmk and pdflatex).</description>
+    </item>
     
     <item>
       <title>Update OCaml and OPAM along with packages</title>
@@ -18,7 +28,7 @@
       
       <guid>http://wusun.name/blog/2018-10-09-update-ocaml-opam/</guid>
       <description>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my current environment (OCaml + OPAM + packages). I knew there was not a single command that does all the tasks like conda for Python. Luckily, it was not so difficult with OPAM&amp;rsquo;s import/export function [1]. I upgraded my OCaml environment with all installed packages retained following these steps without much trouble.
- Export the list of currently installed packages:  opam switch export opam-pkg-list.</description>
+ Export the list of currently installed packages:</description>
     </item>
     
     <item>
@@ -49,7 +59,7 @@ In the past few years, I have gradually replaced some of my writing tasks in LaT
       
       <guid>http://wusun.name/blog/2018-06-13-optimizing-scientific-code/</guid>
       <description>I have no time to write an essay, so here are some fragmentary thoughts.
- Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:   Premature optimization is the root of all evil.</description>
+ Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
     </item>
     
     <item>
