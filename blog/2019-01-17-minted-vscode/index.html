@@ -116,11 +116,11 @@
   <p>Syntax highlighting in LaTeX is traditionally done with
 <a href="https://ctan.org/pkg/listings"><code>listings</code></a>. However, as many pointed out, this
 is a defective solution because the <code>listings</code> package does not have a lexer.
-Recently, the <a href="https://ctan.org/pkg/listings"><code>minted</code></a> package seems to emerge
+Recently, the <a href="https://ctan.org/pkg/minted"><code>minted</code></a> package seems to emerge
 as a standard and preferred solution to syntax highlighting in LaTeX. This
 package is now part of the TeXLive distribution.</p>
 
-<p><code>minted</code> package uses <a href="http://pygments.org/">Pygments</a> as an external lexer and
+<p><code>minted</code> requires <a href="http://pygments.org/">Pygments</a> as an external lexer and
 highlighter. As a result, to use it properly requires enabling <code>--shell-escape</code>
 option on LaTeX compilers (<code>latexmk</code> and <code>pdflatex</code>). Otherwise, it cannot find
 the <code>pygmentize</code> command. This is a trivial problem if you use LaTeX compilers

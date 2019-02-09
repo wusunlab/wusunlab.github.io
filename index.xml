@@ -18,7 +18,7 @@
       
       <guid>http://wusun.name/blog/2019-01-17-minted-vscode/</guid>
       <description>Syntax highlighting in LaTeX is traditionally done with listings. However, as many pointed out, this is a defective solution because the listings package does not have a lexer. Recently, the minted package seems to emerge as a standard and preferred solution to syntax highlighting in LaTeX. This package is now part of the TeXLive distribution.
-minted package uses Pygments as an external lexer and highlighter. As a result, to use it properly requires enabling --shell-escape option on LaTeX compilers (latexmk and pdflatex).</description>
+minted requires Pygments as an external lexer and highlighter. As a result, to use it properly requires enabling --shell-escape option on LaTeX compilers (latexmk and pdflatex).</description>
     </item>
     
     <item>
