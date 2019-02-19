@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.53" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OCaml packages for scientific computing &middot; Wu Sun, Ph.D.</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="http://wusun.name/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Wu Sun, Ph.D." />
+
+  
+
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "$", right: "$", display: false},
+              {left: "\\[", right: "\\]", display: true}
+          ]
+      });
+  });
+</script>
+
+</head>
+
+  <body class="theme-base-08 ">
+  <link href="/css/academicons.min.css" rel="stylesheet">
+<link href="/css/fontawesome.css" rel="stylesheet">
+<link href="/css/brands.css" rel="stylesheet">
+<link href="/css/solid.css" rel="stylesheet">
+
+<aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="http://wusun.name/"><h1>Wu Sun, Ph.D.</h1></a>
+      <p class="lead">
+       carbon cycle, climate, photosynthesis, soils, and exotic trace gases 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        
+        
+        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-about">
+      <font size="3">
+      <p>
+        
+        <a href="https://github.com/wusunlab">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span class="username">wusunlab</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ">
+          <i class="ai ai-google-scholar-square" aria-hidden="true"></i>
+          <span class="username">Google Scholar</span>
+        </a>
+        
+        <br>
+        
+        <a href="https://orcid.org/0000-0002-2333-6282">
+          <i class="ai ai-orcid-square" aria-hidden="true"></i>
+          <span class="username">ORCID</span>
+        </a>
+        
+        <br>
+        
+        <a class="u-email" href="mailto:wusun@protonmail.com">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span class="username">wusun@protonmail.com</span>
+        </a>
+        
+      </p>
+      </font>
+    </div>
+
+    <p>© 2019 Wu Sun. All rights reserved.</p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>OCaml packages for scientific computing</h1>
+  <time datetime=2019-02-19T21:19:09Z class="post-date">Tue, Feb 19, 2019</time>
+  
+
+<p>This is a collection of OCaml packages that are potentially useful for
+scientific computing. (Disclaimer: I have only used some of them. But I choose
+to list all I found useful here for future reference.)</p>
+
+<h2 id="numerical-computing">Numerical computing</h2>
+
+<ul>
+<li><a href="https://github.com/owlbarn/owl"><code>Owl</code></a>: The de facto numerical computing
+library for OCaml. Probably the best maintained OCaml numerical computing
+package at this moment.</li>
+<li><a href="https://github.com/mmottl/gsl-ocaml"><code>gsl</code></a>: OCaml bindings to the GNU
+Scientific Library.</li>
+<li><a href="https://github.com/mmottl/lacaml"><code>lacaml</code></a>: OCaml bindings to BLAS and
+LAPACK.</li>
+</ul>
+
+<h2 id="machine-learning">Machine learning</h2>
+
+<ul>
+<li><a href="https://github.com/LaurentMazare/ocaml-torch"><code>torch-ocaml</code></a>: OCaml bindings
+for PyTorch.</li>
+<li><a href="https://github.com/LaurentMazare/tensorflow-ocaml"><code>tensorflow-ocaml</code></a>:
+OCaml bindings for TensorFlow.</li>
+</ul>
+
+<h2 id="data-visualization">Data visualization</h2>
+
+<ul>
+<li><a href="https://github.com/owlbarn/owl"><code>Owl</code></a> contains functions to call an
+external plotting library (<a href="http://plplot.sourceforge.net/"><code>PLplot</code></a>).</li>
+<li><a href="https://github.com/LaurentMazare/ocaml-matplotlib"><code>ocaml-matplotlib</code></a> OCaml
+bindings to Python <a href="https://matplotlib.org/"><code>matplotlib</code></a>.</li>
+</ul>
+
+<h2 id="interactive-programming">Interactive programming</h2>
+
+<ul>
+<li><a href="https://github.com/ocaml-community/utop"><code>utop</code></a>: An enhanced OCaml REPL.</li>
+<li><a href="https://github.com/akabe/ocaml-jupyter"><code>ocaml-jupyter</code></a>: OCaml kernel for
+Jupyter Notebook.</li>
+</ul>
+
+<h2 id="foreign-function-interfaces-ffi">Foreign function interfaces (FFI)</h2>
+
+<ul>
+<li><a href="https://github.com/ocamllabs/ocaml-ctypes"><code>ctypes</code></a>: Modern C FFI in OCaml
+developed by the OCaml Labs at the University of Cambridge. Note that
+<code>ctypes-foreign</code> is also required if you need to use <code>Ctypes</code> interactively.</li>
+<li><a href="https://github.com/thierry-martinez/pyml"><code>py.ml</code></a>: OCaml bindings for
+Python implemented using C stubs. This package supports both Python 2 and 3.</li>
+<li><a href="https://github.com/dbousque/lymp"><code>lymp</code></a>: Allows OCaml to interact with
+Python through a Python process. Need to identify the interpreter command to
+execute it.</li>
+<li><a href="https://github.com/zshipko/ocaml-rs"><code>ocaml-rs</code></a>: Allows OCaml to interact
+with extensions written in Rust without C stubs.</li>
+<li><a href="https://github.com/ahrefs/rust-ocaml-derive"><code>rust-ocaml-derive</code></a> (WARNING:
+experimental): Two-way FFIs between OCaml and Rust. Provides the <code>ocaml_ffi</code>
+macro in Rust that reduces the amount of boilerplate code to write.</li>
+</ul>
+
+<h2 id="development-tools">Development tools</h2>
+
+<ul>
+<li><a href="https://github.com/ocaml/dune"><code>dune</code></a>: The official build system for OCaml.</li>
+<li><a href="https://github.com/ocaml/merlin"><code>merlin</code></a>: Context-extensive autocompletion
+for OCaml in Vim and Emacs.</li>
+<li><a href="https://github.com/ocaml/opam-depext"><code>opam-depext</code></a>: Allows OPAM to invoke
+the system package manager (e.g., <a href="https://brew.sh/"><code>brew</code></a> on macOS) for
+automated installation.</li>
+<li><a href="https://github.com/janestreet/core_bench"><code>core_bench</code></a>: Micro-benchmarking
+for OCaml.</li>
+<li><a href="https://github.com/ocaml-ppx/ocamlformat"><code>ocamlformat</code></a>: An autoformatter
+for OCaml code.</li>
+<li><a href="https://opam.ocaml.org/packages/ocamlfind/"><code>ocamlfind</code></a>: A library manager
+for OCaml.</li>
+<li><a href="https://github.com/ocaml/ocamlbuild/"><code>ocamlbuild</code></a>: A build system for
+OCaml. This package can be used to compile OCaml to native code. But check
+your use case before you use it, because <code>dune</code> may suffice for most cases.</li>
+<li><a href="https://github.com/reasonml-editor/vscode-reasonml"><code>vscode-reasonml</code></a>:
+OCaml and ReasonML support for Visual Studio Code.</li>
+</ul>
+
+</div>
+
+
+    </main>
+
+    
+  </body>
+</html>

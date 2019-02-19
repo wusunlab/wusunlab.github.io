@@ -6,10 +6,20 @@
     <description>Recent content in Wu Sun on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Jan 2019 22:03:00 -0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Feb 2019 21:19:09 +0000</lastBuildDate>
     
 	<atom:link href="http://wusun.name/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>OCaml packages for scientific computing</title>
+      <link>http://wusun.name/blog/2019-02-19-ocaml-packages-for-scientific-computing/</link>
+      <pubDate>Tue, 19 Feb 2019 21:19:09 +0000</pubDate>
+      
+      <guid>http://wusun.name/blog/2019-02-19-ocaml-packages-for-scientific-computing/</guid>
+      <description>This is a collection of OCaml packages that are potentially useful for scientific computing. (Disclaimer: I have only used some of them. But I choose to list all I found useful here for future reference.)
+Numerical computing  Owl: The de facto numerical computing library for OCaml. Probably the best maintained OCaml numerical computing package at this moment. gsl: OCaml bindings to the GNU Scientific Library. lacaml: OCaml bindings to BLAS and LAPACK.</description>
+    </item>
     
     <item>
       <title>Use minted syntax highlighting in LaTeX with Visual Studio Code LaTeX Workshop</title>
