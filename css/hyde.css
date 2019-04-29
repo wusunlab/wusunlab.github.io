@@ -24,6 +24,8 @@
  * Themes
  */
 
+/* Custom theme - import fonts */
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans|Source+Code+Pro');
 
 /*
  * Global resets
@@ -32,7 +34,7 @@
  */
 
 html {
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: "Fira Sans Light", "PT Sans", Helvetica, Arial, sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -247,4 +249,20 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .content a,
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
+}
+
+/* Custom theme */
+/* material design - green 800 */
+.theme-material-green-800 .sidebar {
+  background-color: #2e7d32;
+}
+.theme-material-green-800 .content a,
+.theme-material-green-800 .related-posts li a:hover {
+  color: #60ad5e;
+}
+
+/* monospace font */
+code,
+pre {
+  font-family: "Source Code Pro", Menlo, Monaco, "Courier New", monospace;
 }
