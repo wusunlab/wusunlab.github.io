@@ -9,7 +9,7 @@ Total Environment*, *658*, 1549–1558.
 Seibt, U., Vesala, T., Mammarella, I., & Chen, H. (2019). Influences of
 light and humidity on carbonyl sulfide-based estimates of
 photosynthesis. *Proceedings of the National Academy of Sciences*,
-201807600.
+*116*(7), 2470–2475.
 <a href="https://doi.org/10.1073/pnas.1807600116" class="uri uri">https://doi.org/10.1073/pnas.1807600116</a>
 
 3. Whelan, M. E., Lennartz, S. T., Gimeno, T. E., Wehr, R., Wohlfahrt,

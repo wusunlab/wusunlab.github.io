@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.53" />
+  <meta name="generator" content="Hugo 0.55.5" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,7 +67,7 @@
       <ul class="sidebar-nav">
         
         
-        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+        <li><a href="/"> Home </a></li><li><a href="/research/"> Research </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/data/"> Data &amp; Code </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/cv/"> CV </a></li><li><a href="/blog/"> Blog </a></li>
       </ul>
     </nav>
 
@@ -122,16 +122,16 @@ much trouble.</p>
 
 <ol>
 <li><p>Export the list of currently installed packages:</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch <span style="color:#b58900">export</span> opam-pkg-list.txt</code></pre></div></li>
-
-<li><p>Update OCaml &amp; OPAM with the system package manager (e.g., Homebrew on
-macOS or <code>apt-get</code> on a major Linux distribution).</p>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch <span style="color:#b58900">export</span> opam-pkg-list.txt</code></pre></div>
+<ol>
+<li>Update OCaml &amp; OPAM with the system package manager (e.g., Homebrew on
+macOS or <code>apt-get</code> on a major Linux distribution).</li>
+</ol>
 
 <p>Now the system OCaml should be upgraded to the latest version. If the
 updated version is not set as the system OCaml, use <code>opam switch &lt;version&gt;</code>
-to switch to it.</p></li>
-
-<li><p>Import the list of installed packages. Pay attention to the warnings and
+to switch to it.
+3.  Import the list of installed packages. Pay attention to the warnings and
 error messages because some packages may not be installed automatically and
 therefore need intervention.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch import opam-pkg-list.txt</code></pre></div></li>

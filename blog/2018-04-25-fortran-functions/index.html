@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.53" />
+  <meta name="generator" content="Hugo 0.55.5" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,7 +67,7 @@
       <ul class="sidebar-nav">
         
         
-        <li><a href="/about/"> About </a></li><li><a href="/cv/"> CV </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/projects/"> Projects </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/blog/"> Blog </a></li>
+        <li><a href="/"> Home </a></li><li><a href="/research/"> Research </a></li><li><a href="/publications/"> Publications </a></li><li><a href="/data/"> Data &amp; Code </a></li><li><a href="/teaching/"> Teaching </a></li><li><a href="/cv/"> CV </a></li><li><a href="/blog/"> Blog </a></li>
       </ul>
     </nav>
 
@@ -159,12 +159,14 @@ initializer&rdquo;. I think this style would be more prone to error than <code>i
 function foo(x) result(bar)</code>.</p>
 
 <p>So, in short, <strong>always declare the return type</strong> if the function does not
-return an array. (I&rsquo;ll deal with the array function case later.)</p></li>
+return an array. (I&rsquo;ll deal with the array function case later.)</p>
 
-<li><p>Function result is defined in the function header, not in the function
+<ol>
+<li>Function result is defined in the function header, not in the function
 body. You cannot decide which variable to return later in the function
 body, because there is no C-like <code>return</code> statement (or, you could also
-say, the Fortran <code>return</code> statement has an entirely different meaning).</p>
+say, the Fortran <code>return</code> statement has an entirely different meaning).</li>
+</ol>
 
 <p>The <strong>result variable</strong> is defined with the <code>result</code> keyword. For example,
 in</p>
@@ -182,12 +184,14 @@ will have the same name as the function. For example, in</p>
 
 <p>On the other hand, the absence of a C-like <code>return</code> statement makes perfect
 sense because the function already knows which variable is the result
-variable the moment it is declared.</p></li>
+variable the moment it is declared.</p>
 
-<li><p>Do not declare the type of the result variable <em>twice</em>. If the result
+<ol>
+<li>Do not declare the type of the result variable <em>twice</em>. If the result
 variable type is already declared in the function header, there is no need
 to declare it again in the function body. This means the following example
-is wrong.</p>
+is wrong.</li>
+</ol>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
     <span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     <span style="color:#dc322f">integer</span> <span style="color:#268bd2">::</span> bar <span style="color:#719e07">=</span> <span style="color:#2aa198">42</span>
@@ -208,9 +212,11 @@ function body. The following example is wrong.</p>
 message would refer to the misuse of <code>intent(out)</code>.</p>
 
 <p>See also:
-<a href="https://stackoverflow.com/questions/24170024/function-in-fortran-passing-array-in-receiving-array-out">https://stackoverflow.com/questions/24170024/function-in-fortran-passing-array-in-receiving-array-out</a>.</p></li>
+<a href="https://stackoverflow.com/questions/24170024/function-in-fortran-passing-array-in-receiving-array-out">https://stackoverflow.com/questions/24170024/function-in-fortran-passing-array-in-receiving-array-out</a>.</p>
 
-<li><p>Functions that return an array</p>
+<ol>
+<li>Functions that return an array</li>
+</ol>
 
 <p>When the result variable is an array, we cannot declare its type in the
 function header. This means the following would not work.</p>
@@ -231,8 +237,9 @@ depends on the arguments. The result variable just needs to be declared with
 dimension variables determined from the arguments.</p>
 
 <p>See also:
-<a href="https://stackoverflow.com/questions/43768605/function-result-has-no-implicit-type">https://stackoverflow.com/questions/43768605/function-result-has-no-implicit-type</a>.</p></li>
+<a href="https://stackoverflow.com/questions/43768605/function-result-has-no-implicit-type">https://stackoverflow.com/questions/43768605/function-result-has-no-implicit-type</a>.</p>
 
+<ol>
 <li><p>Array dimension must be a constant or an expression that evaluates to a
 constant in the declaration of an automatic array. (It is the same in C99.)
 The compiler error corresponding to this would be &ldquo;Unexpected data
@@ -240,7 +247,8 @@ declaration statement at (1)&ldquo;. See also:
 <a href="https://stackoverflow.com/questions/13630254/unexpected-data-declaration-error-in-fortran-when-creating-array">https://stackoverflow.com/questions/13630254/unexpected-data-declaration-error-in-fortran-when-creating-array</a>.</p></li>
 
 <li><p>There are two ways for a program to use a function defined in the same
-source file. The function may be included in the program,</p>
+source file. The function may be included in the program,</p></li>
+</ol>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#719e07">program </span>my_program
     ...
     <span style="color:#719e07">print</span> <span style="color:#719e07">*</span>, foo(x)
@@ -278,8 +286,9 @@ opinion.</p>
 <a href="https://stackoverflow.com/questions/17751863/function-has-no-implicit-type">https://stackoverflow.com/questions/17751863/function-has-no-implicit-type</a>.</p>
 
 <p>For more on the use of modules, subroutines, and functions:
-<a href="https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran">https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran</a>.</p></li>
+<a href="https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran">https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran</a>.</p>
 
+<ol>
 <li><p>A function argument cannot work with both scalar and vector inputs (i.e.,
 no polymorphism at the function level). However, there is a nice
 work-around using the <code>interface</code> construct. See the example presented in:
@@ -290,6 +299,7 @@ functions that have no side effects. Use the <code>elemental</code> keyword for
 elementwise operations that are to be applied on an array. I like to use
 them because these restrictions will help you write the program in a
 <em>defensible</em> way.</p></li>
+</ol></li>
 </ol>
 
 </div>
