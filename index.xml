@@ -6,10 +6,19 @@
     <description>Recent content in Wu Sun on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 19 Feb 2019 21:19:09 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 23 Jun 2019 04:38:59 +0000</lastBuildDate>
     
 	<atom:link href="http://wusun.name/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Resources on Science Communications</title>
+      <link>http://wusun.name/blog/2019-06-23-resources-on-sci-comm/</link>
+      <pubDate>Sun, 23 Jun 2019 04:38:59 +0000</pubDate>
+      
+      <guid>http://wusun.name/blog/2019-06-23-resources-on-sci-comm/</guid>
+      <description> On giving talks Research talks  Jones, Simon P. (2016, July 26). How to Give a Great Research Talk [Video file]. Retrieved from https://www.youtube.com/watch?v=sT_-owjKIbA.  Job talks  Guo, P. (2018, February 1). PG Vlog #113 - Giving a Research-Based Job Interview Talk [Video file]. Retrieved from https://www.youtube.com/watch?v=udXU9NlBBaM. https://www.youtube.com/watch?v=IFW4hHBVvKk  </description>
+    </item>
     
     <item>
       <title>OCaml packages for scientific computing</title>

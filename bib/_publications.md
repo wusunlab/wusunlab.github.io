@@ -12,7 +12,12 @@ photosynthesis. *Proceedings of the National Academy of Sciences*,
 *116*(7), 2470–2475.
 <a href="https://doi.org/10.1073/pnas.1807600116" class="uri uri">https://doi.org/10.1073/pnas.1807600116</a>
 
-3. Whelan, M. E., Lennartz, S. T., Gimeno, T. E., Wehr, R., Wohlfahrt,
+3. Pezner, A. K., Pivovaroff, A. L., Sun, W., Sharifi, R., Rundel, P., &
+Seibt, U. (2019). Plant functional traits predict the drought response
+of native California plant species. *International Journal of Plant
+Sciences*.
+
+4. Whelan, M. E., Lennartz, S. T., Gimeno, T. E., Wehr, R., Wohlfahrt,
 G., Wang, Y., Kooijmans, L. M. J., Hilton, T. W., Belviso, S., Peylin,
 P., Sun, W., Chen, H., Kuai, L., Mammarella, I., Maseyk, K.,
 Berkelhammer, M., Li, K.-F., Yakir, D., Zumkehr, A., Katayama, Y., Ogée,
@@ -25,31 +30,31 @@ tracer for carbon and water cycles. *Biogeosciences*, *15*(12),
 3625–3657.
 <a href="https://doi.org/10.5194/bg-15-3625-2018" class="uri uri">https://doi.org/10.5194/bg-15-3625-2018</a>
 
-4. Sun, W., Kooijmans, L. M. J., Maseyk, K., Chen, H., Mammarella, I.,
+5. Sun, W., Kooijmans, L. M. J., Maseyk, K., Chen, H., Mammarella, I.,
 Vesala, T., Levula, J., Keskinen, H., & Seibt, U. (2018). Soil fluxes of
 carbonyl sulfide (COS), carbon monoxide, and carbon dioxide in a boreal
 forest in southern finland. *Atmospheric Chemistry and Physics*,
 *18*(2), 1363–1378.
 <a href="https://doi.org/10.5194/acp-18-1363-2018" class="uri uri">https://doi.org/10.5194/acp-18-1363-2018</a>
 
-5. Sun, W., Maseyk, K., Lett, C., & Seibt, U. (2018). Stomatal control
+6. Sun, W., Maseyk, K., Lett, C., & Seibt, U. (2018). Stomatal control
 of leaf fluxes of carbonyl sulfide and CO<sub>2</sub> in a *Typha*
 freshwater marsh. *Biogeosciences*, *15*(11), 3277–3291.
 <a href="https://doi.org/10.5194/bg-15-3277-2018" class="uri uri">https://doi.org/10.5194/bg-15-3277-2018</a>
 
-6. Kooijmans, L. M. J., Maseyk, K., Seibt, U., Sun, W., Vesala, T.,
+7. Kooijmans, L. M. J., Maseyk, K., Seibt, U., Sun, W., Vesala, T.,
 Mammarella, I., Kolari, P., Aalto, J., Franchin, A., Vecchi, R., Valli,
 G., & Chen, H. (2017). Canopy uptake dominates nighttime carbonyl
 sulfide fluxes in a boreal forest. *Atmospheric Chemistry and Physics*,
 *17*(18), 11453–11465.
 <a href="https://doi.org/10.5194/acp-17-11453-2017" class="uri uri">https://doi.org/10.5194/acp-17-11453-2017</a>
 
-7. Sun, W., Maseyk, K., Lett, C., & Seibt, U. (2016). Litter dominates
+8. Sun, W., Maseyk, K., Lett, C., & Seibt, U. (2016). Litter dominates
 surface fluxes of carbonyl sulfide in a Californian oak woodland.
 *Journal of Geophysical Research: Biogeosciences*, *121*(2), 438–450.
 <a href="https://doi.org/10.1002/2015jg003149" class="uri uri">https://doi.org/10.1002/2015jg003149</a>
 
-8. Sun, W., Maseyk, K., Lett, C., & Seibt, U. (2015). A soil
+9. Sun, W., Maseyk, K., Lett, C., & Seibt, U. (2015). A soil
 diffusion–reaction model for surface COS flux: COSSM v1. *Geoscientific
 Model Development*, *8*(10), 3055–3070.
 <a href="https://doi.org/10.5194/gmd-8-3055-2015" class="uri uri">https://doi.org/10.5194/gmd-8-3055-2015</a>
