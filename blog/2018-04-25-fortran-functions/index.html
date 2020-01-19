@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.55.5" />
+  <meta name="generator" content="Hugo 0.62.2" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +105,7 @@
       </font>
     </div>
 
-    <p>© 2019 Wu Sun. All rights reserved.</p>
+    <p>© 2019–2020 Wu Sun. All rights reserved.</p>
   </div>
 </aside>
 
@@ -120,135 +120,123 @@ in the latest Fortran style, which is Fortran 2008, it did not go as well as I
 expected. The compiler yelled at me a screenful of errors. After quite a while
 of debugging a simple array function and reading a bunch of StackOverflow
 questions, I learned how to deal with these pitfalls the hard way.</p>
-
 <ol>
-<li><p>&ldquo;Function result &hellip; at (1) has no implicit type&rdquo;</p>
-
+<li>
+<p>&ldquo;Function result &hellip; at (1) has no implicit type&rdquo;</p>
 <p>The example below will raises an error of this at the compile-time.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
-    <span style="color:#719e07">implicit none
+    <span style="color:#719e07">implicit </span><span style="color:#719e07">none
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     bar <span style="color:#719e07">=</span> <span style="color:#2aa198">42</span>
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>This is a common compiler error thrown at functions. What it means is that
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>This is a common compiler error thrown at functions. What it means is that
 the compiler cannot determine the return type of the function; it must be
 explicitly declared. But where and how to declare the type? There are two
 ways to fix it. One way is to declare the type of function at the
 beginning,</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
-    <span style="color:#719e07">implicit none
+    <span style="color:#719e07">implicit </span><span style="color:#719e07">none
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     bar <span style="color:#719e07">=</span> <span style="color:#2aa198">42</span>
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>This seems to be the recommended way, because it makes it clear that this
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>This seems to be the recommended way, because it makes it clear that this
 function returns an integer (kinda like how you would write a C function.)</p>
-
 <p>Another way is to declare the result variable inside the function body.
 This works just fine. But nowadays it seems that the former one is the more
 prevalent style.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
-    <span style="color:#719e07">implicit none
+    <span style="color:#719e07">implicit </span><span style="color:#719e07">none
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     <span style="color:#dc322f">integer</span> <span style="color:#268bd2">::</span> bar
     bar <span style="color:#719e07">=</span> <span style="color:#2aa198">42</span>
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>Note that you <em>cannot</em> initialize the result variable <code>bar</code> in the example
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>Note that you <em>cannot</em> initialize the result variable <code>bar</code> in the example
 above. For example, if you write <code>integer :: bar = 42</code>, the compiler will
 again yell at you &ldquo;Function result &lsquo;bar&rsquo; at (1) cannot have an
-initializer&rdquo;. I think this style would be more prone to error than <code>integer
-function foo(x) result(bar)</code>.</p>
-
+initializer&rdquo;. I think this style would be more prone to error than <code>integer function foo(x) result(bar)</code>.</p>
 <p>So, in short, <strong>always declare the return type</strong> if the function does not
-return an array. (I&rsquo;ll deal with the array function case later.)</p>
-
-<ol>
-<li>Function result is defined in the function header, not in the function
+return an array. (I'll deal with the array function case later.)</p>
+</li>
+<li>
+<p>Function result is defined in the function header, not in the function
 body. You cannot decide which variable to return later in the function
 body, because there is no C-like <code>return</code> statement (or, you could also
-say, the Fortran <code>return</code> statement has an entirely different meaning).</li>
-</ol>
-
+say, the Fortran <code>return</code> statement has an entirely different meaning).</p>
 <p>The <strong>result variable</strong> is defined with the <code>result</code> keyword. For example,
 in</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
     ...
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>the variable to return to the caller is <code>bar</code> and cannot be anything else.</p>
-
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>the variable to return to the caller is <code>bar</code> and cannot be anything else.</p>
 <p>The <code>result</code> statement can be omitted. In this case, the result variable
 will have the same name as the function. For example, in</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x)
     ...
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>the result variable is <code>foo</code>.</p>
-
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>the result variable is <code>foo</code>.</p>
 <p>On the other hand, the absence of a C-like <code>return</code> statement makes perfect
 sense because the function already knows which variable is the result
 variable the moment it is declared.</p>
-
-<ol>
-<li>Do not declare the type of the result variable <em>twice</em>. If the result
+</li>
+<li>
+<p>Do not declare the type of the result variable <em>twice</em>. If the result
 variable type is already declared in the function header, there is no need
 to declare it again in the function body. This means the following example
-is wrong.</li>
-</ol>
+is wrong.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
     <span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     <span style="color:#dc322f">integer</span> <span style="color:#268bd2">::</span> bar <span style="color:#719e07">=</span> <span style="color:#2aa198">42</span>
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>The compiler would raise an error for duplicate declarations, &ldquo;Symbol &lsquo;bar&rsquo;
-at (1) already has basic type of INTEGER&rdquo;.</p></li>
-
-<li><p>Do not use <code>intent(out)</code> in the declaration of the result variable in the
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>The compiler would raise an error for duplicate declarations, &ldquo;Symbol &lsquo;bar&rsquo;
+at (1) already has basic type of INTEGER&rdquo;.</p>
+</li>
+<li>
+<p>Do not use <code>intent(out)</code> in the declaration of the result variable in the
 function body. The following example is wrong.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
-    <span style="color:#719e07">implicit none
+    <span style="color:#719e07">implicit </span><span style="color:#719e07">none
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     <span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(out) <span style="color:#268bd2">::</span> bar
     bar <span style="color:#719e07">=</span> <span style="color:#2aa198">42</span>
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>The compiler will raise an error at the line <code>function foo(x) result(bar)</code>:
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>The compiler will raise an error at the line <code>function foo(x) result(bar)</code>:
 &ldquo;Symbol at (1) is not a DUMMY variable&rdquo;. It is not obvious that this
 message would refer to the misuse of <code>intent(out)</code>.</p>
-
 <p>See also:
 <a href="https://stackoverflow.com/questions/24170024/function-in-fortran-passing-array-in-receiving-array-out">https://stackoverflow.com/questions/24170024/function-in-fortran-passing-array-in-receiving-array-out</a>.</p>
-
-<ol>
-<li>Functions that return an array</li>
-</ol>
-
+</li>
+<li>
+<p>Functions that return an array</p>
 <p>When the result variable is an array, we cannot declare its type in the
 function header. This means the following would not work.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#dc322f">integer</span>(<span style="color:#2aa198">1</span>:<span style="color:#2aa198">5</span>) <span style="color:#719e07">function </span>vec_foo(x) <span style="color:#719e07">result</span>(bar)
     ...
-<span style="color:#719e07">end function </span>vec_foo</code></pre></div>
-<p>In this case, we do need to declare the result variable in the body of the
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>vec_foo
+</code></pre></div><p>In this case, we do need to declare the result variable in the body of the
 function. For example,</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#586e75">! an array function that returns a fixed-length array
 </span><span style="color:#586e75"></span><span style="color:#719e07">function </span>foo(x) <span style="color:#719e07">result</span>(bar)
-    <span style="color:#719e07">implicit none
+    <span style="color:#719e07">implicit </span><span style="color:#719e07">none
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer</span>, <span style="color:#719e07">intent</span>(in) <span style="color:#268bd2">::</span> x
     <span style="color:#dc322f">integer</span>, <span style="color:#719e07">dimension</span>(<span style="color:#2aa198">5</span>) <span style="color:#268bd2">::</span> bar
     bar <span style="color:#719e07">=</span> [<span style="color:#2aa198">1</span>, <span style="color:#2aa198">2</span>, <span style="color:#2aa198">3</span>, <span style="color:#2aa198">4</span>, <span style="color:#2aa198">5</span>]
-<span style="color:#719e07">end function </span>foo</code></pre></div>
-<p>A function may also return a automatically allocated array whose size
+<span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
+</code></pre></div><p>A function may also return a automatically allocated array whose size
 depends on the arguments. The result variable just needs to be declared with
 dimension variables determined from the arguments.</p>
-
 <p>See also:
 <a href="https://stackoverflow.com/questions/43768605/function-result-has-no-implicit-type">https://stackoverflow.com/questions/43768605/function-result-has-no-implicit-type</a>.</p>
-
-<ol>
-<li><p>Array dimension must be a constant or an expression that evaluates to a
+</li>
+<li>
+<p>Array dimension must be a constant or an expression that evaluates to a
 constant in the declaration of an automatic array. (It is the same in C99.)
 The compiler error corresponding to this would be &ldquo;Unexpected data
-declaration statement at (1)&ldquo;. See also:
-<a href="https://stackoverflow.com/questions/13630254/unexpected-data-declaration-error-in-fortran-when-creating-array">https://stackoverflow.com/questions/13630254/unexpected-data-declaration-error-in-fortran-when-creating-array</a>.</p></li>
-
-<li><p>There are two ways for a program to use a function defined in the same
-source file. The function may be included in the program,</p></li>
-</ol>
+declaration statement at (1)&quot;. See also:
+<a href="https://stackoverflow.com/questions/13630254/unexpected-data-declaration-error-in-fortran-when-creating-array">https://stackoverflow.com/questions/13630254/unexpected-data-declaration-error-in-fortran-when-creating-array</a>.</p>
+</li>
+<li>
+<p>There are two ways for a program to use a function defined in the same
+source file. The function may be included in the program,</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#719e07">program </span>my_program
     ...
     <span style="color:#719e07">print</span> <span style="color:#719e07">*</span>, foo(x)
@@ -257,10 +245,10 @@ source file. The function may be included in the program,</p></li>
 </span><span style="color:#719e07">
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x)
         ...
-    <span style="color:#719e07">end function </span>foo
+    <span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
 
-<span style="color:#719e07">end program </span>my_program</code></pre></div>
-<p>Or, the function can be defined in a module that is placed in the same
+<span style="color:#719e07">end </span><span style="color:#719e07">program </span>my_program
+</code></pre></div><p>Or, the function can be defined in a module that is placed in the same
 source file as the main program. (This seems to be the preferred style.)</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#719e07">module </span>my_module
 
@@ -268,38 +256,37 @@ source file as the main program. (This seems to be the preferred style.)</p>
 </span><span style="color:#719e07">
 </span><span style="color:#719e07">    </span><span style="color:#dc322f">integer </span><span style="color:#719e07">function </span>foo(x)
         ...
-    <span style="color:#719e07">end function </span>foo
+    <span style="color:#719e07">end </span><span style="color:#719e07">function </span>foo
 
 <span style="color:#719e07">end </span>my_module
 
 <span style="color:#719e07">program </span>my_program
     <span style="color:#719e07">use </span>my_module
-    <span style="color:#719e07">implicit none</span>
+    <span style="color:#719e07">implicit </span><span style="color:#719e07">none</span>
     ...
     <span style="color:#719e07">print</span> <span style="color:#719e07">*</span>, foo(x)
-<span style="color:#719e07">end program </span>my_program</code></pre></div>
-<p>If something goes wrong, the <code>gfortran</code> compiler will raise an error
+<span style="color:#719e07">end </span><span style="color:#719e07">program </span>my_program
+</code></pre></div><p>If something goes wrong, the <code>gfortran</code> compiler will raise an error
 &ldquo;Function result has no implicit type&rdquo;, which is not very helpful in my
 opinion.</p>
-
 <p>See also:
 <a href="https://stackoverflow.com/questions/17751863/function-has-no-implicit-type">https://stackoverflow.com/questions/17751863/function-has-no-implicit-type</a>.</p>
-
 <p>For more on the use of modules, subroutines, and functions:
 <a href="https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran">https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran</a>.</p>
-
-<ol>
-<li><p>A function argument cannot work with both scalar and vector inputs (i.e.,
+</li>
+<li>
+<p>A function argument cannot work with both scalar and vector inputs (i.e.,
 no polymorphism at the function level). However, there is a nice
 work-around using the <code>interface</code> construct. See the example presented in:
-<a href="https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input">https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input</a>.</p></li>
-
-<li><p>More about functions: Use the <code>pure</code> keyword for pure functions, i.e.,
+<a href="https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input">https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input</a>.</p>
+</li>
+<li>
+<p>More about functions: Use the <code>pure</code> keyword for pure functions, i.e.,
 functions that have no side effects. Use the <code>elemental</code> keyword for
 elementwise operations that are to be applied on an array. I like to use
 them because these restrictions will help you write the program in a
-<em>defensible</em> way.</p></li>
-</ol></li>
+<em>defensible</em> way.</p>
+</li>
 </ol>
 
 </div>

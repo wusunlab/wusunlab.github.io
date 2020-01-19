@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.55.5" />
+  <meta name="generator" content="Hugo 0.62.2" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +105,7 @@
       </font>
     </div>
 
-    <p>© 2019 Wu Sun. All rights reserved.</p>
+    <p>© 2019–2020 Wu Sun. All rights reserved.</p>
   </div>
 </aside>
 
@@ -119,7 +119,6 @@ is a defective solution because the <code>listings</code> package does not have 
 Recently, the <a href="https://ctan.org/pkg/minted"><code>minted</code></a> package seems to emerge
 as a standard and preferred solution to syntax highlighting in LaTeX. This
 package is now part of the TeXLive distribution.</p>
-
 <p><code>minted</code> requires <a href="http://pygments.org/">Pygments</a> as an external lexer and
 highlighter. As a result, to use it properly requires enabling <code>--shell-escape</code>
 option on LaTeX compilers (<code>latexmk</code> and <code>pdflatex</code>). Otherwise, it cannot find
@@ -129,7 +128,6 @@ to write LaTeX, this can be quite a hassle. I found a way to configure the
 VSCode extension LaTeX Workshop so that it can properly compile sources that
 use the <code>minted</code> package, from a <a href="https://tex.stackexchange.com/questions/432459/pygmentize-not-installed-error-on-visual-studio-code">TeX StackExchange
 post</a>.</p>
-
 <p>Add the following to the VSCode user settings:</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#2aa198">&#34;latex-workshop.latex.tools&#34;</span>: [
     {
@@ -163,10 +161,9 @@ post</a>.</p>
             <span style="color:#2aa198">&#34;%DOCFILE%&#34;</span>
         ]
     }
-]</code></pre></div>
-<p>This works for VSCode 1.30.2 and LaTeX-Workshop 5.20.1.</p>
-
-<p><img src="minted-beamer-example.png" alt="Beamer example of syntax highlighting using minted" /></p>
+]
+</code></pre></div><p>This works for VSCode 1.30.2 and LaTeX-Workshop 5.20.1.</p>
+<p><img src="minted-beamer-example.png" alt="Beamer example of syntax highlighting using minted"></p>
 
 </div>
 

@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.55.5" />
+  <meta name="generator" content="Hugo 0.62.2" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +105,7 @@
       </font>
     </div>
 
-    <p>© 2019 Wu Sun. All rights reserved.</p>
+    <p>© 2019–2020 Wu Sun. All rights reserved.</p>
   </div>
 </aside>
 
@@ -119,19 +119,16 @@ theorems and proofs, drawing diagrams in TikZ and PGF, or some heavy tweaking
 of the page styles, Markdown may suffice for your use cases. A lightly marked
 text format like Markdown helps the writer concentrate on the contents rather
 than the styles.</p>
-
 <p>In the past few years, I have gradually replaced some of my writing tasks in
 LaTeX with automated generation of LaTeX and PDF from Markdown by <code>pandoc</code>. The
 workflow is simple and quite reliable. You need to spend time making a nice
 LaTeX template first. Once you have it, you can keep using the same template
 until you are bored with it.</p>
-
 <p>Out of curiosity, I searched over the landscape of tools for writing papers,
 e-books, and documentation in Markdown or other similar text formats. My
 requirement is rather simple: a document generator that takes lightweight
 markup text formats as the input and outputs HTML, LaTeX, and PDF. BibTeX
 citations and bibliographies would be a bonus.</p>
-
 <p>My conclusion is that <code>pandoc</code> is the best <em>generic</em> tool for writing papers
 and technical books. But it is not the only one out there. Which tool is the
 best depends on the requirements of the task. For example, if you are writing a
@@ -142,10 +139,8 @@ may be best done in the Markdown variant of that language (e.g., R Markdown for
 R), or in the versatile Jupyter Notebook. And once you have rendered your book
 in HTML, you may use Jekyll to publish it on GitHub Pages. The moral is to use
 the right tool for the right task.</p>
-
 <p>Below is a list of some popular tools that render Markdown or other text-based
 formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
-
 <table>
 <thead>
 <tr>
@@ -158,7 +153,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <th>Literate programming</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td><a href="https://pandoc.org"><code>pandoc</code></a></td>
@@ -169,7 +163,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>No</td>
 </tr>
-
 <tr>
 <td><a href="http://www.sphinx-doc.org"><code>sphinx</code></a></td>
 <td>reStructuredText, Markdown<sup id="a2"><a href="#f2">[2]</a></sup></td>
@@ -179,7 +172,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes<sup id="a3"><a href="#f3">[3]</a></sup></td>
 <td>No</td>
 </tr>
-
 <tr>
 <td><a href="http://www.stack.nl/~dimitri/doxygen/"><code>doxygen</code></a></td>
 <td>Markdown, self-documented source code</td>
@@ -189,7 +181,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>No</td>
 </tr>
-
 <tr>
 <td><a href="https://github.com/yihui/knitr"><code>knitr</code></a><sup id="a4"><a href="#f4">[4]</a></sup></td>
 <td>R Markdown</td>
@@ -199,7 +190,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>R, Python, and SQL</td>
 </tr>
-
 <tr>
 <td><a href="https://bookdown.org"><code>bookdown</code></a><sup id="a5"><a href="#f5">[5]</a></sup></td>
 <td>R Markdown</td>
@@ -209,7 +199,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>R, C/C++, Python, and SQL</td>
 </tr>
-
 <tr>
 <td><a href="https://jekyllrb.com/"><code>jekyll</code></a><sup id="a6"><a href="#f6">[6]</a></sup></td>
 <td>Markdown, Liquid, HTML</td>
@@ -219,7 +208,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>No</td>
 <td>No</td>
 </tr>
-
 <tr>
 <td><a href="https://docs.racket-lang.org/scribble/index.html"><code>scribble</code></a></td>
 <td>Racket, <code>scrbl</code> files</td>
@@ -229,7 +217,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>Racket</td>
 </tr>
-
 <tr>
 <td><a href="https://docs.racket-lang.org/pollen/index.html"><code>pollen</code></a></td>
 <td>Pollen and Pollen Markdown</td>
@@ -239,7 +226,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>Racket</td>
 </tr>
-
 <tr>
 <td><a href="https://github.com/mpastell/Weave.jl"><code>Weave.jl</code></a><sup id="a7"><a href="#f7">[7]</a></sup></td>
 <td>Julia Markdown</td>
@@ -249,7 +235,6 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 <td>Yes</td>
 <td>Julia</td>
 </tr>
-
 <tr>
 <td><a href="http://jupyter.org/">Jupyter Notebook</a></td>
 <td>Jupyter Notebook <code>ipynb</code> files</td>
@@ -261,9 +246,7 @@ formats in HTML, LaTeX, and PDF. It is by no means exhaustive.</p>
 </tr>
 </tbody>
 </table>
-
 <p>Footnotes</p>
-
 <ul>
 <li><b id="f1"><a href="#a1">[1]</a></b> <code>pandoc</code> supports several markdown variants
 including CommonMark and GitHub Flavored Markdown, and other lightweight
@@ -288,9 +271,7 @@ include Python, R, Julia, and C++. There are more than 100 different language
 kernels supported through community efforts (see <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels">Jupyter
 kernels</a>).</li>
 </ul>
-
 <p>Additional notes</p>
-
 <ol>
 <li>My focus is on generating HTML and PDF output. However, many of these tools
 also support other e-book formats like <code>epub</code> and <code>mobi</code>.</li>
@@ -305,12 +286,11 @@ Pages.</li>
 Python, and Julia. But theoretically, you can do it in any language that is
 supported by Jupyter Notebook.</li>
 <li>Racket has good-looking documentation (in my opinion, better than
-Python&rsquo;s). However, the documentation tools (Scribble and Pollen) require
-basic understanding of Racket syntax. I&rsquo;m not well versed in any Lisp
-dialect and therefore did not look at them in detail. Maybe I&rsquo;ll revisit
+Python's). However, the documentation tools (Scribble and Pollen) require
+basic understanding of Racket syntax. I'm not well versed in any Lisp
+dialect and therefore did not look at them in detail. Maybe I'll revisit
 them in a few years.</li>
 </ol>
-
 <!-- links -->
 
 </div>

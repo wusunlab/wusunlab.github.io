@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>latex on Wu Sun, Ph.D.</title>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
       
       <guid>http://wusun.name/blog/2015-05-13-merge-figure/</guid>
-      <description>Some academic journals require all subfigures to be combined as one single file for submission. This may not be easy to do if you don&amp;rsquo;t have a professional software (often proprietary) to edit vector maps, e.g., EPS and PDF.
+      <description>Some academic journals require all subfigures to be combined as one single file for submission. This may not be easy to do if you don&#39;t have a professional software (often proprietary) to edit vector maps, e.g., EPS and PDF.
 I found a convenient way to deal with in LaTeX Beamer. The idea is to create a beamer slide and insert your subfigures with the command \includegraphics{} in the same figure environment.</description>
     </item>
     

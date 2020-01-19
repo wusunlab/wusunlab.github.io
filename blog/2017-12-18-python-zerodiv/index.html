@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.55.5" />
+  <meta name="generator" content="Hugo 0.62.2" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +105,7 @@
       </font>
     </div>
 
-    <p>© 2019 Wu Sun. All rights reserved.</p>
+    <p>© 2019–2020 Wu Sun. All rights reserved.</p>
   </div>
 </aside>
 
@@ -113,77 +113,65 @@
     <div class="post">
   <h1>Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature</h1>
   <time datetime=2017-12-18T00:00:00Z class="post-date">Mon, Dec 18, 2017</time>
-  
-
-<p>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a
+  <p>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a
 <code>ZeroDivisionError</code>:</p>
-
 <pre><code>&gt;&gt;&gt; 1. / 0.
 Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
 ZeroDivisionError: float division by zero
-</code></pre>
-
-<p><strong>This is not consistent with mathematics</strong>, given that $1 / 0 = \infty$.
-Wouldn&rsquo;t it be better to just return <code>inf</code>? In fact, the exception &ldquo;division by
+</code></pre><p><strong>This is not consistent with mathematics</strong>, given that $1 / 0 = \infty$.
+Wouldn't it be better to just return <code>inf</code>? In fact, the exception &ldquo;division by
 zero&rdquo; has been stipulated to return infinities in the IEEE 754 standard for
 floating-point arithmetic [1]:</p>
-
 <blockquote>
 <p>The default result of divideByZero shall be an ∞ correctly signed according
-to the operation &hellip;</p>
+to the operation . . .</p>
 </blockquote>
-
 <p>In many programming languages, the expression <code>1. / 0.</code> gives the positive
 infinity without raising an error; like in Julia, for example,</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#719e07">&gt;</span> <span style="color:#2aa198">1.</span> <span style="color:#719e07">/</span> <span style="color:#2aa198">0.</span>
-<span style="color:#b58900">Inf</span></code></pre></div>
-<p>In C, the expression <code>1. / 0.</code> can sometimes be used to define the infinity
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#719e07"></span><span style="color:#719e07">&gt;</span> <span style="color:#2aa198">1.</span> <span style="color:#719e07">/</span> <span style="color:#2aa198">0.</span>
+<span style="color:#b58900">Inf</span>
+</code></pre></div><p>In C, the expression <code>1. / 0.</code> can sometimes be used to define the infinity
 that is compiler independent (before the C99 standard),</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#719e07">#ifndef INFINITY
-</span><span style="color:#719e07">#define INFINITY 1. / 0.
-</span><span style="color:#719e07">#endif</span></code></pre></div>
-<p>The fact that Python raises a <code>ZeroDivisionError</code> instead of returning <code>inf</code>
+<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#719e07">#</span><span style="color:#719e07">ifndef INFINITY</span><span style="color:#719e07">
+</span><span style="color:#719e07"></span><span style="color:#719e07">#</span><span style="color:#719e07">define INFINITY 1. </span><span style="color:#719e07">/</span><span style="color:#719e07"> 0.</span><span style="color:#719e07">
+</span><span style="color:#719e07"></span><span style="color:#719e07">#</span><span style="color:#719e07">endif</span><span style="color:#719e07">
+</span></code></pre></div><p>The fact that Python raises a <code>ZeroDivisionError</code> instead of returning <code>inf</code>
 from zero division seems to be in violation of the IEEE 754 standard.</p>
-
 <p>There is also a special case where both the dividend and the divisor are zero.
 How this exception should be handled has not been specified in the IEEE 754
 standard. In many programming languages, <code>0. / 0.</code> is evaluated as <code>NaN</code>. In
 Haskell, for example,</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#268bd2">ghci</span><span style="color:#719e07">&gt;</span> (<span style="color:#2aa198">0</span> <span style="color:#719e07">::</span> <span style="color:#dc322f">Double</span>) <span style="color:#719e07">/</span> (<span style="color:#2aa198">0</span> <span style="color:#719e07">::</span> <span style="color:#dc322f">Double</span>)
-<span style="color:#dc322f">NaN</span></code></pre></div>
-<p>The aforementioned mechanism for handling the division by zero exceptions has
+<span style="color:#dc322f">NaN</span>
+</code></pre></div><p>The aforementioned mechanism for handling the division by zero exceptions has
 an important advantage &mdash; it ensures that the division between two
 floating-point numbers returns a floating-number type, no matter what. In
 mathematical terms, the set of floating-point numbers has <strong>closure</strong> under the
 operation of <strong>division</strong>. The resulting <code>NaN</code> or <code>Inf</code> values can be easily
 tested with standard library functions like <code>isnan()</code> and <code>isinf()</code>. This also
 has a practical benefit to skip the hassle of error handling.</p>
-
 <p>But in Python, one has to catch the <code>ZeroDivisionError</code> first with the <code>try</code>
 and <code>except</code> statement.</p>
 <div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">def</span> <span style="color:#268bd2">zerodiv</span>(a, b):
-    <span style="color:#2aa198">&#34;&#34;&#34;Division that overrides the ZeroDivisionError.&#34;&#34;&#34;</span>
+    <span style="color:#2aa198"></span><span style="color:#2aa198">&#34;&#34;&#34;</span><span style="color:#2aa198">Division that overrides the ZeroDivisionError.</span><span style="color:#2aa198">&#34;&#34;&#34;</span>
     <span style="color:#719e07">try</span>:
         <span style="color:#719e07">return</span> a <span style="color:#719e07">/</span> b
     <span style="color:#719e07">except</span> <span style="color:#cb4b16">ZeroDivisionError</span>:
         <span style="color:#719e07">if</span> b <span style="color:#719e07">==</span> <span style="color:#2aa198">0.</span>:
             <span style="color:#719e07">if</span> a <span style="color:#719e07">==</span> <span style="color:#2aa198">0.</span>:
-                <span style="color:#719e07">return</span> <span style="color:#b58900">float</span>(<span style="color:#2aa198">&#39;NaN&#39;</span>)
+                <span style="color:#719e07">return</span> <span style="color:#b58900">float</span>(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">NaN</span><span style="color:#2aa198">&#39;</span>)
             <span style="color:#719e07">else</span>:
-                <span style="color:#719e07">return</span> <span style="color:#b58900">float</span>(<span style="color:#2aa198">&#39;Inf&#39;</span>)</code></pre></div>
-<p>In other words, with the floating-point <code>ZeroDivisionError</code>, Python has created
+                <span style="color:#719e07">return</span> <span style="color:#b58900">float</span>(<span style="color:#2aa198"></span><span style="color:#2aa198">&#39;</span><span style="color:#2aa198">Inf</span><span style="color:#2aa198">&#39;</span>)
+</code></pre></div><p>In other words, with the floating-point <code>ZeroDivisionError</code>, Python has created
 a problem that does not even exist in other languages!</p>
-
 <p>Why does Python have the <code>ZeroDivisionError</code> for floating-point arithmetic in
 the first place? I cannot find a justification after a bit of searching. I have
 the impression that the floating-point <code>ZeroDivisionError</code> is mimicking the
 integer version of the error. This is an unnecessary and bad feature, because
 it violates the closure of the floating-point type and costs additional code
 for error handling. I hope this flaw could be righted in Python 4.</p>
-
 <h2 id="references">References</h2>
-
 <ol>
 <li>Zuras, D. <em>et al.</em> (2008). IEEE Standard for Floating-Point Arithmetic.
 <em>IEEE Std 754-2008</em>, 1–70, doi:10.1109/ieeestd.2008.4610935.</li>

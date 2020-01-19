@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blog on Wu Sun, Ph.D.</title>
@@ -6,19 +6,10 @@
     <description>Recent content in Blog on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 Jun 2019 04:38:59 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Feb 2019 21:19:09 +0000</lastBuildDate>
     
 	<atom:link href="http://wusun.name/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Resources on Science Communications</title>
-      <link>http://wusun.name/blog/2019-06-23-resources-on-sci-comm/</link>
-      <pubDate>Sun, 23 Jun 2019 04:38:59 +0000</pubDate>
-      
-      <guid>http://wusun.name/blog/2019-06-23-resources-on-sci-comm/</guid>
-      <description> On giving talks Research talks  Jones, Simon P. (2016, July 26). How to Give a Great Research Talk [Video file]. Retrieved from https://www.youtube.com/watch?v=sT_-owjKIbA.  Job talks  Guo, P. (2018, February 1). PG Vlog #113 - Giving a Research-Based Job Interview Talk [Video file]. Retrieved from https://www.youtube.com/watch?v=udXU9NlBBaM. https://www.youtube.com/watch?v=IFW4hHBVvKk  </description>
-    </item>
     
     <item>
       <title>OCaml packages for scientific computing</title>
@@ -46,8 +37,8 @@ minted requires Pygments as an external lexer and highlighter. As a result, to u
       <pubDate>Mon, 08 Oct 2018 22:01:07 -0700</pubDate>
       
       <guid>http://wusun.name/blog/2018-10-09-update-ocaml-opam/</guid>
-      <description>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my current environment (OCaml + OPAM + packages). I knew there was not a single command that does all the tasks like conda for Python. Luckily, it was not so difficult with OPAM&amp;rsquo;s import/export function [1]. I upgraded my OCaml environment with all installed packages retained following these steps without much trouble.
- Export the list of currently installed packages:</description>
+      <description>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my current environment (OCaml + OPAM + packages). I knew there was not a single command that does all the tasks like conda for Python. Luckily, it was not so difficult with OPAM&#39;s import/export function [1]. I upgraded my OCaml environment with all installed packages retained following these steps without much trouble.
+  Export the list of currently installed packages:</description>
     </item>
     
     <item>
@@ -56,8 +47,8 @@ minted requires Pygments as an external lexer and highlighter. As a result, to u
       <pubDate>Mon, 23 Jul 2018 21:43:48 -0700</pubDate>
       
       <guid>http://wusun.name/blog/2018-07-24-pep484-is-great/</guid>
-      <description>I begin to like sprinkling a few PEP 484 type hints in my Python code. Not necessarily because my code is laden with undetectable bugs and I want to use static type checking to help; it&amp;rsquo;s mainly because it makes the code more self-explanatory. It is a manifestation of the Zen of Python that &amp;ldquo;explicit is better than implicit&amp;rdquo;.
-Here&amp;rsquo;s a little example. Compare the Python snippet
+      <description>I begin to like sprinkling a few PEP 484 type hints in my Python code. Not necessarily because my code is laden with undetectable bugs and I want to use static type checking to help; it&#39;s mainly because it makes the code more self-explanatory. It is a manifestation of the Zen of Python that &amp;ldquo;explicit is better than implicit&amp;rdquo;.
+Here&#39;s a little example. Compare the Python snippet
 def filter_substr(strlst: List[str], substr: str) -&amp;gt; List[str]: return list(filter(lambda s: substr in s, strlst)) with the equivalent Standard ML one</description>
     </item>
     
@@ -78,7 +69,7 @@ In the past few years, I have gradually replaced some of my writing tasks in LaT
       
       <guid>http://wusun.name/blog/2018-06-13-optimizing-scientific-code/</guid>
       <description>I have no time to write an essay, so here are some fragmentary thoughts.
- Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
+  Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
     </item>
     
     <item>
@@ -87,8 +78,8 @@ In the past few years, I have gradually replaced some of my writing tasks in LaT
       <pubDate>Sat, 02 Jun 2018 19:41:02 -0700</pubDate>
       
       <guid>http://wusun.name/blog/2018-06-02-update-website/</guid>
-      <description>I&amp;rsquo;m refactoring my academic website using the Minimal Mistakes theme to get a cleaner look. Stay tuned!
-Added on 2018-11-30: In the end I settled on the Minima theme. I like its minimalist design and it&amp;rsquo;s a good fit for a simple academic website with a blog.</description>
+      <description>I&#39;m refactoring my academic website using the Minimal Mistakes theme to get a cleaner look. Stay tuned!
+Added on 2018-11-30: In the end I settled on the Minima theme. I like its minimalist design and it&#39;s a good fit for a simple academic website with a blog.</description>
     </item>
     
     <item>
@@ -98,7 +89,7 @@ Added on 2018-11-30: In the end I settled on the Minima theme. I like its minima
       
       <guid>http://wusun.name/blog/2018-05-24-julia-macro-vs-globalconst/</guid>
       <description>Disclaimer on 2018-11-30: These tests were performed under Julia v0.6. Due to the incompatible syntax changes brought by Julia v0.7 and v1.0 and improved compiler optimization, they may not run or the emitted low-level code may not be the same.
-The use of the global variable is discouraged in Julia for performance reasons (see the Julia documentation). But what about global constants? I&amp;rsquo;m quite new to the Julia language, but I bet that it would not be difficult for the compiler to identify a const and optimize over it.</description>
+The use of the global variable is discouraged in Julia for performance reasons (see the Julia documentation). But what about global constants? I&#39;m quite new to the Julia language, but I bet that it would not be difficult for the compiler to identify a const and optimize over it.</description>
     </item>
     
     <item>
@@ -136,7 +127,7 @@ I came across a powerful open source Kanban software — Kanboard.</description>
       
       <guid>http://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
       <description>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
-&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero  This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
+&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&#39;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
     </item>
     
     <item>
@@ -154,7 +145,7 @@ I came across a powerful open source Kanban software — Kanboard.</description>
       <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
       
       <guid>http://wusun.name/blog/2015-05-13-merge-figure/</guid>
-      <description>Some academic journals require all subfigures to be combined as one single file for submission. This may not be easy to do if you don&amp;rsquo;t have a professional software (often proprietary) to edit vector maps, e.g., EPS and PDF.
+      <description>Some academic journals require all subfigures to be combined as one single file for submission. This may not be easy to do if you don&#39;t have a professional software (often proprietary) to edit vector maps, e.g., EPS and PDF.
 I found a convenient way to deal with in LaTeX Beamer. The idea is to create a beamer slide and insert your subfigures with the command \includegraphics{} in the same figure environment.</description>
     </item>
     
