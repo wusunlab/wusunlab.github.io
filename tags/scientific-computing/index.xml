@@ -18,7 +18,7 @@
       
       <guid>http://wusun.name/blog/2018-05-24-julia-macro-vs-globalconst/</guid>
       <description>Disclaimer on 2018-11-30: These tests were performed under Julia v0.6. Due to the incompatible syntax changes brought by Julia v0.7 and v1.0 and improved compiler optimization, they may not run or the emitted low-level code may not be the same.
-The use of the global variable is discouraged in Julia for performance reasons (see the Julia documentation). But what about global constants? I&#39;m quite new to the Julia language, but I bet that it would not be difficult for the compiler to identify a const and optimize over it.</description>
+The use of the global variable is discouraged in Julia for performance reasons (see the Julia documentation). But what about global constants? I&amp;rsquo;m quite new to the Julia language, but I bet that it would not be difficult for the compiler to identify a const and optimize over it.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ The use of the global variable is discouraged in Julia for performance reasons (
       
       <guid>http://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
       <description>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
-&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&#39;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
+&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
     </item>
     
   </channel>

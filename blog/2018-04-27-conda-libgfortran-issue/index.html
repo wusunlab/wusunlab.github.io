@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.74.3" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -119,7 +119,7 @@ GCC one (version 7.3). After that, I found that I could no longer execute some
 previously compiled Fortran programs and I also ran into troubles with some
 Anaconda Python packages. (Maybe it was my fault not to statically link them.)
 I got the same error for all of them:</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dyld: Library not loaded: @rpath/./libgfortran.3.dylib
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dyld: Library not loaded: @rpath/./libgfortran.3.dylib
 </code></pre></div><p>I searched it and there were quite a few people who ran into the same error
 message with the <code>gfortran</code> in Anaconda Python Distribution. However,
 discussions on the GitHub issues page were not always helpful. I tried some
@@ -130,10 +130,10 @@ flipping through three pages in the Google search results:
 <p>The fix is simple. Switch the default <code>gfortran</code> back to the Anaconda one.
 Check the path of <code>DYLD_FALLBACK_LIBRARY_PATH</code>. If it is empty, set it to the
 Anaconda lib directory, e.g., something like <code>/Users/&lt;your_name&gt;/anaconda/lib</code>.
-That's it. You may want to add it to the <code>.bash_profile</code> because macOS seems to
+That&rsquo;s it. You may want to add it to the <code>.bash_profile</code> because macOS seems to
 constantly clear it. (Though I suspect that there may be a more elegant
 solution, at the moment this solved my problem.)</p>
-<p>I'm still not quite happy with the fact that <code>conda</code> on macOS is stuck at
+<p>I&rsquo;m still not quite happy with the fact that <code>conda</code> on macOS is stuck at
 gfortran 4.8. That just means a lot of new features added in the Fortran 2008
 standard cannot be used to build a portable Python package. Of course, there is
 another limitation that is <code>f2py</code>, which does not seem to support any feature
@@ -147,6 +147,8 @@ code in Python is much more natural and robust than wrapping Fortran code.</p>
 
     </main>
 
+    
+      
     
   </body>
 </html>

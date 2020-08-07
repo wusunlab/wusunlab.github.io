@@ -27,7 +27,7 @@
       
       <guid>http://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
       <description>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
-&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&#39;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
+&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
     </item>
     
   </channel>

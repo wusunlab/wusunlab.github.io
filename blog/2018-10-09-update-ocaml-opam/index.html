@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.74.3" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,13 +116,13 @@
   <p>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my
 current environment (OCaml + OPAM + packages). I knew there was not a single
 command that does all the tasks like <code>conda</code> for Python. Luckily, it was not so
-difficult with OPAM's import/export function [<a href="https://discuss.ocaml.org/t/right-way-to-upgrade-my-ocaml-packages/1070/2">1</a>]. I upgraded my OCaml
+difficult with OPAM&rsquo;s import/export function [<a href="https://discuss.ocaml.org/t/right-way-to-upgrade-my-ocaml-packages/1070/2">1</a>]. I upgraded my OCaml
 environment with all installed packages retained following these steps without
 much trouble.</p>
 <ol>
 <li>
 <p>Export the list of currently installed packages:</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch <span style="color:#b58900">export</span> opam-pkg-list.txt
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch <span style="color:#0086b3">export</span> opam-pkg-list.txt
 </code></pre></div></li>
 <li>
 <p>Update OCaml &amp; OPAM with the system package manager (e.g., Homebrew on
@@ -135,7 +135,7 @@ to switch to it.</p>
 <p>Import the list of installed packages. Pay attention to the warnings and
 error messages because some packages may not be installed automatically and
 therefore need intervention.</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch import opam-pkg-list.txt
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">opam switch import opam-pkg-list.txt
 </code></pre></div></li>
 <li>
 <p>Whatever package that cannot be automatically imported in the previous step
@@ -151,6 +151,8 @@ Once those packages that give error messages are manually installed, run
 
     </main>
 
+    
+      
     
   </body>
 </html>

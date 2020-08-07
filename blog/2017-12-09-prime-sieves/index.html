@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.74.3" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -123,23 +123,23 @@ mathematics.</p>
 must be connected with logical operators. I can understand that is designed to
 be intuitive. But when you have many predicates nested under several
 <code>for</code>-expressions and <code>if</code>-expressions within a list comprehension, it can be
-ugly and difficult to read. I'm not saying list comprehension isn't good in
+ugly and difficult to read. I&rsquo;m not saying list comprehension isn&rsquo;t good in
 Python; it is good and powerful if you keep it simple. But in comparison,
 Haskell connects multiple predicates with commas and allows parallel
 comprehension (saves your a line of <code>import itertools</code>). This allows Haskell to
 be capable of doing complicated list comprehensions well without losing
 clarity.</p>
-<p>A Haskell example I'd like to show is a naive implementation of the Sieve of
+<p>A Haskell example I&rsquo;d like to show is a naive implementation of the Sieve of
 Eratosthenes. With list comprehension, everything can fit into one line
 excepting the type declaration.</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#268bd2">sievePrime</span> <span style="color:#719e07">::</span> <span style="color:#dc322f">Int</span> <span style="color:#719e07">-&gt;</span> [<span style="color:#dc322f">Int</span>]
-<span style="color:#268bd2">sievePrime</span> n <span style="color:#719e07">=</span> [x <span style="color:#719e07">|</span> x <span style="color:#719e07">&lt;-</span> [<span style="color:#2aa198">2</span><span style="color:#719e07">..</span>n], and [x `mod` y <span style="color:#719e07">/=</span> <span style="color:#2aa198">0</span> <span style="color:#719e07">|</span> y <span style="color:#719e07">&lt;-</span> [<span style="color:#2aa198">2</span><span style="color:#719e07">..</span>floor(sqrt(fromIntegral x))]]]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#900;font-weight:bold">sievePrime</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Int</span> <span style="color:#000;font-weight:bold">-&gt;</span> [<span style="color:#458;font-weight:bold">Int</span>]
+<span style="color:#900;font-weight:bold">sievePrime</span> n <span style="color:#000;font-weight:bold">=</span> [x <span style="color:#000;font-weight:bold">|</span> x <span style="color:#000;font-weight:bold">&lt;-</span> [<span style="color:#099">2</span><span style="color:#000;font-weight:bold">..</span>n], and [x `mod` y <span style="color:#000;font-weight:bold">/=</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span> y <span style="color:#000;font-weight:bold">&lt;-</span> [<span style="color:#099">2</span><span style="color:#000;font-weight:bold">..</span>floor(sqrt(fromIntegral x))]]]
 </code></pre></div><p>The equivalent Python version would be</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">def</span> <span style="color:#268bd2">sievePrime</span>(n):
-    <span style="color:#719e07">return</span> [x <span style="color:#719e07">for</span> x <span style="color:#719e07">in</span> <span style="color:#b58900">range</span>(<span style="color:#2aa198">2</span>, n <span style="color:#719e07">+</span> <span style="color:#2aa198">1</span>) <span style="color:#719e07">if</span> <span style="color:#b58900">all</span>([x <span style="color:#719e07">%</span> y <span style="color:#719e07">!=</span> <span style="color:#2aa198">0</span> <span style="color:#719e07">for</span> y <span style="color:#719e07">in</span> <span style="color:#b58900">range</span>(<span style="color:#2aa198">2</span>, <span style="color:#b58900">int</span>(x <span style="color:#719e07">*</span><span style="color:#719e07">*</span> <span style="color:#2aa198">0.5</span>))])]
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">sievePrime</span>(n):
+    <span style="color:#000;font-weight:bold">return</span> [x <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">2</span>, n <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>) <span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">all</span>([x <span style="color:#000;font-weight:bold">%</span> y <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">for</span> y <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">2</span>, <span style="color:#0086b3">int</span>(x <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">0.5</span>))])]
 </code></pre></div><p>I feel that <code>&lt;-</code> in Haskell is more elegant than <code>for ... in ...</code> in Python.
 The Haskell <code>and</code>, when used on a list, is equivalent to Python <code>all()</code>. The
-only thing I'm still struggling to get used to in Haskell is the lack of C-like
+only thing I&rsquo;m still struggling to get used to in Haskell is the lack of C-like
 implicit type promotion, i.e., you cannot simply add an integer and a
 floating-point number, unless the integer is cast to a floating-point number
 first to match the type signature of the operator. This means that an explicit
@@ -151,6 +151,8 @@ an integer here.</p>
 
     </main>
 
+    
+      
     
   </body>
 </html>

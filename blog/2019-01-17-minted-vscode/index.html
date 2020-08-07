@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.74.3" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -129,36 +129,36 @@ VSCode extension LaTeX Workshop so that it can properly compile sources that
 use the <code>minted</code> package, from a <a href="https://tex.stackexchange.com/questions/432459/pygmentize-not-installed-error-on-visual-studio-code">TeX StackExchange
 post</a>.</p>
 <p>Add the following to the VSCode user settings:</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#2aa198">&#34;latex-workshop.latex.tools&#34;</span>: [
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#d14">&#34;latex-workshop.latex.tools&#34;</span><span style="color:#a61717;background-color:#e3d2d2">:</span> [
     {
-        <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;latexmk&#34;</span>,
-        <span style="color:#268bd2">&#34;command&#34;</span>: <span style="color:#2aa198">&#34;latexmk&#34;</span>,
-        <span style="color:#268bd2">&#34;args&#34;</span>: [
-            <span style="color:#2aa198">&#34;--shell-escape&#34;</span>,
-            <span style="color:#2aa198">&#34;-synctex=1&#34;</span>,
-            <span style="color:#2aa198">&#34;-interaction=nonstopmode&#34;</span>,
-            <span style="color:#2aa198">&#34;-file-line-error&#34;</span>,
-            <span style="color:#2aa198">&#34;-pdf&#34;</span>,
-            <span style="color:#2aa198">&#34;-outdir=%OUTDIR%&#34;</span>,
-            <span style="color:#2aa198">&#34;%DOC%&#34;</span>
+        <span style="color:#000080">&#34;name&#34;</span>: <span style="color:#d14">&#34;latexmk&#34;</span>,
+        <span style="color:#000080">&#34;command&#34;</span>: <span style="color:#d14">&#34;latexmk&#34;</span>,
+        <span style="color:#000080">&#34;args&#34;</span>: [
+            <span style="color:#d14">&#34;--shell-escape&#34;</span>,
+            <span style="color:#d14">&#34;-synctex=1&#34;</span>,
+            <span style="color:#d14">&#34;-interaction=nonstopmode&#34;</span>,
+            <span style="color:#d14">&#34;-file-line-error&#34;</span>,
+            <span style="color:#d14">&#34;-pdf&#34;</span>,
+            <span style="color:#d14">&#34;-outdir=%OUTDIR%&#34;</span>,
+            <span style="color:#d14">&#34;%DOC%&#34;</span>
         ]
     },
     {
-        <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;pdflatex&#34;</span>,
-        <span style="color:#268bd2">&#34;command&#34;</span>: <span style="color:#2aa198">&#34;pdflatex&#34;</span>,
-        <span style="color:#268bd2">&#34;args&#34;</span>: [
-            <span style="color:#2aa198">&#34;--shell-escape&#34;</span>,
-            <span style="color:#2aa198">&#34;-synctex=1&#34;</span>,
-            <span style="color:#2aa198">&#34;-interaction=nonstopmode&#34;</span>,
-            <span style="color:#2aa198">&#34;-file-line-error&#34;</span>,
-            <span style="color:#2aa198">&#34;%DOC%&#34;</span>
+        <span style="color:#000080">&#34;name&#34;</span>: <span style="color:#d14">&#34;pdflatex&#34;</span>,
+        <span style="color:#000080">&#34;command&#34;</span>: <span style="color:#d14">&#34;pdflatex&#34;</span>,
+        <span style="color:#000080">&#34;args&#34;</span>: [
+            <span style="color:#d14">&#34;--shell-escape&#34;</span>,
+            <span style="color:#d14">&#34;-synctex=1&#34;</span>,
+            <span style="color:#d14">&#34;-interaction=nonstopmode&#34;</span>,
+            <span style="color:#d14">&#34;-file-line-error&#34;</span>,
+            <span style="color:#d14">&#34;%DOC%&#34;</span>
         ]
     },
     {
-        <span style="color:#268bd2">&#34;name&#34;</span>: <span style="color:#2aa198">&#34;bibtex&#34;</span>,
-        <span style="color:#268bd2">&#34;command&#34;</span>: <span style="color:#2aa198">&#34;bibtex&#34;</span>,
-        <span style="color:#268bd2">&#34;args&#34;</span>: [
-            <span style="color:#2aa198">&#34;%DOCFILE%&#34;</span>
+        <span style="color:#000080">&#34;name&#34;</span>: <span style="color:#d14">&#34;bibtex&#34;</span>,
+        <span style="color:#000080">&#34;command&#34;</span>: <span style="color:#d14">&#34;bibtex&#34;</span>,
+        <span style="color:#000080">&#34;args&#34;</span>: [
+            <span style="color:#d14">&#34;%DOCFILE%&#34;</span>
         ]
     }
 ]
@@ -170,6 +170,8 @@ post</a>.</p>
 
     </main>
 
+    
+      
     
   </body>
 </html>

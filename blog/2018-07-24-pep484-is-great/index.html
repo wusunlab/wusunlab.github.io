@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.74.3" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -116,23 +116,25 @@
   <p>I begin to like sprinkling a few <a href="https://www.python.org/dev/peps/pep-0484/">PEP 484 type
 hints</a> in my Python code. Not
 necessarily because my code is laden with undetectable bugs and I want to use
-static type checking to help; it's mainly because it makes the code more
+static type checking to help; it&rsquo;s mainly because it makes the code more
 <em>self-explanatory</em>. It is a manifestation of the <a href="https://www.python.org/dev/peps/pep-0020/">Zen of
 Python</a> that &ldquo;explicit is better
 than implicit&rdquo;.</p>
-<p>Here's a little example. Compare the Python snippet</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#719e07">def</span> <span style="color:#268bd2">filter_substr</span>(strlst: List[<span style="color:#b58900">str</span>], substr: <span style="color:#b58900">str</span>) <span style="color:#719e07">-</span><span style="color:#719e07">&gt;</span> List[<span style="color:#b58900">str</span>]:
-    <span style="color:#719e07">return</span> <span style="color:#b58900">list</span>(<span style="color:#b58900">filter</span>(<span style="color:#719e07">lambda</span> s: substr <span style="color:#719e07">in</span> s, strlst))
+<p>Here&rsquo;s a little example. Compare the Python snippet</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">filter_substr</span>(strlst: List[<span style="color:#0086b3">str</span>], substr: <span style="color:#0086b3">str</span>) <span style="color:#000;font-weight:bold">-&gt;</span> List[<span style="color:#0086b3">str</span>]:
+    <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">list</span>(<span style="color:#0086b3">filter</span>(<span style="color:#000;font-weight:bold">lambda</span> s: substr <span style="color:#000;font-weight:bold">in</span> s, strlst))
 </code></pre></div><p>with the equivalent Standard ML one</p>
-<pre><code class="language-sml" data-lang="sml">fun filter_substr(strlst: string list, substr: string): string list =
-  List.filter (String.isSubstring substr) strlst
-</code></pre><p>Now I can pretend that I'm writing SML in Python.</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sml" data-lang="sml"><span style="color:#000;font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">filter_substr</span>(strlst: string list, substr: string): string list =
+  <span style="color:#555">List.</span>filter (<span style="color:#555">String.</span>isSubstring substr) strlst
+</code></pre></div><p>Now I can pretend that I&rsquo;m writing SML in Python.</p>
 
 </div>
 
 
     </main>
 
+    
+      
     
   </body>
 </html>

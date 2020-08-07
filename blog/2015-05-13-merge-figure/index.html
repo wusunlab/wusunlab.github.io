@@ -3,7 +3,7 @@
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.74.3" />
 
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,7 +114,7 @@
   <h1>Merge multiple EPS subfigures into a single figure using LaTeX Beamer</h1>
   <time datetime=2015-05-13T00:00:00Z class="post-date">Wed, May 13, 2015</time>
   <p>Some academic journals require all subfigures to be combined as one single file
-for submission. This may not be easy to do if you don't have a professional
+for submission. This may not be easy to do if you don&rsquo;t have a professional
 software (often proprietary) to edit vector maps, e.g., EPS and PDF.</p>
 <p>I found a convenient way to deal with in LaTeX Beamer. The idea is to create a
 beamer slide and insert your subfigures with the command <code>\includegraphics{}</code>
@@ -122,24 +122,24 @@ in the same <code>figure</code> environment. This beamer slide will then be the 
 figure.</p>
 <p>Suppose the figure you want to create has two panels, (A) and (B). A simple
 example would be</p>
-<div class="highlight"><pre style="color:#93a1a1;background-color:#002b36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#719e07">\documentclass</span>[10pt]<span style="color:#b58900">{</span>beamer<span style="color:#b58900">}</span>
-<span style="color:#719e07">\geometry</span><span style="color:#b58900">{</span>papersize=<span style="color:#b58900">{</span>8in, 6in<span style="color:#b58900">}</span><span style="color:#b58900">}</span>  <span style="color:#586e75">% slide size
-</span><span style="color:#586e75"></span><span style="color:#719e07">\setbeamersize</span><span style="color:#b58900">{</span>text margin left=0.1in, text margin right=0.1in<span style="color:#b58900">}</span>
-<span style="color:#719e07">\mode</span>&lt;presentation&gt;
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\documentclass</span><span style="color:#008080">[10pt]</span><span style="color:#0086b3">{</span>beamer<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\geometry</span><span style="color:#0086b3">{</span>papersize=<span style="color:#0086b3">{</span>8in, 6in<span style="color:#0086b3">}}</span>  <span style="color:#998;font-style:italic">% slide size
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">\setbeamersize</span><span style="color:#0086b3">{</span>text margin left=0.1in, text margin right=0.1in<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\mode</span>&lt;presentation&gt;
 
-<span style="color:#719e07">\setbeamertemplate</span><span style="color:#b58900">{</span>navigation symbols<span style="color:#b58900">}</span><span style="color:#b58900">{</span><span style="color:#b58900">}</span>  <span style="color:#586e75">% disable the navigation bar
-</span><span style="color:#586e75"></span>
-<span style="color:#719e07">\begin</span><span style="color:#b58900">{</span>document<span style="color:#b58900">}</span>
-<span style="color:#719e07">\title</span><span style="color:#b58900">{</span><span style="color:#b58900">}</span>  <span style="color:#586e75">% no title
-</span><span style="color:#586e75"></span>
-<span style="color:#719e07">\begin</span><span style="color:#b58900">{</span>frame<span style="color:#b58900">}</span>
-<span style="color:#719e07">\frametitle</span><span style="color:#b58900">{</span><span style="color:#b58900">}</span>  <span style="color:#586e75">% no frame title
-</span><span style="color:#586e75"></span><span style="color:#719e07">\begin</span><span style="color:#b58900">{</span>figure<span style="color:#b58900">}</span>[h]
-  <span style="color:#719e07">\includegraphics</span>[width=0.48\textwidth]<span style="color:#b58900">{</span>fig<span style="color:#b58900">_</span>1a.pdf<span style="color:#b58900">}</span>
-  <span style="color:#719e07">\includegraphics</span>[width=0.48\textwidth]<span style="color:#b58900">{</span>fig<span style="color:#b58900">_</span>1b.pdf<span style="color:#b58900">}</span>
-<span style="color:#719e07">\end</span><span style="color:#b58900">{</span>figure<span style="color:#b58900">}</span>
-<span style="color:#719e07">\end</span><span style="color:#b58900">{</span>frame<span style="color:#b58900">}</span>
-<span style="color:#719e07">\end</span><span style="color:#b58900">{</span>document<span style="color:#b58900">}</span>
+<span style="color:#000;font-weight:bold">\setbeamertemplate</span><span style="color:#0086b3">{</span>navigation symbols<span style="color:#0086b3">}{}</span>  <span style="color:#998;font-style:italic">% disable the navigation bar
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#000;font-weight:bold">\begin</span><span style="color:#0086b3">{</span>document<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\title</span><span style="color:#0086b3">{}</span>  <span style="color:#998;font-style:italic">% no title
+</span><span style="color:#998;font-style:italic"></span>
+<span style="color:#000;font-weight:bold">\begin</span><span style="color:#0086b3">{</span>frame<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\frametitle</span><span style="color:#0086b3">{}</span>  <span style="color:#998;font-style:italic">% no frame title
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">\begin</span><span style="color:#0086b3">{</span>figure<span style="color:#0086b3">}</span>[h]
+  <span style="color:#000;font-weight:bold">\includegraphics</span><span style="color:#008080">[width=0.48\textwidth]</span><span style="color:#0086b3">{</span>fig<span style="color:#0086b3">_</span>1a.pdf<span style="color:#0086b3">}</span>
+  <span style="color:#000;font-weight:bold">\includegraphics</span><span style="color:#008080">[width=0.48\textwidth]</span><span style="color:#0086b3">{</span>fig<span style="color:#0086b3">_</span>1b.pdf<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\end</span><span style="color:#0086b3">{</span>figure<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\end</span><span style="color:#0086b3">{</span>frame<span style="color:#0086b3">}</span>
+<span style="color:#000;font-weight:bold">\end</span><span style="color:#0086b3">{</span>document<span style="color:#0086b3">}</span>
 </code></pre></div><p>Some extra efforts may be needed to adjust the figure to a desirable layout,
 but hopefully it will be less laborious than redrawing the figure or editing it
 with an image processing software.</p>
@@ -149,6 +149,8 @@ with an image processing software.</p>
 
     </main>
 
+    
+      
     
   </body>
 </html>
