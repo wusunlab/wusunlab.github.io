@@ -3,187 +3,187 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://wusun.name/publications/</loc>
+    <loc>https://wusun.name/publications/</loc>
     <lastmod>2020-08-07T05:53:30+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/</loc>
+    <loc>https://wusun.name/</loc>
     <lastmod>2020-08-07T05:53:30+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/cv/</loc>
+    <loc>https://wusun.name/cv/</loc>
     <lastmod>2019-07-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/data/</loc>
+    <loc>https://wusun.name/data/</loc>
     <lastmod>2020-08-07T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/</loc>
+    <loc>https://wusun.name/blog/</loc>
     <lastmod>2019-02-19T21:19:09+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2019-02-19-ocaml-packages-for-scientific-computing/</loc>
+    <loc>https://wusun.name/blog/2019-02-19-ocaml-packages-for-scientific-computing/</loc>
     <lastmod>2019-02-19T21:19:09+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2019-01-17-minted-vscode/</loc>
+    <loc>https://wusun.name/blog/2019-01-17-minted-vscode/</loc>
     <lastmod>2019-02-09T14:59:17-08:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/research/</loc>
+    <loc>https://wusun.name/research/</loc>
     <lastmod>2018-10-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-10-09-update-ocaml-opam/</loc>
+    <loc>https://wusun.name/blog/2018-10-09-update-ocaml-opam/</loc>
     <lastmod>2018-10-08T22:01:07-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-07-24-pep484-is-great/</loc>
+    <loc>https://wusun.name/blog/2018-07-24-pep484-is-great/</loc>
     <lastmod>2018-07-23T21:43:48-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-07-16-markdown-publishing/</loc>
+    <loc>https://wusun.name/blog/2018-07-16-markdown-publishing/</loc>
     <lastmod>2018-07-15T20:32:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/academic-writing/</loc>
+    <loc>https://wusun.name/tags/academic-writing/</loc>
     <lastmod>2018-07-15T20:32:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/document-generation/</loc>
+    <loc>https://wusun.name/tags/document-generation/</loc>
     <lastmod>2018-07-15T20:32:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/literate-programming/</loc>
+    <loc>https://wusun.name/tags/literate-programming/</loc>
     <lastmod>2018-07-15T20:32:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/</loc>
+    <loc>https://wusun.name/tags/</loc>
     <lastmod>2018-07-15T20:32:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/teaching/</loc>
+    <loc>https://wusun.name/teaching/</loc>
     <lastmod>2018-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-06-13-optimizing-scientific-code/</loc>
+    <loc>https://wusun.name/blog/2018-06-13-optimizing-scientific-code/</loc>
     <lastmod>2018-06-13T19:25:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/site-meta/</loc>
+    <loc>https://wusun.name/tags/site-meta/</loc>
     <lastmod>2018-06-13T19:25:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-06-02-update-website/</loc>
+    <loc>https://wusun.name/blog/2018-06-02-update-website/</loc>
     <lastmod>2018-06-02T19:41:02-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-05-24-julia-macro-vs-globalconst/</loc>
+    <loc>https://wusun.name/blog/2018-05-24-julia-macro-vs-globalconst/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/julia/</loc>
+    <loc>https://wusun.name/tags/julia/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/scientific-computing/</loc>
+    <loc>https://wusun.name/tags/scientific-computing/</loc>
     <lastmod>2018-05-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</loc>
+    <loc>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</loc>
     <lastmod>2018-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/fortran/</loc>
+    <loc>https://wusun.name/tags/fortran/</loc>
     <lastmod>2018-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/python/</loc>
+    <loc>https://wusun.name/tags/python/</loc>
     <lastmod>2018-04-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-04-25-fortran-functions/</loc>
+    <loc>https://wusun.name/blog/2018-04-25-fortran-functions/</loc>
     <lastmod>2018-04-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2018-01-10-install-kanboard/</loc>
+    <loc>https://wusun.name/blog/2018-01-10-install-kanboard/</loc>
     <lastmod>2018-01-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/kanban/</loc>
+    <loc>https://wusun.name/tags/kanban/</loc>
     <lastmod>2018-01-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/project-management/</loc>
+    <loc>https://wusun.name/tags/project-management/</loc>
     <lastmod>2018-01-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2017-12-18-python-zerodiv/</loc>
+    <loc>https://wusun.name/blog/2017-12-18-python-zerodiv/</loc>
     <lastmod>2017-12-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/functional-programming/</loc>
+    <loc>https://wusun.name/tags/functional-programming/</loc>
     <lastmod>2017-12-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/haskell/</loc>
+    <loc>https://wusun.name/tags/haskell/</loc>
     <lastmod>2017-12-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2017-12-09-prime-sieves/</loc>
+    <loc>https://wusun.name/blog/2017-12-09-prime-sieves/</loc>
     <lastmod>2017-12-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/tags/latex/</loc>
+    <loc>https://wusun.name/tags/latex/</loc>
     <lastmod>2015-05-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2015-05-13-merge-figure/</loc>
+    <loc>https://wusun.name/blog/2015-05-13-merge-figure/</loc>
     <lastmod>2015-05-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/blog/2012-10-04-latex-floats-numbering/</loc>
+    <loc>https://wusun.name/blog/2012-10-04-latex-floats-numbering/</loc>
     <lastmod>2012-10-04T12:00:00-07:00</lastmod>
   </url>
   
   <url>
-    <loc>http://wusun.name/categories/</loc>
+    <loc>https://wusun.name/categories/</loc>
   </url>
   
 </urlset>

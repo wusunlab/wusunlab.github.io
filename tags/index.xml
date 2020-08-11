@@ -2,129 +2,129 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Wu Sun, Ph.D.</title>
-    <link>http://wusun.name/tags/</link>
+    <link>https://wusun.name/tags/</link>
     <description>Recent content in Tags on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 15 Jul 2018 20:32:00 -0700</lastBuildDate>
     
-	<atom:link href="http://wusun.name/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wusun.name/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>academic-writing</title>
-      <link>http://wusun.name/tags/academic-writing/</link>
+      <link>https://wusun.name/tags/academic-writing/</link>
       <pubDate>Sun, 15 Jul 2018 20:32:00 -0700</pubDate>
       
-      <guid>http://wusun.name/tags/academic-writing/</guid>
+      <guid>https://wusun.name/tags/academic-writing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>document generation</title>
-      <link>http://wusun.name/tags/document-generation/</link>
+      <link>https://wusun.name/tags/document-generation/</link>
       <pubDate>Sun, 15 Jul 2018 20:32:00 -0700</pubDate>
       
-      <guid>http://wusun.name/tags/document-generation/</guid>
+      <guid>https://wusun.name/tags/document-generation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>literate programming</title>
-      <link>http://wusun.name/tags/literate-programming/</link>
+      <link>https://wusun.name/tags/literate-programming/</link>
       <pubDate>Sun, 15 Jul 2018 20:32:00 -0700</pubDate>
       
-      <guid>http://wusun.name/tags/literate-programming/</guid>
+      <guid>https://wusun.name/tags/literate-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>site-meta</title>
-      <link>http://wusun.name/tags/site-meta/</link>
+      <link>https://wusun.name/tags/site-meta/</link>
       <pubDate>Wed, 13 Jun 2018 19:25:00 -0700</pubDate>
       
-      <guid>http://wusun.name/tags/site-meta/</guid>
+      <guid>https://wusun.name/tags/site-meta/</guid>
       <description></description>
     </item>
     
     <item>
       <title>julia</title>
-      <link>http://wusun.name/tags/julia/</link>
+      <link>https://wusun.name/tags/julia/</link>
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/julia/</guid>
+      <guid>https://wusun.name/tags/julia/</guid>
       <description></description>
     </item>
     
     <item>
       <title>scientific computing</title>
-      <link>http://wusun.name/tags/scientific-computing/</link>
+      <link>https://wusun.name/tags/scientific-computing/</link>
       <pubDate>Thu, 24 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/scientific-computing/</guid>
+      <guid>https://wusun.name/tags/scientific-computing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fortran</title>
-      <link>http://wusun.name/tags/fortran/</link>
+      <link>https://wusun.name/tags/fortran/</link>
       <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/fortran/</guid>
+      <guid>https://wusun.name/tags/fortran/</guid>
       <description></description>
     </item>
     
     <item>
       <title>python</title>
-      <link>http://wusun.name/tags/python/</link>
+      <link>https://wusun.name/tags/python/</link>
       <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/python/</guid>
+      <guid>https://wusun.name/tags/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>kanban</title>
-      <link>http://wusun.name/tags/kanban/</link>
+      <link>https://wusun.name/tags/kanban/</link>
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/kanban/</guid>
+      <guid>https://wusun.name/tags/kanban/</guid>
       <description></description>
     </item>
     
     <item>
       <title>project management</title>
-      <link>http://wusun.name/tags/project-management/</link>
+      <link>https://wusun.name/tags/project-management/</link>
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/project-management/</guid>
+      <guid>https://wusun.name/tags/project-management/</guid>
       <description></description>
     </item>
     
     <item>
       <title>functional programming</title>
-      <link>http://wusun.name/tags/functional-programming/</link>
+      <link>https://wusun.name/tags/functional-programming/</link>
       <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/functional-programming/</guid>
+      <guid>https://wusun.name/tags/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>haskell</title>
-      <link>http://wusun.name/tags/haskell/</link>
+      <link>https://wusun.name/tags/haskell/</link>
       <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/haskell/</guid>
+      <guid>https://wusun.name/tags/haskell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>latex</title>
-      <link>http://wusun.name/tags/latex/</link>
+      <link>https://wusun.name/tags/latex/</link>
       <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/tags/latex/</guid>
+      <guid>https://wusun.name/tags/latex/</guid>
       <description></description>
     </item>
     

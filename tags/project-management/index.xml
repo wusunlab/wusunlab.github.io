@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>project management on Wu Sun, Ph.D.</title>
-    <link>http://wusun.name/tags/project-management/</link>
+    <link>https://wusun.name/tags/project-management/</link>
     <description>Recent content in project management on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 10 Jan 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://wusun.name/tags/project-management/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://wusun.name/tags/project-management/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Installing Kanboard on macOS</title>
-      <link>http://wusun.name/blog/2018-01-10-install-kanboard/</link>
+      <link>https://wusun.name/blog/2018-01-10-install-kanboard/</link>
       <pubDate>Wed, 10 Jan 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://wusun.name/blog/2018-01-10-install-kanboard/</guid>
+      <guid>https://wusun.name/blog/2018-01-10-install-kanboard/</guid>
       <description>Kanban is a lean method for project management that has been popular in software development and knowledge work. Recently, after reading a bunch of blog articles and technical booklets, I came up with an idea to use the Kanban method to manage my scientific projects. After all, speaking of the production of knowledge work, scientific research is analogous to manufacturing.
 I came across a powerful open source Kanban software — Kanboard.</description>
     </item>
