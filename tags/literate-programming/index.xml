@@ -6,11 +6,7 @@
     <description>Recent content in literate programming on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Jul 2018 20:32:00 -0700</lastBuildDate>
-    
-	<atom:link href="https://wusun.name/tags/literate-programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 15 Jul 2018 20:32:00 -0700</lastBuildDate><atom:link href="https://wusun.name/tags/literate-programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A comparison of some markdown publishing systems</title>
       <link>https://wusun.name/blog/2018-07-16-markdown-publishing/</link>

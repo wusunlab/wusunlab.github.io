@@ -6,10 +6,17 @@
     <description>Recent content in Wu Sun on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Aug 2020 05:53:30 +0000</lastBuildDate>
-    
-	<atom:link href="https://wusun.name/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Mon, 16 Nov 2020 00:57:00 +0000</lastBuildDate><atom:link href="https://wusun.name/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>秋晴れて Stanford Dish に登る</title>
+      <link>https://wusun.name/blog/2020-11-16-stanford-dish-hiking/</link>
+      <pubDate>Mon, 16 Nov 2020 00:57:00 +0000</pubDate>
+      
+      <guid>https://wusun.name/blog/2020-11-16-stanford-dish-hiking/</guid>
+      <description>枯れ草に
+ただ一つだけ
+樫が立つ</description>
+    </item>
     
     <item>
       <title>OCaml packages for scientific computing</title>
