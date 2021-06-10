@@ -175,5 +175,24 @@ I found a convenient way to deal with in LaTeX Beamer. The idea is to create a b
 1. Show chapter or section numbers in equation/figure/table numbering By default, LaTeX assigns equation numbers continually across different sections.</description>
     </item>
     
+    <item>
+      <title>About</title>
+      <link>https://wusun.name/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wusun.name/about/</guid>
+      <description>My research focuses on the carbon cycle in terrestrial ecosystems. Under climate change, it is uncertain whether the terrestrial biosphere will continue serving as a carbon sink. To answer this question requires a robust understanding of how photosynthesis responds to climate. I strive to understand patterns and variability in terrestrial photosynthesis through the synergy of observations and process-based models. I have developed a particular interest in novel tracers for photosynthesis observations &amp;mdash; carbonyl sulfide and solar induced chlorophyll fluorescence.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://wusun.name/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://wusun.name/contact/</guid>
+      <description>To contact me, please email:
+wsun {at} carnegiescience.edu OR wusun {at} protonmail.com  </description>
+    </item>
+    
   </channel>
 </rss>
