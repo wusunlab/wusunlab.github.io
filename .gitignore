@@ -31,3 +31,11 @@ Temporary Items
 # template specific
 # -----------------
 apple-touch-icon-144-precomposed.png
+favicon-32x32.svg
+
+# project specific
+# ----------------
+images/*
+!images/logo
+!images/social
+!images/avatar.png
