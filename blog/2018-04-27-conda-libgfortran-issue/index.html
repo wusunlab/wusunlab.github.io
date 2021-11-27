@@ -13,7 +13,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/style.min.d628d10c7e5bad2469df81f20297c139f5da5d956ee838439499789174bbd858.css">
+  <link rel="stylesheet" href="/css/style.min.1b9920d898038fc4d13d26d6aca500755d7a990867442f78ef886991e5a900ee.css">
   
 
   
@@ -82,49 +82,63 @@
   <ul>
     
     
-    <li class="menu-item-home">
+    
+    
+    <li class="menu-item-home ">
       <a href="/">
         
         <span>home</span>
       </a>
     </li>
     
-    <li class="menu-item-research">
+    
+    
+    <li class="menu-item-research ">
       <a href="/research/">
         
         <span>research</span>
       </a>
     </li>
     
-    <li class="menu-item-publications">
+    
+    
+    <li class="menu-item-publications ">
       <a href="/publications/">
         
         <span>publications</span>
       </a>
     </li>
     
-    <li class="menu-item-data &amp; code">
+    
+    
+    <li class="menu-item-data &amp; code ">
       <a href="/data/">
         
         <span>data &amp; code</span>
       </a>
     </li>
     
-    <li class="menu-item-teaching">
+    
+    
+    <li class="menu-item-teaching ">
       <a href="/teaching/">
         
         <span>teaching</span>
       </a>
     </li>
     
-    <li class="menu-item-cv">
+    
+    
+    <li class="menu-item-cv ">
       <a href="/cv/">
         
         <span>cv</span>
       </a>
     </li>
     
-    <li class="menu-item-blog">
+    
+    
+    <li class="menu-item-blog ">
       <a href="/blog/">
         
         <span>blog</span>
@@ -133,6 +147,7 @@
     
   </ul>
 </div>
+
     <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -153,7 +168,7 @@ GCC one (version 7.3). After that, I found that I could no longer execute some
 previously compiled Fortran programs and I also ran into troubles with some
 Anaconda Python packages. (Maybe it was my fault not to statically link them.)
 I got the same error for all of them:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dyld: Library not loaded: @rpath/./libgfortran.3.dylib
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dyld: Library not loaded: @rpath/./libgfortran.3.dylib
 </code></pre></div><p>I searched it and there were quite a few people who ran into the same error
 message with the <code>gfortran</code> in Anaconda Python Distribution. However,
 discussions on the GitHub issues page were not always helpful. I tried some
@@ -188,22 +203,32 @@ code in Python is much more natural and robust than wrapping Fortran code.</p>
       <div class="col-12">
         <div class="footer-inner">
           <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <ul>
-            
-            
-            <li class="menu-item-home">
-              <a href="/">
-                home
-              </a>
-            </li>
-            
-            <li class="menu-item-contact">
-              <a href="/contact/">
-                contact
-              </a>
-            </li>
-            
-          </ul>
+          <div id="footer-menu" class="footer-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+          
         </div>
       </div>
     </div>

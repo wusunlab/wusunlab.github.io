@@ -13,7 +13,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/style.min.d628d10c7e5bad2469df81f20297c139f5da5d956ee838439499789174bbd858.css">
+  <link rel="stylesheet" href="/css/style.min.1b9920d898038fc4d13d26d6aca500755d7a990867442f78ef886991e5a900ee.css">
   
 
   
@@ -82,49 +82,63 @@
   <ul>
     
     
-    <li class="menu-item-home">
+    
+    
+    <li class="menu-item-home ">
       <a href="/">
         
         <span>home</span>
       </a>
     </li>
     
-    <li class="menu-item-research">
+    
+    
+    <li class="menu-item-research ">
       <a href="/research/">
         
         <span>research</span>
       </a>
     </li>
     
-    <li class="menu-item-publications">
+    
+    
+    <li class="menu-item-publications ">
       <a href="/publications/">
         
         <span>publications</span>
       </a>
     </li>
     
-    <li class="menu-item-data &amp; code">
+    
+    
+    <li class="menu-item-data &amp; code ">
       <a href="/data/">
         
         <span>data &amp; code</span>
       </a>
     </li>
     
-    <li class="menu-item-teaching">
+    
+    
+    <li class="menu-item-teaching ">
       <a href="/teaching/">
         
         <span>teaching</span>
       </a>
     </li>
     
-    <li class="menu-item-cv">
+    
+    
+    <li class="menu-item-cv ">
       <a href="/cv/">
         
         <span>cv</span>
       </a>
     </li>
     
-    <li class="menu-item-blog">
+    
+    
+    <li class="menu-item-blog ">
       <a href="/blog/">
         
         <span>blog</span>
@@ -133,6 +147,7 @@
     
   </ul>
 </div>
+
     <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -149,7 +164,7 @@
       <p><time datetime=2017-12-18T00:00:00Z class="post-date">Mon, Dec 18, 2017</time></p>
       <div class="content"><p>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a
 <code>ZeroDivisionError</code>:</p>
-<pre><code>&gt;&gt;&gt; 1. / 0.
+<pre tabindex="0"><code>&gt;&gt;&gt; 1. / 0.
 Traceback (most recent call last):
   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
 ZeroDivisionError: float division by zero
@@ -163,11 +178,11 @@ to the operation . . .</p>
 </blockquote>
 <p>In many programming languages, the expression <code>1. / 0.</code> gives the positive
 infinity without raising an error; like in Julia, for example,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#099">1.</span> <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">0.</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#099">1.</span> <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">0.</span>
 <span style="color:#0086b3">Inf</span>
 </code></pre></div><p>In C, the expression <code>1. / 0.</code> can sometimes be used to define the infinity
 that is compiler independent (before the C99 standard),</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-weight:bold;font-style:italic">#ifndef INFINITY
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-weight:bold;font-style:italic">#ifndef INFINITY
 </span><span style="color:#999;font-weight:bold;font-style:italic">#define INFINITY 1. / 0.
 </span><span style="color:#999;font-weight:bold;font-style:italic">#endif
 </span></code></pre></div><p>The fact that Python raises a <code>ZeroDivisionError</code> instead of returning <code>inf</code>
@@ -176,7 +191,7 @@ from zero division seems to be in violation of the IEEE 754 standard.</p>
 How this exception should be handled has not been specified in the IEEE 754
 standard. In many programming languages, <code>0. / 0.</code> is evaluated as <code>NaN</code>. In
 Haskell, for example,</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#900;font-weight:bold">ghci</span><span style="color:#000;font-weight:bold">&gt;</span> (<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Double</span>) <span style="color:#000;font-weight:bold">/</span> (<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Double</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#900;font-weight:bold">ghci</span><span style="color:#000;font-weight:bold">&gt;</span> (<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Double</span>) <span style="color:#000;font-weight:bold">/</span> (<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Double</span>)
 <span style="color:#458;font-weight:bold">NaN</span>
 </code></pre></div><p>The aforementioned mechanism for handling the division by zero exceptions has
 an important advantage &mdash; it ensures that the division between two
@@ -187,7 +202,7 @@ tested with standard library functions like <code>isnan()</code> and <code>isinf
 has a practical benefit to skip the hassle of error handling.</p>
 <p>But in Python, one has to catch the <code>ZeroDivisionError</code> first with the <code>try</code>
 and <code>except</code> statement.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">zerodiv</span>(a, b):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">zerodiv</span>(a, b):
     <span style="color:#d14">&#34;&#34;&#34;Division that overrides the ZeroDivisionError.&#34;&#34;&#34;</span>
     <span style="color:#000;font-weight:bold">try</span>:
         <span style="color:#000;font-weight:bold">return</span> a <span style="color:#000;font-weight:bold">/</span> b
@@ -223,22 +238,32 @@ for error handling. I hope this flaw could be righted in Python 4.</p>
       <div class="col-12">
         <div class="footer-inner">
           <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <ul>
-            
-            
-            <li class="menu-item-home">
-              <a href="/">
-                home
-              </a>
-            </li>
-            
-            <li class="menu-item-contact">
-              <a href="/contact/">
-                contact
-              </a>
-            </li>
-            
-          </ul>
+          <div id="footer-menu" class="footer-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+          
         </div>
       </div>
     </div>

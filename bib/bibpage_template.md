@@ -1,7 +1,7 @@
 ---
-title: Publications
+title:
 bibliography: ./wusun-pub-full.bib
-citation-style: ./apa-cv-allauthors.csl
+citation-style: ./apa-cv.csl
 nocite: |
   @*
 ---

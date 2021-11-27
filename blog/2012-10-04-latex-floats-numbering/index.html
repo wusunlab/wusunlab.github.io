@@ -13,7 +13,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/style.min.d628d10c7e5bad2469df81f20297c139f5da5d956ee838439499789174bbd858.css">
+  <link rel="stylesheet" href="/css/style.min.1b9920d898038fc4d13d26d6aca500755d7a990867442f78ef886991e5a900ee.css">
   
 
   
@@ -82,49 +82,63 @@
   <ul>
     
     
-    <li class="menu-item-home">
+    
+    
+    <li class="menu-item-home ">
       <a href="/">
         
         <span>home</span>
       </a>
     </li>
     
-    <li class="menu-item-research">
+    
+    
+    <li class="menu-item-research ">
       <a href="/research/">
         
         <span>research</span>
       </a>
     </li>
     
-    <li class="menu-item-publications">
+    
+    
+    <li class="menu-item-publications ">
       <a href="/publications/">
         
         <span>publications</span>
       </a>
     </li>
     
-    <li class="menu-item-data &amp; code">
+    
+    
+    <li class="menu-item-data &amp; code ">
       <a href="/data/">
         
         <span>data &amp; code</span>
       </a>
     </li>
     
-    <li class="menu-item-teaching">
+    
+    
+    <li class="menu-item-teaching ">
       <a href="/teaching/">
         
         <span>teaching</span>
       </a>
     </li>
     
-    <li class="menu-item-cv">
+    
+    
+    <li class="menu-item-cv ">
       <a href="/cv/">
         
         <span>cv</span>
       </a>
     </li>
     
-    <li class="menu-item-blog">
+    
+    
+    <li class="menu-item-blog ">
       <a href="/blog/">
         
         <span>blog</span>
@@ -133,6 +147,7 @@
     
   </ul>
 </div>
+
     <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -155,23 +170,23 @@ StackExchange. Here are a few tips I learned recently.</p>
 <p>By default, LaTeX assigns equation numbers continually across different
 sections. If you need the equation to be numbered like &ldquo;Eq. (3.5)&rdquo; for the 5th
 equation in section 3, add this to the preamble:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
 <span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
 </code></pre></div><p>To include also the subsection number, change the second line to</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>subsection<span style="color:#0086b3">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>subsection<span style="color:#0086b3">}</span>
 </code></pre></div><p>For figures and tables, it is similar.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
 <span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>table<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
 <span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>figure<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
 </code></pre></div><h2 id="2-scientific-notation">2. Scientific notation</h2>
 <p>The most elegant solution for scientific notation of numbers is to use the
 <code>siunitx</code> package.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>siunitx<span style="color:#0086b3">}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>siunitx<span style="color:#0086b3">}</span>
 ...
 <span style="color:#000;font-weight:bold">\num</span><span style="color:#0086b3">{</span>6.022e23<span style="color:#0086b3">}</span>
 </code></pre></div><p><code>\num{6.022e23}</code> will be rendered as &ldquo;6.022 × 10<sup>23</sup>&rdquo;.</p>
 <p>An alternative solution that does not depend on <code>siunitx</code> is:</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\e</span><span style="color:#0086b3">}</span>[1]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\times</span> 10<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\e</span><span style="color:#0086b3">}</span>[1]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\times</span> 10<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}</span>
 </code></pre></div><p>This new command can be used like <code>6.022\e{23}</code> to produce &ldquo;6.022 ×
 10<sup>23</sup>&rdquo;.</p>
 <h2 id="3-upright-differential-operator">3. Upright differential operator</h2>
@@ -192,7 +207,7 @@ produces $\dfrac{\mathrm{d}^2 f}{\mathrm{d} x^2}$.</li>
 <p>There are also many other useful commands in this package.</p>
 <p>Alternatively, a minimalist and nearly as good solution without using <code>commath</code>
 can be</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>d<span style="color:#0086b3">}}</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>d<span style="color:#0086b3">}}</span>
 <span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\Dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>D<span style="color:#0086b3">}}</span>
 <span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\od</span><span style="color:#0086b3">}</span>[3][]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dfrac</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}</span>#2<span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\dif</span> #3<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}}</span>
 <span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\pd</span><span style="color:#0086b3">}</span>[3][]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dfrac</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\partial</span><span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}</span>#2<span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\partial</span> #3<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}}</span>
@@ -215,22 +230,32 @@ according to ISO 31/XI. <em>TUGboat</em>, 18(1), 39&ndash;48.
       <div class="col-12">
         <div class="footer-inner">
           <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <ul>
-            
-            
-            <li class="menu-item-home">
-              <a href="/">
-                home
-              </a>
-            </li>
-            
-            <li class="menu-item-contact">
-              <a href="/contact/">
-                contact
-              </a>
-            </li>
-            
-          </ul>
+          <div id="footer-menu" class="footer-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+          
         </div>
       </div>
     </div>

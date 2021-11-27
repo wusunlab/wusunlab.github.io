@@ -13,7 +13,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/style.min.d628d10c7e5bad2469df81f20297c139f5da5d956ee838439499789174bbd858.css">
+  <link rel="stylesheet" href="/css/style.min.1b9920d898038fc4d13d26d6aca500755d7a990867442f78ef886991e5a900ee.css">
   
 
   
@@ -82,49 +82,63 @@
   <ul>
     
     
-    <li class="menu-item-home">
+    
+    
+    <li class="menu-item-home ">
       <a href="/">
         
         <span>home</span>
       </a>
     </li>
     
-    <li class="menu-item-research">
+    
+    
+    <li class="menu-item-research ">
       <a href="/research/">
         
         <span>research</span>
       </a>
     </li>
     
-    <li class="menu-item-publications">
+    
+    
+    <li class="menu-item-publications ">
       <a href="/publications/">
         
         <span>publications</span>
       </a>
     </li>
     
-    <li class="menu-item-data &amp; code">
+    
+    
+    <li class="menu-item-data &amp; code ">
       <a href="/data/">
         
         <span>data &amp; code</span>
       </a>
     </li>
     
-    <li class="menu-item-teaching">
+    
+    
+    <li class="menu-item-teaching ">
       <a href="/teaching/">
         
         <span>teaching</span>
       </a>
     </li>
     
-    <li class="menu-item-cv">
+    
+    
+    <li class="menu-item-cv ">
       <a href="/cv/">
         
         <span>cv</span>
       </a>
     </li>
     
-    <li class="menu-item-blog">
+    
+    
+    <li class="menu-item-blog ">
       <a href="/blog/">
         
         <span>blog</span>
@@ -133,6 +147,7 @@
     
   </ul>
 </div>
+
     <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -157,7 +172,7 @@ But what about global constants? I&rsquo;m quite new to the Julia language, but 
 that it would not be difficult for the compiler to identify a <code>const</code> and
 optimize over it.</p>
 <p>A C programmer may be accustomed to defining constants in macros, like in</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-weight:bold;font-style:italic">#define PI 3.14159265
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#999;font-weight:bold;font-style:italic">#define PI 3.14159265
 </span></code></pre></div><p>In numerical computing, since often the global constants needed are of
 numerical types, macros suffice for most cases. In fact, a macro may sometimes
 be a better choice because the compiler <em>knows</em> its value ahead of time and can
@@ -166,7 +181,7 @@ do some optimization (e.g., <a href="https://stackoverflow.com/questions/3040327
 different from a macro. See <a href="https://stackoverflow.com/questions/27068362/static-const-vs-define-for-efficiency-in-c">this</a>.)</p>
 <p>Does this analogy apply to Julia? Below I test it with implementations of a
 simplistic function that multiplies its argument by a constant.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#000;font-weight:bold">using</span> BenchmarkTools, Compat
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#000;font-weight:bold">using</span> BenchmarkTools, Compat
 
 <span style="color:#000;font-weight:bold">const</span> g <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">9.80665</span>
 
@@ -182,7 +197,7 @@ simplistic function that multiplies its argument by a constant.</p>
     <span style="color:#000;font-weight:bold">return</span> (<span style="color:#3c5d5d;font-weight:bold">@const_g</span>) <span style="color:#000;font-weight:bold">*</span> x
 <span style="color:#000;font-weight:bold">end</span>
 </code></pre></div><p>The microbenchmark test shows</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> x_test <span style="color:#000;font-weight:bold">=</span> rand(<span style="color:#099">10</span><span style="color:#000;font-weight:bold">^</span><span style="color:#099">5</span>);
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> x_test <span style="color:#000;font-weight:bold">=</span> rand(<span style="color:#099">10</span><span style="color:#000;font-weight:bold">^</span><span style="color:#099">5</span>);
 
 julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#3c5d5d;font-weight:bold">@benchmark</span> f_global(<span style="color:#000;font-weight:bold">$</span>x_test)
 
@@ -213,13 +228,13 @@ BenchmarkTools<span style="color:#000;font-weight:bold">.</span>Trial<span style
   evals<span style="color:#000;font-weight:bold">/</span>sample<span style="color:#000;font-weight:bold">:</span>     <span style="color:#099">1</span>
 </code></pre></div><p>I get the same results in terms of execution time and memory allocation.</p>
 <p>And how does Julia treat the two functions?</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#3c5d5d;font-weight:bold">@code_llvm</span> f_global(<span style="color:#099">42.</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#3c5d5d;font-weight:bold">@code_llvm</span> f_global(<span style="color:#099">42.</span>)
 
 define double <span style="color:#3c5d5d;font-weight:bold">@julia_f_global_62616</span>(double) <span style="color:#998;font-style:italic">#0 !dbg !5 {</span>
 top<span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">1</span> <span style="color:#000;font-weight:bold">=</span> fmul double <span style="color:#000;font-weight:bold">%</span><span style="color:#099">0</span>, <span style="color:#099">9.806650e+00</span>
   ret double <span style="color:#000;font-weight:bold">%</span><span style="color:#099">1</span>
-}
+<span style="color:#a61717;background-color:#e3d2d2">}</span>
 
 julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#3c5d5d;font-weight:bold">@code_llvm</span> f_macro(<span style="color:#099">42.</span>)
 
@@ -227,7 +242,7 @@ define double <span style="color:#3c5d5d;font-weight:bold">@julia_f_macro_62620<
 top<span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">1</span> <span style="color:#000;font-weight:bold">=</span> fmul double <span style="color:#000;font-weight:bold">%</span><span style="color:#099">0</span>, <span style="color:#099">9.806650e+00</span>
   ret double <span style="color:#000;font-weight:bold">%</span><span style="color:#099">1</span>
-}
+<span style="color:#a61717;background-color:#e3d2d2">}</span>
 </code></pre></div><p>From the generated LLVM code, there is no difference between the atomic
 operations performed on a scalar input. The compiler translates both the global
 constant <code>g</code> and the macro <code>@const_g</code> to the values they represent. Thus,
@@ -236,13 +251,13 @@ defining a global constant as a macro does not grant you any performance gain.
 style, a global <code>const</code> would be the preferable way because it is clear and
 concise.</p>
 <p>How about using a <em>global variable</em>?</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">gvar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">9.80665</span>  <span style="color:#998;font-style:italic"># &lt;- variable in the REPL has implicit `global`</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">gvar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">9.80665</span>  <span style="color:#998;font-style:italic"># &lt;- variable in the REPL has implicit `global`</span>
 
 <span style="color:#000;font-weight:bold">function</span> f_globalvar(x)
     <span style="color:#000;font-weight:bold">return</span> gvar <span style="color:#000;font-weight:bold">*</span> x
 <span style="color:#000;font-weight:bold">end</span>
 </code></pre></div><p>The microbenchmark test result is</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#3c5d5d;font-weight:bold">@benchmark</span> f_globalvar(<span style="color:#000;font-weight:bold">$</span>x_test)
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#3c5d5d;font-weight:bold">@benchmark</span> f_globalvar(<span style="color:#000;font-weight:bold">$</span>x_test)
 
 BenchmarkTools<span style="color:#000;font-weight:bold">.</span>Trial<span style="color:#000;font-weight:bold">:</span>
   memory estimate<span style="color:#000;font-weight:bold">:</span>  <span style="color:#099">781.33</span> KiB
@@ -265,7 +280,7 @@ top<span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000;font-weight:bold">%.</span>sub <span style="color:#000;font-weight:bold">=</span> getelementptr inbounds [<span style="color:#099">5</span> x i8<span style="color:#000;font-weight:bold">**</span>], [<span style="color:#099">5</span> x i8<span style="color:#000;font-weight:bold">**</span>]<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">2</span>, i64 <span style="color:#099">0</span>, i64 <span style="color:#099">0</span>
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">3</span> <span style="color:#000;font-weight:bold">=</span> getelementptr [<span style="color:#099">5</span> x i8<span style="color:#000;font-weight:bold">**</span>], [<span style="color:#099">5</span> x i8<span style="color:#000;font-weight:bold">**</span>]<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">2</span>, i64 <span style="color:#099">0</span>, i64 <span style="color:#099">2</span>
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">4</span> <span style="color:#000;font-weight:bold">=</span> bitcast i8<span style="color:#000;font-weight:bold">***</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">3</span> to i8<span style="color:#000;font-weight:bold">*</span>
-  call void <span style="color:#3c5d5d;font-weight:bold">@llvm</span><span style="color:#000;font-weight:bold">.</span>memset<span style="color:#000;font-weight:bold">.</span>p0i8<span style="color:#000;font-weight:bold">.</span>i32(i8<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">4</span>, i8 <span style="color:#099">0</span>, i32 <span style="color:#099">24</span>, i32 <span style="color:#099">8</span>, i1 <span style="color:#000;font-weight:bold">false</span>)
+  call void <span style="color:#3c5d5d;font-weight:bold">@llvm</span><span style="color:#000;font-weight:bold">.</span>memset<span style="color:#000;font-weight:bold">.</span>p0i8<span style="color:#000;font-weight:bold">.</span>i32(i8<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">4</span>, i8 <span style="color:#099">0</span>, i32 <span style="color:#099">24</span>, i32 <span style="color:#099">8</span>, i1 <span style="color:#0086b3">false</span>)
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">5</span> <span style="color:#000;font-weight:bold">=</span> bitcast [<span style="color:#099">5</span> x i8<span style="color:#000;font-weight:bold">**</span>]<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">2</span> to i64<span style="color:#000;font-weight:bold">*</span>
   store i64 <span style="color:#099">6</span>, i64<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">5</span>, align <span style="color:#099">8</span>
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">6</span> <span style="color:#000;font-weight:bold">=</span> bitcast i8<span style="color:#000;font-weight:bold">****</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">1</span> to i64<span style="color:#000;font-weight:bold">*</span>
@@ -292,7 +307,7 @@ top<span style="color:#000;font-weight:bold">:</span>
   <span style="color:#000;font-weight:bold">%</span><span style="color:#099">20</span> <span style="color:#000;font-weight:bold">=</span> load i64, i64<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">9</span>, align <span style="color:#099">8</span>
   store i64 <span style="color:#000;font-weight:bold">%</span><span style="color:#099">20</span>, i64<span style="color:#000;font-weight:bold">*</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">6</span>, align <span style="color:#099">8</span>
   ret i8<span style="color:#000;font-weight:bold">**</span> <span style="color:#000;font-weight:bold">%</span><span style="color:#099">19</span>
-}
+<span style="color:#a61717;background-color:#e3d2d2">}</span>
 </code></pre></div><p>The microbenchmark result of the function that uses a global variable is
 slightly slower, but the translated LLVM code is way more complicated. The
 slowdown in performance would potentially be nontrivial in real-world cases.</p>
@@ -313,22 +328,32 @@ using global constants is preferable to macros that represent constants.</p>
       <div class="col-12">
         <div class="footer-inner">
           <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <ul>
-            
-            
-            <li class="menu-item-home">
-              <a href="/">
-                home
-              </a>
-            </li>
-            
-            <li class="menu-item-contact">
-              <a href="/contact/">
-                contact
-              </a>
-            </li>
-            
-          </ul>
+          <div id="footer-menu" class="footer-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+          
         </div>
       </div>
     </div>

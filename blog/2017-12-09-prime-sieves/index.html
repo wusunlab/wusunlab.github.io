@@ -13,7 +13,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/style.min.d628d10c7e5bad2469df81f20297c139f5da5d956ee838439499789174bbd858.css">
+  <link rel="stylesheet" href="/css/style.min.1b9920d898038fc4d13d26d6aca500755d7a990867442f78ef886991e5a900ee.css">
   
 
   
@@ -82,49 +82,63 @@
   <ul>
     
     
-    <li class="menu-item-home">
+    
+    
+    <li class="menu-item-home ">
       <a href="/">
         
         <span>home</span>
       </a>
     </li>
     
-    <li class="menu-item-research">
+    
+    
+    <li class="menu-item-research ">
       <a href="/research/">
         
         <span>research</span>
       </a>
     </li>
     
-    <li class="menu-item-publications">
+    
+    
+    <li class="menu-item-publications ">
       <a href="/publications/">
         
         <span>publications</span>
       </a>
     </li>
     
-    <li class="menu-item-data &amp; code">
+    
+    
+    <li class="menu-item-data &amp; code ">
       <a href="/data/">
         
         <span>data &amp; code</span>
       </a>
     </li>
     
-    <li class="menu-item-teaching">
+    
+    
+    <li class="menu-item-teaching ">
       <a href="/teaching/">
         
         <span>teaching</span>
       </a>
     </li>
     
-    <li class="menu-item-cv">
+    
+    
+    <li class="menu-item-cv ">
       <a href="/cv/">
         
         <span>cv</span>
       </a>
     </li>
     
-    <li class="menu-item-blog">
+    
+    
+    <li class="menu-item-blog ">
       <a href="/blog/">
         
         <span>blog</span>
@@ -133,6 +147,7 @@
     
   </ul>
 </div>
+
     <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -166,10 +181,10 @@ clarity.</p>
 <p>A Haskell example I&rsquo;d like to show is a naive implementation of the Sieve of
 Eratosthenes. With list comprehension, everything can fit into one line
 excepting the type declaration.</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#900;font-weight:bold">sievePrime</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Int</span> <span style="color:#000;font-weight:bold">-&gt;</span> [<span style="color:#458;font-weight:bold">Int</span>]
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#900;font-weight:bold">sievePrime</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Int</span> <span style="color:#000;font-weight:bold">-&gt;</span> [<span style="color:#458;font-weight:bold">Int</span>]
 <span style="color:#900;font-weight:bold">sievePrime</span> n <span style="color:#000;font-weight:bold">=</span> [x <span style="color:#000;font-weight:bold">|</span> x <span style="color:#000;font-weight:bold">&lt;-</span> [<span style="color:#099">2</span><span style="color:#000;font-weight:bold">..</span>n], and [x `mod` y <span style="color:#000;font-weight:bold">/=</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">|</span> y <span style="color:#000;font-weight:bold">&lt;-</span> [<span style="color:#099">2</span><span style="color:#000;font-weight:bold">..</span>floor(sqrt(fromIntegral x))]]]
 </code></pre></div><p>The equivalent Python version would be</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">sievePrime</span>(n):
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">sievePrime</span>(n):
     <span style="color:#000;font-weight:bold">return</span> [x <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">2</span>, n <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>) <span style="color:#000;font-weight:bold">if</span> <span style="color:#0086b3">all</span>([x <span style="color:#000;font-weight:bold">%</span> y <span style="color:#000;font-weight:bold">!=</span> <span style="color:#099">0</span> <span style="color:#000;font-weight:bold">for</span> y <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#099">2</span>, <span style="color:#0086b3">int</span>(x <span style="color:#000;font-weight:bold">**</span> <span style="color:#099">0.5</span>))])]
 </code></pre></div><p>I feel that <code>&lt;-</code> in Haskell is more elegant than <code>for ... in ...</code> in Python.
 The Haskell <code>and</code>, when used on a list, is equivalent to Python <code>all()</code>. The
@@ -192,22 +207,32 @@ an integer here.</p>
       <div class="col-12">
         <div class="footer-inner">
           <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <ul>
-            
-            
-            <li class="menu-item-home">
-              <a href="/">
-                home
-              </a>
-            </li>
-            
-            <li class="menu-item-contact">
-              <a href="/contact/">
-                contact
-              </a>
-            </li>
-            
-          </ul>
+          <div id="footer-menu" class="footer-menu">
+  <ul>
+    
+    
+    
+    
+    <li class="menu-item-home ">
+      <a href="/">
+        
+        <span>home</span>
+      </a>
+    </li>
+    
+    
+    
+    <li class="menu-item-contact ">
+      <a href="/contact/">
+        
+        <span>contact</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+
+          
         </div>
       </div>
     </div>
