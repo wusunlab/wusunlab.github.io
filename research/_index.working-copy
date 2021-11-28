@@ -1,0 +1,84 @@
+---
+layout: single
+title: Research
+date: 2018-10-19
+lastmod: 2021-11-27T22:15:58
+url: /research/
+---
+
+## Photosynthesis: from leaves to the biosphere
+
+Above the scale of a few leaves, carbon uptake during photosynthesis cannot be
+directly measured. Though observations of atmospheric CO<sub>2</sub>
+concentrations can be used to derive the net carbon balance between
+photosynthesis and respiration, they provide insufficient constraints on either
+component, especially at regional scales where mixing and boundary layer
+dynamics obscure the CO<sub>2</sub> signals of daytime photosynthetic drawdown
+and nighttime respiratory release. To robustly estimate photosynthesis at
+regional to global scales requires leveraging novel optical and material
+constraints specific to photosynthesis, including carbonyl sulfide (COS or
+OCS), isotope-labeled CO<sub>2</sub> and O<sub>2</sub> molecules, solar-induced
+cholorophyll fluorescence (SIF), and near-infrared reflectance of vegetation
+(NIRv). My research focus on integrating COS and SIF constraints to improve
+process-based understanding of photosynthesis across ecosystem, regional, and
+global scales.
+
+Relevant published work:
+[Sun et al. (2018) _Biogeosci._](https://doi.org/10.5194/bg-15-3277-2018),
+[Whelan et al. (2018) _Biogeosci._](https://doi.org/10.5194/bg-15-3625-2018),
+[Kooijmans et al. (2019) _PNAS_](https://doi.org/10.1073/pnas.1807600116).
+
+## Ecosystem respiration
+
+## Regional carbon balance and its responses to climate
+
+Relevant published work: [Sun et al. (2021) AGU Adv.](https://doi.org/10.1029/2020AV000310)
+
+## Terrestrial biosphere model development and evaluation
+
+Relevant published work: [Sun et al. (2021) AGU Adv.](https://doi.org/10.1029/2020AV000310)
+
+## Physical underpinnings for nature-based climate solutions
+
+## Air-sea exchange of biogenic trace gases
+
+
+<!-- The central theme of my research is ecosystem carbon cycle, with emphases on
+improving observations and the process-based understanding of
+**photosynthesis** using **novel tracer methods**. A robust quantification of
+the terrestrial photosynthesis has long been a holy grail for ecosystem carbon
+cycle research, because CO<sub>2</sub> measurements alone cannot reliably
+separate photosynthesis and respiration --- two opposing fluxes of comparable
+magnitudes. To resolve this problem, my research has been dedicated to
+developing novel tracer techniques for photosynthesis observations ---
+**carbonyl sulfide** and **solar induced chlorophyll fluorescence**. These
+tracers offer valuable constraints on different stages in photosynthesis and
+are not affected by respiration. Accurate estimates of photosynthesis,
+anticipated by these new methods, will improve the understanding of its climate
+sensitivities and reduce the uncertainty in projected future trends of
+photosynthesis.
+
+**Carbonyl sulfide (COS) as a tracer for quantifying photosynthesis.** COS is
+taken up by leaves through stomata due to reactions with carbonic anhydrase.
+The concurrency of COS and CO<sub>2</sub> uptake processes and the lack of a
+COS source in leaves allow photosynthesis to be constrained with COS fluxes. To
+improve the COS method, I have been pursuing field and modeling research to
+understand environmental and physiological controls on the relationship between
+leaf COS and CO<sub>2</sub> fluxes, represented by the leaf COS :
+CO<sub>2</sub> relative uptake ratio (LRU). Using dynamic leaf chambers for COS
+and CO<sub>2</sub> flux measurements, my research showed that light and vapor
+pressure deficit (VPD) are the main drivers of LRU in field conditions. I have
+also developed a theoretical framework that explains LRU variability. With a
+better understanding of the COS : CO<sub>2</sub> flux relationship, the COS
+method will deliver more accurate estimates of photosynthesis.
+
+**Process-based modeling of solar induced chlorophyll fluorescence (SIF)**.
+During the light reaction stage of photosynthesis, a fraction of the absorbed
+photosynthetically active radiation is re-emitted as SIF. Measuring SIF signals
+from photosynthesizing leaves can therefore offer constraints on photosynthesis
+efficiency, which cannot be obtained from gas exchange measurements alone. In
+this line of research, I will simulate SIF signals in a tropical rainforest
+canopy to (i) aid the interpretation of field data and (ii) improve model
+representation of canopy radiation and gas exchange processes. Planned future
+research will combine COS tracer with SIF to simultaneously utilize the
+constraints from COS and SIF on photosynthesis. -->
