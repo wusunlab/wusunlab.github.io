@@ -161,11 +161,16 @@
   <div class="row justify-content-start">
     <div class="col-12 col-md-8">
       <h1 class="title">Some common pitfalls in writing Fortran functions</h1>
-      <p><time datetime=2018-04-25T00:00:00Z class="post-date">Wed, Apr 25, 2018</time></p>
+      <p>
+        
+          <time datetime=2018-04-25T00:00:00Z class="post-date">Created on Wed, Apr 25, 2018</time>
+          <time datetime=2021-12-22T00:00:00Z class="post-date"><br>Updated on Wed, Dec 22, 2021</time>
+        
+      </p>
       <div class="content"><p>Recently, I have been trying to port or interface some Fortran code for a
 project in Python. It was quite an uphill struggle for me. I thought I knew how
 to write subroutines in Fortran 90, but when I decided to write pure functions
-in the latest Fortran style, which is Fortran 2008, it did not go as well as I
+in the latest Fortran style, which was Fortran 2008, it did not go as well as I
 expected. The compiler yelled at me a screenful of errors. After quite a while
 of debugging a simple array function and reading a bunch of StackOverflow
 questions, I learned how to deal with these pitfalls the hard way.</p>
@@ -324,9 +329,28 @@ opinion.</p>
 <a href="https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran">https://stackoverflow.com/questions/8412834/correct-use-of-modules-subroutines-and-functions-in-fortran</a>.</p>
 </li>
 <li>
-<p>A function argument cannot work with both scalar and vector inputs (i.e.,
-no polymorphism at the function level). However, there is a nice
-work-around using the <code>interface</code> construct. See the example presented in:
+<p>Polymorphism is only allowed by <code>elemental</code> functions, which apply the same
+operations on every element of an array. This means that function
+overloading can work on <code>real</code> and <code>real, dimension(10)</code>, but cannot work
+on <code>real</code> and <code>character, dimension(80)</code> (a string of 80 characters long).
+For example, there is no easy way to mimic the Julia behavior of multiple
+dispatch</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>) <span style="color:#000;font-weight:bold">=</span> x <span style="color:#000;font-weight:bold">+</span> y
+add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>) <span style="color:#000;font-weight:bold">=</span> string(x, y)
+</code></pre></div><p>It also means that a function cannot decide to return a scalar or vector
+based on the result of evaluating a condition within the function at
+runtime. For example, in Python, we can write</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
+
+
+<span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">scalar_or_vector</span>(flag: <span style="color:#0086b3">bool</span>) <span style="color:#000;font-weight:bold">-&gt;</span> Union[<span style="color:#0086b3">int</span>, np<span style="color:#000;font-weight:bold">.</span>ndarray]:
+    <span style="color:#000;font-weight:bold">if</span> flag:
+        <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>
+    <span style="color:#000;font-weight:bold">else</span>:
+        <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>ones(<span style="color:#099">10</span>)
+</code></pre></div><p>Again, there is no way this can be easily reproduced in Fortran.</p>
+<p>With some effort, however, there is a workaround using the <code>interface</code>
+construct. See the example presented in:
 <a href="https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input">https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input</a>.</p>
 </li>
 <li>
@@ -334,7 +358,7 @@ work-around using the <code>interface</code> construct. See the example presente
 functions that have no side effects. Use the <code>elemental</code> keyword for
 elementwise operations that are to be applied on an array. I like to use
 them because these restrictions will help you write the program in a
-<em>defensible</em> way.</p>
+defensible way.</p>
 </li>
 </ol>
 </div>

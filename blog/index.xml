@@ -123,7 +123,7 @@ The use of the global variable is discouraged in Julia for performance reasons (
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
       
       <guid>https://wusun.name/blog/2018-04-25-fortran-functions/</guid>
-      <description>Recently, I have been trying to port or interface some Fortran code for a project in Python. It was quite an uphill struggle for me. I thought I knew how to write subroutines in Fortran 90, but when I decided to write pure functions in the latest Fortran style, which is Fortran 2008, it did not go as well as I expected. The compiler yelled at me a screenful of errors.</description>
+      <description>Recently, I have been trying to port or interface some Fortran code for a project in Python. It was quite an uphill struggle for me. I thought I knew how to write subroutines in Fortran 90, but when I decided to write pure functions in the latest Fortran style, which was Fortran 2008, it did not go as well as I expected. The compiler yelled at me a screenful of errors.</description>
     </item>
     
     <item>
