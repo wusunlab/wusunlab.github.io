@@ -14,7 +14,7 @@
       
       <guid>https://wusun.name/blog/2018-06-13-optimizing-scientific-code/</guid>
       <description>I have no time to write an essay, so here are some fragmentary thoughts.
-  Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
+Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
     </item>
     
     <item>

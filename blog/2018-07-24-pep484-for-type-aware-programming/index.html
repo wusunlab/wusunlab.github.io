@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>春曇りの日に Tomales Point を歩いた - Wu Sun, Ph.D.</title>
+  <title>PEP 484 for type-aware programming - Wu Sun, Ph.D.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -160,17 +160,26 @@
 <div class="container pb-6 pt-6 pt-md-10 pb-md-10">
   <div class="row justify-content-start">
     <div class="col-12 col-md-8">
-      <h1 class="title">春曇りの日に Tomales Point を歩いた</h1>
+      <h1 class="title">PEP 484 for type-aware programming</h1>
       <p>
         
-          <time datetime=2021-04-06T05:37:12Z class="post-date">Tue, Apr 6, 2021</time>
+          <time datetime=2018-07-23T21:43:48-0700 class="post-date">Mon, Jul 23, 2018</time>
         
       </p>
-      <div class="content"><p><img src="./cliff.jpg" alt="Image: Cliff"></p>
-<p><img src="./flowers-1.jpg" alt="Image: Flowers"></p>
-<p><img src="./flowers-2.jpg" alt="Image: Flowers"></p>
-<p><img src="./tule-elks.jpg" alt="Image: Tule elks"></p>
-<p>Veri flores et cervi sunt.</p>
+      <div class="content"><p>I begin to like sprinkling a few <a href="https://www.python.org/dev/peps/pep-0484/">PEP 484 type
+hints</a> in my Python code. Not
+necessarily because my code is laden with undetectable bugs and I want to use
+static type checking to help; it&rsquo;s mainly because it makes the code more
+<em>self-explanatory</em>. It is a manifestation of the <a href="https://www.python.org/dev/peps/pep-0020/">Zen of
+Python</a> that &ldquo;explicit is better
+than implicit&rdquo;.</p>
+<p>Here&rsquo;s a little example. Compare the Python snippet</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">filter_substr</span>(strlst: List[<span style="color:#0086b3">str</span>], substr: <span style="color:#0086b3">str</span>) <span style="color:#000;font-weight:bold">-&gt;</span> List[<span style="color:#0086b3">str</span>]:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">list</span>(<span style="color:#0086b3">filter</span>(<span style="color:#000;font-weight:bold">lambda</span> s: substr <span style="color:#000;font-weight:bold">in</span> s, strlst))
+</span></span></code></pre></div><p>with the equivalent Standard ML one</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sml" data-lang="sml"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">fun</span> <span style="color:#900;font-weight:bold">filter_substr</span>(strlst: string list, substr: string): string list =
+</span></span><span style="display:flex;"><span>  <span style="color:#555">List.</span>filter (<span style="color:#555">String.</span>isSubstring substr) strlst
+</span></span></code></pre></div><p>Now I can pretend that I&rsquo;m writing SML in Python.</p>
 </div>
     </div>
   </div>
@@ -250,7 +259,7 @@
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

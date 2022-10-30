@@ -178,33 +178,33 @@ questions, I learned how to deal with these pitfalls the hard way.</p>
 <li>
 <p>&ldquo;Function result &hellip; at (1) has no implicit type&rdquo;</p>
 <p>The example below will raises an error of this at the compile-time.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    <span style="color:#000;font-weight:bold">implicit none
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
-    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>This is a common compiler error thrown at functions. What it means is that
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">implicit none
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
+</span></span><span style="display:flex;"><span>    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>This is a common compiler error thrown at functions. What it means is that
 the compiler cannot determine the return type of the function; it must be
 explicitly declared. But where and how to declare the type? There are two
 ways to fix it. One way is to declare the type of function at the
 beginning,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    <span style="color:#000;font-weight:bold">implicit none
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
-    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>This seems to be the recommended way, because it makes it clear that this
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">implicit none
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
+</span></span><span style="display:flex;"><span>    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>This seems to be the recommended way, because it makes it clear that this
 function returns an integer (kinda like how you would write a C function.)</p>
 <p>Another way is to declare the result variable inside the function body.
 This works just fine. But nowadays it seems that the former one is the more
 prevalent style.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    <span style="color:#000;font-weight:bold">implicit none
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
-    <span style="color:#458;font-weight:bold">integer</span> <span style="color:#000;font-weight:bold">::</span> bar
-    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>Note that you <em>cannot</em> initialize the result variable <code>bar</code> in the example
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">implicit none
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">integer</span> <span style="color:#000;font-weight:bold">::</span> bar
+</span></span><span style="display:flex;"><span>    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>Note that you <em>cannot</em> initialize the result variable <code>bar</code> in the example
 above. For example, if you write <code>integer :: bar = 42</code>, the compiler will
 again yell at you &ldquo;Function result &lsquo;bar&rsquo; at (1) cannot have an
 initializer&rdquo;. I think this style would be more prone to error than <code>integer function foo(x) result(bar)</code>.</p>
@@ -218,16 +218,16 @@ body, because there is no C-like <code>return</code> statement (or, you could al
 say, the Fortran <code>return</code> statement has an entirely different meaning).</p>
 <p>The <strong>result variable</strong> is defined with the <code>result</code> keyword. For example,
 in</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    ...
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>the variable to return to the caller is <code>bar</code> and cannot be anything else.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>the variable to return to the caller is <code>bar</code> and cannot be anything else.</p>
 <p>The <code>result</code> statement can be omitted. In this case, the result variable
 will have the same name as the function. For example, in</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x)
-    ...
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>the result variable is <code>foo</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x)
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>the result variable is <code>foo</code>.</p>
 <p>On the other hand, the absence of a C-like <code>return</code> statement makes perfect
 sense because the function already knows which variable is the result
 variable the moment it is declared.</p>
@@ -237,23 +237,23 @@ variable the moment it is declared.</p>
 variable type is already declared in the function header, there is no need
 to declare it again in the function body. This means the following example
 is wrong.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    <span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
-    <span style="color:#458;font-weight:bold">integer</span> <span style="color:#000;font-weight:bold">::</span> bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>The compiler would raise an error for duplicate declarations, &ldquo;Symbol &lsquo;bar&rsquo;
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">integer</span> <span style="color:#000;font-weight:bold">::</span> bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>The compiler would raise an error for duplicate declarations, &ldquo;Symbol &lsquo;bar&rsquo;
 at (1) already has basic type of INTEGER&rdquo;.</p>
 </li>
 <li>
 <p>Do not use <code>intent(out)</code> in the declaration of the result variable in the
 function body. The following example is wrong.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    <span style="color:#000;font-weight:bold">implicit none
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
-    <span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(out) <span style="color:#000;font-weight:bold">::</span> bar
-    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>The compiler will raise an error at the line <code>function foo(x) result(bar)</code>:
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">implicit none
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(out) <span style="color:#000;font-weight:bold">::</span> bar
+</span></span><span style="display:flex;"><span>    bar <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">42</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>The compiler will raise an error at the line <code>function foo(x) result(bar)</code>:
 &ldquo;Symbol at (1) is not a DUMMY variable&rdquo;. It is not obvious that this
 message would refer to the misuse of <code>intent(out)</code>.</p>
 <p>See also:
@@ -263,19 +263,19 @@ message would refer to the misuse of <code>intent(out)</code>.</p>
 <p>Functions that return an array</p>
 <p>When the result variable is an array, we cannot declare its type in the
 function header. This means the following would not work.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#458;font-weight:bold">integer</span>(<span style="color:#099">1</span>:<span style="color:#099">5</span>) <span style="color:#000;font-weight:bold">function </span>vec_foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    ...
-<span style="color:#000;font-weight:bold">end function </span>vec_foo
-</code></pre></div><p>In this case, we do need to declare the result variable in the body of the
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#458;font-weight:bold">integer</span>(<span style="color:#099">1</span>:<span style="color:#099">5</span>) <span style="color:#000;font-weight:bold">function </span>vec_foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>vec_foo
+</span></span></code></pre></div><p>In this case, we do need to declare the result variable in the body of the
 function. For example,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#998;font-style:italic">! an array function that returns a fixed-length array
-</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
-    <span style="color:#000;font-weight:bold">implicit none
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
-    <span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">dimension</span>(<span style="color:#099">5</span>) <span style="color:#000;font-weight:bold">::</span> bar
-    bar <span style="color:#000;font-weight:bold">=</span> [<span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#099">4</span>, <span style="color:#099">5</span>]
-<span style="color:#000;font-weight:bold">end function </span>foo
-</code></pre></div><p>A function may also return a automatically allocated array whose size
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#998;font-style:italic">! an array function that returns a fixed-length array
+</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">function </span>foo(x) <span style="color:#000;font-weight:bold">result</span>(bar)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">implicit none
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">intent</span>(in) <span style="color:#000;font-weight:bold">::</span> x
+</span></span><span style="display:flex;"><span>    <span style="color:#458;font-weight:bold">integer</span>, <span style="color:#000;font-weight:bold">dimension</span>(<span style="color:#099">5</span>) <span style="color:#000;font-weight:bold">::</span> bar
+</span></span><span style="display:flex;"><span>    bar <span style="color:#000;font-weight:bold">=</span> [<span style="color:#099">1</span>, <span style="color:#099">2</span>, <span style="color:#099">3</span>, <span style="color:#099">4</span>, <span style="color:#099">5</span>]
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end function </span>foo
+</span></span></code></pre></div><p>A function may also return a automatically allocated array whose size
 depends on the arguments. The result variable just needs to be declared with
 dimension variables determined from the arguments.</p>
 <p>See also:
@@ -291,36 +291,36 @@ declaration statement at (1)&rdquo;. See also:
 <li>
 <p>There are two ways for a program to use a function defined in the same
 source file. The function may be included in the program,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#000;font-weight:bold">program </span>my_program
-    ...
-    <span style="color:#000;font-weight:bold">print</span> <span style="color:#000;font-weight:bold">*</span>, foo(x)
-
-<span style="color:#000;font-weight:bold">contains
-</span><span style="color:#000;font-weight:bold">
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x)
-        ...
-    <span style="color:#000;font-weight:bold">end function </span>foo
-
-<span style="color:#000;font-weight:bold">end program </span>my_program
-</code></pre></div><p>Or, the function can be defined in a module that is placed in the same
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">program </span>my_program
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">print</span> <span style="color:#000;font-weight:bold">*</span>, foo(x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">contains
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x)
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">end function </span>foo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end program </span>my_program
+</span></span></code></pre></div><p>Or, the function can be defined in a module that is placed in the same
 source file as the main program. (This seems to be the preferred style.)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fortran" data-lang="fortran"><span style="color:#000;font-weight:bold">module </span>my_module
-
-<span style="color:#000;font-weight:bold">contains
-</span><span style="color:#000;font-weight:bold">
-</span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x)
-        ...
-    <span style="color:#000;font-weight:bold">end function </span>foo
-
-<span style="color:#000;font-weight:bold">end </span>my_module
-
-<span style="color:#000;font-weight:bold">program </span>my_program
-    <span style="color:#000;font-weight:bold">use </span>my_module
-    <span style="color:#000;font-weight:bold">implicit none</span>
-    ...
-    <span style="color:#000;font-weight:bold">print</span> <span style="color:#000;font-weight:bold">*</span>, foo(x)
-<span style="color:#000;font-weight:bold">end program </span>my_program
-</code></pre></div><p>If something goes wrong, the <code>gfortran</code> compiler will raise an error
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">module </span>my_module
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">contains
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">
+</span></span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">    </span><span style="color:#458;font-weight:bold">integer </span><span style="color:#000;font-weight:bold">function </span>foo(x)
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">end function </span>foo
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end </span>my_module
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">program </span>my_program
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">use </span>my_module
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">implicit none</span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">print</span> <span style="color:#000;font-weight:bold">*</span>, foo(x)
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">end program </span>my_program
+</span></span></code></pre></div><p>If something goes wrong, the <code>gfortran</code> compiler will raise an error
 &ldquo;Function result has no implicit type&rdquo;, which is not very helpful in my
 opinion.</p>
 <p>See also:
@@ -335,20 +335,20 @@ overloading can work on <code>real</code> and <code>real, dimension(10)</code>, 
 on <code>real</code> and <code>character, dimension(80)</code> (a string of 80 characters long).
 For example, there is no easy way to mimic the Julia behavior of multiple
 dispatch</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>) <span style="color:#000;font-weight:bold">=</span> x <span style="color:#000;font-weight:bold">+</span> y
-add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>) <span style="color:#000;font-weight:bold">=</span> string(x, y)
-</code></pre></div><p>It also means that a function cannot decide to return a scalar or vector
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-julia" data-lang="julia"><span style="display:flex;"><span>add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>) <span style="color:#000;font-weight:bold">=</span> x <span style="color:#000;font-weight:bold">+</span> y
+</span></span><span style="display:flex;"><span>add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>) <span style="color:#000;font-weight:bold">=</span> string(x, y)
+</span></span></code></pre></div><p>It also means that a function cannot decide to return a scalar or vector
 based on the result of evaluating a condition within the function at
 runtime. For example, in Python, we can write</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
-
-
-<span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">scalar_or_vector</span>(flag: <span style="color:#0086b3">bool</span>) <span style="color:#000;font-weight:bold">-&gt;</span> Union[<span style="color:#0086b3">int</span>, np<span style="color:#000;font-weight:bold">.</span>ndarray]:
-    <span style="color:#000;font-weight:bold">if</span> flag:
-        <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>
-    <span style="color:#000;font-weight:bold">else</span>:
-        <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>ones(<span style="color:#099">10</span>)
-</code></pre></div><p>Again, there is no way this can be easily reproduced in Fortran.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">scalar_or_vector</span>(flag: <span style="color:#0086b3">bool</span>) <span style="color:#000;font-weight:bold">-&gt;</span> Union[<span style="color:#0086b3">int</span>, np<span style="color:#000;font-weight:bold">.</span>ndarray]:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> flag:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>ones(<span style="color:#099">10</span>)
+</span></span></code></pre></div><p>Again, there is no way this can be easily reproduced in Fortran.</p>
 <p>With some effort, however, there is a workaround using the <code>interface</code>
 construct. See the example presented in:
 <a href="https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input">https://stackoverflow.com/questions/49014237/fortran-function-that-returns-scalar-or-array-depending-on-input</a>.</p>
@@ -440,7 +440,7 @@ defensible way.</p>
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

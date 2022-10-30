@@ -174,24 +174,24 @@ StackExchange. Here are a few tips I learned recently.</p>
 <p>By default, LaTeX assigns equation numbers continually across different
 sections. If you need the equation to be numbered like &ldquo;Eq. (3.5)&rdquo; for the 5th
 equation in section 3, add this to the preamble:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
-<span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
-</code></pre></div><p>To include also the subsection number, change the second line to</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>subsection<span style="color:#0086b3">}</span>
-</code></pre></div><p>For figures and tables, it is similar.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
-<span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>table<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
-<span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>figure<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
-</code></pre></div><h2 id="2-scientific-notation">2. Scientific notation</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
+</span></span></code></pre></div><p>To include also the subsection number, change the second line to</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>equation<span style="color:#0086b3">}{</span>subsection<span style="color:#0086b3">}</span>
+</span></span></code></pre></div><p>For figures and tables, it is similar.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>amsmath<span style="color:#0086b3">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>table<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\numberwithin</span><span style="color:#0086b3">{</span>figure<span style="color:#0086b3">}{</span>section<span style="color:#0086b3">}</span>
+</span></span></code></pre></div><h2 id="2-scientific-notation">2. Scientific notation</h2>
 <p>The most elegant solution for scientific notation of numbers is to use the
 <code>siunitx</code> package.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>siunitx<span style="color:#0086b3">}</span>
-...
-<span style="color:#000;font-weight:bold">\num</span><span style="color:#0086b3">{</span>6.022e23<span style="color:#0086b3">}</span>
-</code></pre></div><p><code>\num{6.022e23}</code> will be rendered as &ldquo;6.022 × 10<sup>23</sup>&rdquo;.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\usepackage</span><span style="color:#0086b3">{</span>siunitx<span style="color:#0086b3">}</span>
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\num</span><span style="color:#0086b3">{</span>6.022e23<span style="color:#0086b3">}</span>
+</span></span></code></pre></div><p><code>\num{6.022e23}</code> will be rendered as &ldquo;6.022 × 10<sup>23</sup>&rdquo;.</p>
 <p>An alternative solution that does not depend on <code>siunitx</code> is:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\e</span><span style="color:#0086b3">}</span>[1]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\times</span> 10<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}</span>
-</code></pre></div><p>This new command can be used like <code>6.022\e{23}</code> to produce &ldquo;6.022 ×
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\e</span><span style="color:#0086b3">}</span>[1]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\times</span> 10<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}</span>
+</span></span></code></pre></div><p>This new command can be used like <code>6.022\e{23}</code> to produce &ldquo;6.022 ×
 10<sup>23</sup>&rdquo;.</p>
 <h2 id="3-upright-differential-operator">3. Upright differential operator</h2>
 <p>The differential operator <code>d</code> in <code>dy / dx</code> should be typeset in upright not
@@ -211,11 +211,11 @@ produces $\dfrac{\mathrm{d}^2 f}{\mathrm{d} x^2}$.</li>
 <p>There are also many other useful commands in this package.</p>
 <p>Alternatively, a minimalist and nearly as good solution without using <code>commath</code>
 can be</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex"><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>d<span style="color:#0086b3">}}</span>
-<span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\Dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>D<span style="color:#0086b3">}}</span>
-<span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\od</span><span style="color:#0086b3">}</span>[3][]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dfrac</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}</span>#2<span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\dif</span> #3<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}}</span>
-<span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\pd</span><span style="color:#0086b3">}</span>[3][]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dfrac</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\partial</span><span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}</span>#2<span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\partial</span> #3<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}}</span>
-</code></pre></div><h2 id="references">References</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>d<span style="color:#0086b3">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\Dif</span><span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\mathrm</span><span style="color:#0086b3">{</span>D<span style="color:#0086b3">}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\od</span><span style="color:#0086b3">}</span>[3][]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dfrac</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dif</span><span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}</span>#2<span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\dif</span> #3<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">\newcommand</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\pd</span><span style="color:#0086b3">}</span>[3][]<span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\ensuremath</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\dfrac</span><span style="color:#0086b3">{</span><span style="color:#000;font-weight:bold">\partial</span><span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}</span>#2<span style="color:#0086b3">}{</span><span style="color:#000;font-weight:bold">\partial</span> #3<span style="color:#0086b3">^{</span>#1<span style="color:#0086b3">}}}}</span>
+</span></span></code></pre></div><h2 id="references">References</h2>
 <ol>
 <li>Beccari, C. (1997). Typesetting mathematics for science and technology
 according to ISO 31/XI. <em>TUGboat</em>, 18(1), 39&ndash;48.
@@ -300,7 +300,7 @@ according to ISO 31/XI. <em>TUGboat</em>, 18(1), 39&ndash;48.
   
 
   
-  <script type="text/javascript" src="/js/scripts.min.98ee06cc35517b5800b382aecb0fc59893e95b9c11dd21842d0d57e4f68043e3.js"></script>
+  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
   
 
   

@@ -6,27 +6,7 @@
     <description>Recent content in Blog on Wu Sun, Ph.D.</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Apr 2021 05:37:12 +0000</lastBuildDate><atom:link href="https://wusun.name/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>春曇りの日に Tomales Point を歩いた</title>
-      <link>https://wusun.name/blog/2021-04-06-tomales-point-hike/</link>
-      <pubDate>Tue, 06 Apr 2021 05:37:12 +0000</pubDate>
-      
-      <guid>https://wusun.name/blog/2021-04-06-tomales-point-hike/</guid>
-      <description>Veri flores et cervi sunt.</description>
-    </item>
-    
-    <item>
-      <title>秋晴れて Stanford Dish に登る</title>
-      <link>https://wusun.name/blog/2020-11-16-stanford-dish-hiking/</link>
-      <pubDate>Mon, 16 Nov 2020 00:57:00 +0000</pubDate>
-      
-      <guid>https://wusun.name/blog/2020-11-16-stanford-dish-hiking/</guid>
-      <description>枯れ草に
-ただ一つだけ
-樫が立つ</description>
-    </item>
-    
+    <lastBuildDate>Tue, 19 Feb 2019 21:19:09 +0000</lastBuildDate><atom:link href="https://wusun.name/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>OCaml packages for scientific computing</title>
       <link>https://wusun.name/blog/2019-02-19-ocaml-packages-for-scientific-computing/</link>
@@ -34,7 +14,7 @@
       
       <guid>https://wusun.name/blog/2019-02-19-ocaml-packages-for-scientific-computing/</guid>
       <description>This is a collection of OCaml packages that are potentially useful for scientific computing. (Disclaimer: I have only used some of them. But I choose to list all I found useful here for future reference.)
-Numerical computing  Owl: The de facto numerical computing library for OCaml. Probably the best maintained OCaml numerical computing package at this moment. gsl: OCaml bindings to the GNU Scientific Library. lacaml: OCaml bindings to BLAS and LAPACK.</description>
+Numerical computing Owl: The de facto numerical computing library for OCaml. Probably the best maintained OCaml numerical computing package at this moment. gsl: OCaml bindings to the GNU Scientific Library. lacaml: OCaml bindings to BLAS and LAPACK.</description>
     </item>
     
     <item>
@@ -54,15 +34,15 @@ minted requires Pygments as an external lexer and highlighter. As a result, to u
       
       <guid>https://wusun.name/blog/2018-10-09-update-ocaml-opam/</guid>
       <description>As a beginner of OCaml, it felt a bit unwieldy to perform an upgrade of my current environment (OCaml + OPAM + packages). I knew there was not a single command that does all the tasks like conda for Python. Luckily, it was not so difficult with OPAM&amp;rsquo;s import/export function [1]. I upgraded my OCaml environment with all installed packages retained following these steps without much trouble.
-  Export the list of currently installed packages:</description>
+Export the list of currently installed packages:</description>
     </item>
     
     <item>
-      <title>PEP 484 is great</title>
-      <link>https://wusun.name/blog/2018-07-24-pep484-is-great/</link>
+      <title>PEP 484 for type-aware programming</title>
+      <link>https://wusun.name/blog/2018-07-24-pep484-for-type-aware-programming/</link>
       <pubDate>Mon, 23 Jul 2018 21:43:48 -0700</pubDate>
       
-      <guid>https://wusun.name/blog/2018-07-24-pep484-is-great/</guid>
+      <guid>https://wusun.name/blog/2018-07-24-pep484-for-type-aware-programming/</guid>
       <description>I begin to like sprinkling a few PEP 484 type hints in my Python code. Not necessarily because my code is laden with undetectable bugs and I want to use static type checking to help; it&amp;rsquo;s mainly because it makes the code more self-explanatory. It is a manifestation of the Zen of Python that &amp;ldquo;explicit is better than implicit&amp;rdquo;.
 Here&amp;rsquo;s a little example. Compare the Python snippet
 def filter_substr(strlst: List[str], substr: str) -&amp;gt; List[str]: return list(filter(lambda s: substr in s, strlst)) with the equivalent Standard ML one</description>
@@ -85,7 +65,7 @@ In the past few years, I have gradually replaced some of my writing tasks in LaT
       
       <guid>https://wusun.name/blog/2018-06-13-optimizing-scientific-code/</guid>
       <description>I have no time to write an essay, so here are some fragmentary thoughts.
-  Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
+Scientists who deal with computationally demanding research subjects can be obsessed with code performance, and sometimes rightly so. However, this obsession, if not tamed by sound principles and pragmatic wisdom, may lead us down the evil path of Premature Optimization. We should always be reminded of its danger. The aphorism by Donald Knuth may be recited three times a day:</description>
     </item>
     
     <item>
@@ -143,7 +123,7 @@ I came across a powerful open source Kanban software — Kanboard.</description>
       
       <guid>https://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
       <description>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
-&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
+&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
     </item>
     
     <item>

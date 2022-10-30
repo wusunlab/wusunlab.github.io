@@ -30,6 +30,9 @@
         font-size: 0.9em;
         padding: 1em;
       }
+      h1 {
+        font-size: 1.8em;
+      }
     }
     @media print {
       body {
@@ -134,15 +137,26 @@
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
     div.csl-bib-body { }
     div.csl-entry {
@@ -169,45 +183,148 @@
   <![endif]-->
 </head>
 <body>
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-line-spacing="2" role="doc-bibliography">
+<div id="ref-abadie_2022" class="csl-entry" role="doc-biblioentry">
+1. Abadie, C., Maignan, F., Remaud, M., Ogée, J., Campbell, J. E.,
+Whelan, M. E., Kitz, F., Spielmann, F. M., Wohlfahrt, G., Wehr, R., Sun,
+W., Raoult, N., Seibt, U., Hauglustaine, D., Lennartz, S. T., Belviso,
+S., Montagne, D., &amp; Peylin, P. (2022). Global modelling of soil
+carbonyl sulfide exchanges. <em>Biogeosciences</em>, <em>19</em>(9),
+2427–2463. <a
+href="https://doi.org/10.5194/bg-19-2427-2022">https://doi.org/10.5194/bg-19-2427-2022</a>
+</div>
+<div id="ref-sun_2022_np" class="csl-entry" role="doc-biblioentry">
+2. Sun, W., Berry, J. A., Yakir, D., &amp; Seibt, U. (2022). Leaf
+carbonyl sulfide to <span>CO<sub>2</sub></span> relative uptake seen
+through the lens of stomatal conductance–photosynthesis coupling.
+<em>New Phytologist</em>, <em>235</em>(5), 1729–1742. <a
+href="https://doi.org/10.1111/nph.18178">https://doi.org/10.1111/nph.18178</a>
+</div>
+<div id="ref-whelan_2022" class="csl-entry" role="doc-biblioentry">
+3. Whelan, M. E., Shi, M., Sun, W., Kooijmans-de Vries, L., Seibt, U.,
+&amp; Maseyk, K. (2022). Soil carbonyl sulfide (<span>OCS</span>) fluxes
+in terrestrial ecosystems: An empirical model. <em>Journal of
+Geophysical Research: Biogeosciences</em>, <em>127</em>(9),
+e2022JG006858. <a
+href="https://doi.org/10.1029/2022JG006858">https://doi.org/10.1029/2022JG006858</a>
+</div>
+<div id="ref-zhang_2022" class="csl-entry" role="doc-biblioentry">
+4. Zhang, Y., Gentine, P., Luo, X., Lian, X., Liu, Y., Zhou, S.,
+Michalak, A. M., Sun, W., Fisher, J. B., Piao, S., &amp; Keenan, T. F.
+(2022). Increasing sensitivity of dryland vegetation greenness to
+precipitation due to rising atmospheric <span>CO<sub>2</sub></span>.
+<em>Nature Communications</em>, <em>13</em>(1). <a
+href="https://doi.org/10.1038/s41467-022-32631-3">https://doi.org/10.1038/s41467-022-32631-3</a>
+</div>
 <div id="ref-kooijmans_2021" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">1. </div><div class="csl-right-inline">Kooijmans, L. M. J., Cho, A., Ma, J., Kaushik, A., Haynes, K. D., Baker, I., Luijkx, I. T., Groenink, M., Peters, W., Miller, J. B., Berry, J. A., Ogée, J., Meredith, L. K., Sun, W., Kohonen, K.-M., Vesala, T., Mammarella, I., Chen, H., Spielmann, F., … Krol, M. (2021). Evaluation of carbonyl sulfide biosphere exchange in the <span>S</span>imple <span>B</span>iosphere <span>M</span>odel (<span>SiB4</span>). <em>Biogeosciences</em>, <em>in press</em>. <a href="https://doi.org/10.5194/bg-2021-192">https://doi.org/10.5194/bg-2021-192</a></div>
+5. Kooijmans, L. M. J., Cho, A., Ma, J., Kaushik, A., Haynes, K. D.,
+Baker, I., Luijkx, I. T., Groenink, M., Peters, W., Miller, J. B.,
+Berry, J. A., Ogée, J., Meredith, L. K., Sun, W., Kohonen, K.-M.,
+Vesala, T., Mammarella, I., Chen, H., Spielmann, F., … Krol, M. (2021).
+Evaluation of carbonyl sulfide biosphere exchange in the
+<span>S</span>imple <span>B</span>iosphere <span>M</span>odel
+(<span>SiB4</span>). <em>Biogeosciences</em>, <em>18</em>, 6547–6565. <a
+href="https://doi.org/10.5194/bg-18-6547-2021">https://doi.org/10.5194/bg-18-6547-2021</a>
 </div>
 <div id="ref-sun_2021" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">2. </div><div class="csl-right-inline">Sun, W., Fang, Y., Luo, X., Shiga, Y. P., Zhang, Y., Andrews, A. E., Thoning, K. W., Fisher, J. B., Keenan, T. F., &amp; Michalak, A. M. (2021). Midwest <span>US</span> croplands determine model divergence in <span>N</span>orth <span>A</span>merican carbon fluxes. <em>AGU Advances</em>, <em>2</em>(2), e2020AV000310. <a href="https://doi.org/10.1029/2020AV000310">https://doi.org/10.1029/2020AV000310</a></div>
+6. Sun, W., Fang, Y., Luo, X., Shiga, Y. P., Zhang, Y., Andrews, A. E.,
+Thoning, K. W., Fisher, J. B., Keenan, T. F., &amp; Michalak, A. M.
+(2021). Midwest <span>US</span> croplands determine model divergence in
+<span>N</span>orth <span>A</span>merican carbon fluxes. <em>AGU
+Advances</em>, <em>2</em>(2), e2020AV000310. <a
+href="https://doi.org/10.1029/2020AV000310">https://doi.org/10.1029/2020AV000310</a>
 </div>
-<div id="ref-bond_lamberty_2020" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">3. </div><div class="csl-right-inline">Bond-Lamberty, B., Christianson, D. S., Malhotra, A., Pennington, S. C., Sihi, D., AghaKouchak, A., Anjileli, H., Altaf Arain, M., Armesto, J. J., Ashraf, S., Ataka, M., Baldocchi, D., Andrew Black, T., Buchmann, N., Carbone, M. S., Chang, S.-C., Crill, P., Curtis, P. S., Davidson, E. A., … Zou, J. (2020). <span>COSORE</span>: A community database for continuous soil respiration and other soil-atmosphere greenhouse gas flux data. <em>Global Change Biology</em>, <em>26</em>(12), 7268–7283. <a href="https://doi.org/10.1111/gcb.15353">https://doi.org/10.1111/gcb.15353</a></div>
-</div>
-<div id="ref-pezner_2020" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">4. </div><div class="csl-right-inline">Pezner, A. K., Pivovaroff, A. L., Sun, W., Sharifi, M. R., Rundel, P. W., &amp; Seibt, U. (2020). Plant functional traits predict the drought response of native <span>C</span>alifornia plant species. <em>International Journal of Plant Sciences</em>, <em>181</em>(2), 256–265. <a href="https://doi.org/10.1086/706451">https://doi.org/10.1086/706451</a></div>
+<div id="ref-bond_lamberty_2020" class="csl-entry"
+role="doc-biblioentry">
+7. Bond-Lamberty, B., Christianson, D. S., Malhotra, A., Pennington, S.
+C., Sihi, D., AghaKouchak, A., Anjileli, H., Altaf Arain, M., Armesto,
+J. J., Ashraf, S., Ataka, M., Baldocchi, D., Andrew Black, T., Buchmann,
+N., Carbone, M. S., Chang, S.-C., Crill, P., Curtis, P. S., Davidson, E.
+A., … Zou, J. (2020). <span>COSORE</span>: A community database for
+continuous soil respiration and other soil-atmosphere greenhouse gas
+flux data. <em>Global Change Biology</em>, <em>26</em>(12), 7268–7283.
+<a
+href="https://doi.org/10.1111/gcb.15353">https://doi.org/10.1111/gcb.15353</a>
 </div>
 <div id="ref-kohonen_2020" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">5. </div><div class="csl-right-inline">Kohonen, K.-M., Kolari, P., Kooijmans, L. M. J., Chen, H., Seibt, U., Sun, W., &amp; Mammarella, I. (2020). Towards standardized processing of eddy covariance flux measurements of carbonyl sulfide. <em>Atmospheric Measurement Techniques</em>, <em>13</em>(7), 3957–3975. <a href="https://doi.org/10.5194/amt-13-3957-2020">https://doi.org/10.5194/amt-13-3957-2020</a></div>
+8. Kohonen, K.-M., Kolari, P., Kooijmans, L. M. J., Chen, H., Seibt, U.,
+Sun, W., &amp; Mammarella, I. (2020). Towards standardized processing of
+eddy covariance flux measurements of carbonyl sulfide. <em>Atmospheric
+Measurement Techniques</em>, <em>13</em>(7), 3957–3975. <a
+href="https://doi.org/10.5194/amt-13-3957-2020">https://doi.org/10.5194/amt-13-3957-2020</a>
 </div>
-<div id="ref-ranasinghe_2019" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">6. </div><div class="csl-right-inline">Ranasinghe, D., Lee, E. S., Zhu, Y., Frausto-Vicencio, I., Choi, W., Sun, W., Mara, S., Seibt, U., &amp; Paulson, S. E. (2019). Effectiveness of vegetation and sound wall-vegetation combination barriers on pollution dispersion from freeways under early morning conditions. <em>Science of The Total Environment</em>, <em>658</em>, 1549–1558. <a href="https://doi.org/10.1016/j.scitotenv.2018.12.159">https://doi.org/10.1016/j.scitotenv.2018.12.159</a></div>
+<div id="ref-pezner_2020" class="csl-entry" role="doc-biblioentry">
+9. Pezner, A. K., Pivovaroff, A. L., Sun, W., Sharifi, M. R., Rundel, P.
+W., &amp; Seibt, U. (2020). Plant functional traits predict the drought
+response of native <span>C</span>alifornia plant species.
+<em>International Journal of Plant Sciences</em>, <em>181</em>(2),
+256–265. <a
+href="https://doi.org/10.1086/706451">https://doi.org/10.1086/706451</a>
 </div>
 <div id="ref-kooijmans_2019" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">7. </div><div class="csl-right-inline">Kooijmans, L. M. J., Sun, W., Aalto, J., Erkkilä, K.-M., Maseyk, K., Seibt, U., Vesala, T., Mammarella, I., &amp; Chen, H. (2019). Influences of light and humidity on carbonyl sulfide-based estimates of photosynthesis. <em>Proceedings of the National Academy of Sciences</em>, <em>116</em>(7), 2470–2475. <a href="https://doi.org/10.1073/pnas.1807600116">https://doi.org/10.1073/pnas.1807600116</a></div>
+10. Kooijmans, L. M. J., Sun, W., Aalto, J., Erkkilä, K.-M., Maseyk, K.,
+Seibt, U., Vesala, T., Mammarella, I., &amp; Chen, H. (2019). Influences
+of light and humidity on carbonyl sulfide-based estimates of
+photosynthesis. <em>Proceedings of the National Academy of
+Sciences</em>, <em>116</em>(7), 2470–2475. <a
+href="https://doi.org/10.1073/pnas.1807600116">https://doi.org/10.1073/pnas.1807600116</a>
 </div>
-<div id="ref-whelan_2018" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">8. </div><div class="csl-right-inline">Whelan, M. E., Lennartz, S. T., Gimeno, T. E., Wehr, R., Wohlfahrt, G., Wang, Y., Kooijmans, L. M. J., Hilton, T. W., Belviso, S., Peylin, P., Sun, W., Chen, H., Kuai, L., Mammarella, I., Maseyk, K., Berkelhammer, M., Li, K.-F., Yakir, D., Zumkehr, A., … Campbell, J. E. (2018). Reviews and syntheses: Carbonyl sulfide as a multi-scale tracer for carbon and water cycles. <em>Biogeosciences</em>, <em>15</em>(12), 3625–3657. <a href="https://doi.org/10.5194/bg-15-3625-2018">https://doi.org/10.5194/bg-15-3625-2018</a></div>
+<div id="ref-ranasinghe_2019" class="csl-entry" role="doc-biblioentry">
+11. Ranasinghe, D., Lee, E. S., Zhu, Y., Frausto-Vicencio, I., Choi, W.,
+Sun, W., Mara, S., Seibt, U., &amp; Paulson, S. E. (2019). Effectiveness
+of vegetation and sound wall-vegetation combination barriers on
+pollution dispersion from freeways under early morning conditions.
+<em>Science of The Total Environment</em>, <em>658</em>, 1549–1558. <a
+href="https://doi.org/10.1016/j.scitotenv.2018.12.159">https://doi.org/10.1016/j.scitotenv.2018.12.159</a>
 </div>
 <div id="ref-sun_2018_acp" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">9. </div><div class="csl-right-inline">Sun, W., Kooijmans, L. M. J., Maseyk, K., Chen, H., Mammarella, I., Vesala, T., Levula, J., Keskinen, H., &amp; Seibt, U. (2018). Soil fluxes of carbonyl sulfide (<span>COS</span>), carbon monoxide, and carbon dioxide in a boreal forest in southern <span>F</span>inland. <em>Atmospheric Chemistry and Physics</em>, <em>18</em>(2), 1363–1378. <a href="https://doi.org/10.5194/acp-18-1363-2018">https://doi.org/10.5194/acp-18-1363-2018</a></div>
+12. Sun, W., Kooijmans, L. M. J., Maseyk, K., Chen, H., Mammarella, I.,
+Vesala, T., Levula, J., Keskinen, H., &amp; Seibt, U. (2018). Soil
+fluxes of carbonyl sulfide (<span>COS</span>), carbon monoxide, and
+carbon dioxide in a boreal forest in southern <span>F</span>inland.
+<em>Atmospheric Chemistry and Physics</em>, <em>18</em>(2), 1363–1378.
+<a
+href="https://doi.org/10.5194/acp-18-1363-2018">https://doi.org/10.5194/acp-18-1363-2018</a>
 </div>
 <div id="ref-sun_2018_bg" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">10. </div><div class="csl-right-inline">Sun, W., Maseyk, K., Lett, C., &amp; Seibt, U. (2018). Stomatal control of leaf fluxes of carbonyl sulfide and <span>CO<sub>2</sub></span> in a <em><span>T</span>ypha</em> freshwater marsh. <em>Biogeosciences</em>, <em>15</em>(11), 3277–3291. <a href="https://doi.org/10.5194/bg-15-3277-2018">https://doi.org/10.5194/bg-15-3277-2018</a></div>
+13. Sun, W., Maseyk, K., Lett, C., &amp; Seibt, U. (2018). Stomatal
+control of leaf fluxes of carbonyl sulfide and
+<span>CO<sub>2</sub></span> in a <em><span>T</span>ypha</em> freshwater
+marsh. <em>Biogeosciences</em>, <em>15</em>(11), 3277–3291. <a
+href="https://doi.org/10.5194/bg-15-3277-2018">https://doi.org/10.5194/bg-15-3277-2018</a>
+</div>
+<div id="ref-whelan_2018" class="csl-entry" role="doc-biblioentry">
+14. Whelan, M. E., Lennartz, S. T., Gimeno, T. E., Wehr, R., Wohlfahrt,
+G., Wang, Y., Kooijmans, L. M. J., Hilton, T. W., Belviso, S., Peylin,
+P., Sun, W., Chen, H., Kuai, L., Mammarella, I., Maseyk, K.,
+Berkelhammer, M., Li, K.-F., Yakir, D., Zumkehr, A., … Campbell, J. E.
+(2018). Reviews and syntheses: Carbonyl sulfide as a multi-scale tracer
+for carbon and water cycles. <em>Biogeosciences</em>, <em>15</em>(12),
+3625–3657. <a
+href="https://doi.org/10.5194/bg-15-3625-2018">https://doi.org/10.5194/bg-15-3625-2018</a>
 </div>
 <div id="ref-kooijmans_2017" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">11. </div><div class="csl-right-inline">Kooijmans, L. M. J., Maseyk, K., Seibt, U., Sun, W., Vesala, T., Mammarella, I., Kolari, P., Aalto, J., Franchin, A., Vecchi, R., Valli, G., &amp; Chen, H. (2017). Canopy uptake dominates nighttime carbonyl sulfide fluxes in a boreal forest. <em>Atmospheric Chemistry and Physics</em>, <em>17</em>(18), 11453–11465. <a href="https://doi.org/10.5194/acp-17-11453-2017">https://doi.org/10.5194/acp-17-11453-2017</a></div>
+15. Kooijmans, L. M. J., Maseyk, K., Seibt, U., Sun, W., Vesala, T.,
+Mammarella, I., Kolari, P., Aalto, J., Franchin, A., Vecchi, R., Valli,
+G., &amp; Chen, H. (2017). Canopy uptake dominates nighttime carbonyl
+sulfide fluxes in a boreal forest. <em>Atmospheric Chemistry and
+Physics</em>, <em>17</em>(18), 11453–11465. <a
+href="https://doi.org/10.5194/acp-17-11453-2017">https://doi.org/10.5194/acp-17-11453-2017</a>
 </div>
 <div id="ref-sun_2016" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">12. </div><div class="csl-right-inline">Sun, W., Maseyk, K., Lett, C., &amp; Seibt, U. (2016). Litter dominates surface fluxes of carbonyl sulfide in a <span>C</span>alifornian oak woodland. <em>Journal of Geophysical Research: Biogeosciences</em>, <em>121</em>(2), 438–450. <a href="https://doi.org/10.1002/2015jg003149">https://doi.org/10.1002/2015jg003149</a></div>
+16. Sun, W., Maseyk, K., Lett, C., &amp; Seibt, U. (2016). Litter
+dominates surface fluxes of carbonyl sulfide in a
+<span>C</span>alifornian oak woodland. <em>Journal of Geophysical
+Research: Biogeosciences</em>, <em>121</em>(2), 438–450. <a
+href="https://doi.org/10.1002/2015jg003149">https://doi.org/10.1002/2015jg003149</a>
 </div>
 <div id="ref-sun_2015" class="csl-entry" role="doc-biblioentry">
-<div class="csl-left-margin">13. </div><div class="csl-right-inline">Sun, W., Maseyk, K., Lett, C., &amp; Seibt, U. (2015). A soil diffusion–reaction model for surface <span>COS</span> flux: <span>COSSM</span> v1. <em>Geoscientific Model Development</em>, <em>8</em>(10), 3055–3070. <a href="https://doi.org/10.5194/gmd-8-3055-2015">https://doi.org/10.5194/gmd-8-3055-2015</a></div>
+17. Sun, W., Maseyk, K., Lett, C., &amp; Seibt, U. (2015). A soil
+diffusion–reaction model for surface <span>COS</span> flux:
+<span>COSSM</span> v1. <em>Geoscientific Model Development</em>,
+<em>8</em>(10), 3055–3070. <a
+href="https://doi.org/10.5194/gmd-8-3055-2015">https://doi.org/10.5194/gmd-8-3055-2015</a>
 </div>
 </div>
 </body>
