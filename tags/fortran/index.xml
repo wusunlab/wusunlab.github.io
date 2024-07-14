@@ -1,29 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>fortran on Wu Sun, Ph.D.</title>
+    <title>Fortran on Wu Sun, Ph.D.</title>
     <link>https://wusun.name/tags/fortran/</link>
-    <description>Recent content in fortran on Wu Sun, Ph.D.</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Fortran on Wu Sun, Ph.D.</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://wusun.name/tags/fortran/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://wusun.name/tags/fortran/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A simple fix to a common issue with Anaconda libgfortran on macOS</title>
       <link>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</link>
       <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</guid>
       <description>To compile some Fortran code that used features newer than Fortran 95, I switched the default gfortran from the conda one (version 4.8) to the latest GCC one (version 7.3). After that, I found that I could no longer execute some previously compiled Fortran programs and I also ran into troubles with some Anaconda Python packages. (Maybe it was my fault not to statically link them.) I got the same error for all of them:</description>
     </item>
-    
     <item>
       <title>Some common pitfalls in writing Fortran functions</title>
       <link>https://wusun.name/blog/2018-04-25-fortran-functions/</link>
       <pubDate>Wed, 25 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://wusun.name/blog/2018-04-25-fortran-functions/</guid>
       <description>Recently, I have been trying to port or interface some Fortran code for a project in Python. It was quite an uphill struggle for me. I thought I knew how to write subroutines in Fortran 90, but when I decided to write pure functions in the latest Fortran style, which was Fortran 2008, it did not go as well as I expected. The compiler yelled at me a screenful of errors.</description>
     </item>
-    
   </channel>
 </rss>

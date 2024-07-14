@@ -4,7 +4,8 @@
     <title>Categories on Wu Sun, Ph.D.</title>
     <link>https://wusun.name/categories/</link>
     <description>Recent content in Categories on Wu Sun, Ph.D.</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://wusun.name/categories/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://wusun.name/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

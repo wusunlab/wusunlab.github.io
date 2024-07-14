@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>haskell on Wu Sun, Ph.D.</title>
+    <title>Haskell on Wu Sun, Ph.D.</title>
     <link>https://wusun.name/tags/haskell/</link>
-    <description>Recent content in haskell on Wu Sun, Ph.D.</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Haskell on Wu Sun, Ph.D.</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://wusun.name/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 09 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://wusun.name/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Sieve of Eratosthenes in Haskell: A naive implementation</title>
       <link>https://wusun.name/blog/2017-12-09-prime-sieves/</link>
       <pubDate>Sat, 09 Dec 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://wusun.name/blog/2017-12-09-prime-sieves/</guid>
       <description>I have been learning Haskell for a while. The more I am exposed to this language, the more I am amazed by the elegance of the functional programming paradigm. List comprehension is one of the beautiful things that I like in Haskell. Coming from Python, I am familiar with it. But the list comprehension in Haskell feels more natural because it is closer to what you would write in mathematics.</description>
     </item>
-    
   </channel>
 </rss>

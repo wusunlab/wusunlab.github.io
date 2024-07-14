@@ -1,31 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>academic-writing on Wu Sun, Ph.D.</title>
+    <title>Academic Writing on Wu Sun, Ph.D.</title>
     <link>https://wusun.name/tags/academic-writing/</link>
-    <description>Recent content in academic-writing on Wu Sun, Ph.D.</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Academic Writing on Wu Sun, Ph.D.</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 15 Jul 2018 20:32:00 -0700</lastBuildDate><atom:link href="https://wusun.name/tags/academic-writing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 Jul 2018 20:32:00 -0700</lastBuildDate>
+    <atom:link href="https://wusun.name/tags/academic-writing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A comparison of some markdown publishing systems</title>
       <link>https://wusun.name/blog/2018-07-16-markdown-publishing/</link>
       <pubDate>Sun, 15 Jul 2018 20:32:00 -0700</pubDate>
-      
       <guid>https://wusun.name/blog/2018-07-16-markdown-publishing/</guid>
-      <description>Markdown is the new LaTeX for technical and academic writing. Although LaTeX is still the gold standard, if your writing does not involve a whole lot of theorems and proofs, drawing diagrams in TikZ and PGF, or some heavy tweaking of the page styles, Markdown may suffice for your use cases. A lightly marked text format like Markdown helps the writer concentrate on the contents rather than the styles.
-In the past few years, I have gradually replaced some of my writing tasks in LaTeX with automated generation of LaTeX and PDF from Markdown by pandoc.</description>
+      <description>Markdown is the new LaTeX for technical and academic writing. Although LaTeX is still the gold standard, if your writing does not involve a whole lot of theorems and proofs, drawing diagrams in TikZ and PGF, or some heavy tweaking of the page styles, Markdown may suffice for your use cases. A lightly marked text format like Markdown helps the writer concentrate on the contents rather than the styles.&#xA;In the past few years, I have gradually replaced some of my writing tasks in LaTeX with automated generation of LaTeX and PDF from Markdown by pandoc.</description>
     </item>
-    
     <item>
       <title>Merge multiple EPS subfigures into a single figure using LaTeX Beamer</title>
       <link>https://wusun.name/blog/2015-05-13-merge-figure/</link>
       <pubDate>Wed, 13 May 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://wusun.name/blog/2015-05-13-merge-figure/</guid>
-      <description>Some academic journals require all subfigures to be combined as one single file for submission. This may not be easy to do if you don&amp;rsquo;t have a professional software (often proprietary) to edit vector maps, e.g., EPS and PDF.
-I found a convenient way to deal with in LaTeX Beamer. The idea is to create a beamer slide and insert your subfigures with the command \includegraphics{} in the same figure environment.</description>
+      <description>Some academic journals require all subfigures to be combined as one single file for submission. This may not be easy to do if you don&amp;rsquo;t have a professional software (often proprietary) to edit vector maps, e.g., EPS and PDF.&#xA;I found a convenient way to deal with in LaTeX Beamer. The idea is to create a beamer slide and insert your subfigures with the command \includegraphics{} in the same figure environment.</description>
     </item>
-    
   </channel>
 </rss>
