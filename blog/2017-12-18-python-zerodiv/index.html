@@ -1,186 +1,355 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    
+    
+      <title>Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature | Sun Lab</title>
+    
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature - Wu Sun, Ph.D.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+    
+    
+      
+    
+    <meta name="description" content="" />
+
+    
+    
+    <meta property="og:url" content="https://wusun.name/blog/2017-12-18-python-zerodiv/">
+	<meta property="og:site_name" content="Sun Lab">
+	<meta property="og:title" content="Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature">
+	<meta property="og:description" content="In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
+&gt;&gt;&gt; 1. / 0. Traceback (most recent call last): File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn’t it be better to just return inf? In fact, the exception “division by zero” has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="blog">
+		<meta property="article:published_time" content="2017-12-18T00:00:00+00:00">
+		<meta property="article:modified_time" content="2017-12-18T00:00:00+00:00">
+		<meta property="article:tag" content="Python">
+		<meta property="article:tag" content="Scientific Computing">
+
+    
+	<meta itemprop="name" content="Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature">
+	<meta itemprop="description" content="In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
+&gt;&gt;&gt; 1. / 0. Traceback (most recent call last): File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn’t it be better to just return inf? In fact, the exception “division by zero” has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:">
+	<meta itemprop="datePublished" content="2017-12-18T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2017-12-18T00:00:00+00:00">
+	<meta itemprop="wordCount" content="461">
+	<meta itemprop="keywords" content="Python,Scientific Computing">
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature">
+	<meta name="twitter:description" content="In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:
+&gt;&gt;&gt; 1. / 0. Traceback (most recent call last): File &#34;&lt;stdin&gt;&#34;, line 1, in &lt;module&gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn’t it be better to just return inf? In fact, the exception “division by zero” has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:">
+
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+      <link rel="manifest" href="https://wusun.name/site.webmanifest" />
+    
+
+    
+
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    
+    
+    
+      
+        
+          
+          
+            <link
+              rel="stylesheet"
+              href="/css/styles.931d2710182ae4130ebb66d42b42f91c39b7f2af83717d37d861b230c1b913ad.css"
+              integrity="sha256-kx0nEBgq5BMOu2bUK0L5HDm38q&#43;DcX032GGyMMG5E60="
+              crossorigin="anonymous"
+            />
+          
+        
+      
+    
+
+
+    
+    
+      
+        
+        
+          <link rel="stylesheet" href="/css/fonts.3adc60c71af4d8f7d4e1021149da4ac886c184b23c1d084680ca93e0badc7265.css" integrity="sha256-Otxgxxr02PfU4QIRSdpKyIbBhLI8HQhGgMqT4LrccmU=" crossorigin="anonymous" />
+        
+      
+    
+
+
+    
+        
+      
+      <script src="/js/main.7b57960741aab0c5345ed2de96e3271beece68496732534388fb608dad5f5490.min.js" defer></script>
+    
+  </head>
+  <body class="">
+    <div class="flex min-h-screen flex-col">
+      <nav class="bg-primary text-white">
+  <div class="container mx-auto flex items-center justify-between px-4 py-6">
+    <a class="flex items-center gap-3" href="https://wusun.name/">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
+
   
-  
-  <link rel="stylesheet" href="/css/style.min.e573342d2954c81c20f4fa42020fb699b19345f079b4fd7d2cb50c42ee2649fd.css">
+
   
 
   
 
-</head>
+  
 
-<body class='page page-default-single'>
-  <div id="main-menu-mobile" class="main-menu-mobile">
-  <ul>
-    
-    
-    
-    
-    <li class="menu-item-home ">
-      <a href="/">
-        <span>home</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-research ">
-      <a href="/research/">
-        <span>research</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-publications ">
-      <a href="/publications/">
-        <span>publications</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-data &amp; code ">
-      <a href="/data/">
-        <span>data &amp; code</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-teaching ">
-      <a href="/teaching/">
-        <span>teaching</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-cv ">
-      <a href="/cv/">
-        <span>cv</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-blog ">
-      <a href="/blog/">
-        <span>blog</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-  <div class="wrapper">
-    <div class='header'>
-  <div class="container">
-    <div class="logo">
-      <a href="/"><img height=36px alt="Wu Sun, Ph.D." src="/images/logo/logo.svg" /></a>
+
+
+
+
+
+
+
+<img
+  src="https://wusun.name/images/logo.png"
+  width="200"
+  height="200"
+  
+  
+  class="size-6 xl:size-8"
+  alt="map[class:size-6 xl:size-8 src:images/logo.png]"
+/>
+
+      <span class="text-xl font-semibold xl:text-3xl">Sun Lab</span>
+    </a>
+    <button
+      class="cursor-pointer xl:hidden"
+      type="button"
+      data-toggle-target="#navbarContent"
+      data-toggle-class="-translate-y-full"
+      aria-label="Toggle Navigation"
+    >
+      <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke-width="1.5"
+  stroke="currentColor"
+  
+    class="size-6"
+  
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+  />
+</svg>
+
+
+    </button>
+    <div
+      class="bg-primary fixed inset-0 flex -translate-y-full flex-col items-center justify-center gap-8 duration-500 xl:relative xl:translate-y-0 xl:flex-row"
+      id="navbarContent"
+    >
+      <div class="container absolute top-0 mx-auto flex items-center justify-between px-4 py-6 xl:hidden">
+        <a class="flex items-center gap-3 xl:hidden" href="https://wusun.name/">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+<img
+  src="https://wusun.name/images/logo.png"
+  width="200"
+  height="200"
+  
+  
+  class="size-6 xl:size-8"
+  alt="map[class:size-6 xl:size-8 src:images/logo.png]"
+/>
+
+          <span class="text-xl font-semibold xl:text-3xl">Sun Lab</span>
+        </a>
+        <button
+          class="cursor-pointer xl:hidden"
+          type="button"
+          data-toggle-target="#navbarContent"
+          data-toggle-class="-translate-y-full"
+          aria-label="Toggle Navigation"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke-width="1.5"
+  stroke="currentColor"
+  
+    class="size-6"
+  
+>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+</svg>
+
+        </button>
+      </div>
+      <ul class="flex flex-col gap-8 xl:flex-row xl:items-center">
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/">Home</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/team/">Team</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/research/">Research</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/publications/">Publications</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/data/">Data &amp; Code</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/teaching/">Teaching</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/opportunities/">Join Us</a>
+              
+            </li>
+          
+        
+      </ul>
+      <ul class="flex flex-col gap-8 xl:flex-row">
+        
+      </ul>
     </div>
-    <div class="logo-mobile">
-      <a href="/"><img height=32px alt="Wu Sun, Ph.D." src="/images/logo/logo-mobile.png" /></a>
-    </div>
-    <div id="main-menu" class="main-menu">
-  <ul>
-    
-    
-    
-    
-    <li class="menu-item-home ">
-      <a href="/">
-        
-        <span>home</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-research ">
-      <a href="/research/">
-        
-        <span>research</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-publications ">
-      <a href="/publications/">
-        
-        <span>publications</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-data &amp; code ">
-      <a href="/data/">
-        
-        <span>data &amp; code</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-teaching ">
-      <a href="/teaching/">
-        
-        <span>teaching</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-cv ">
-      <a href="/cv/">
-        
-        <span>cv</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-blog ">
-      <a href="/blog/">
-        
-        <span>blog</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-</button>
   </div>
-</div>
+</nav>
 
-    
-<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
-  <div class="row justify-content-start">
-    <div class="col-12 col-md-8">
-      <h1 class="title">Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature</h1>
-      <p>
+      <div class="grow">
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-prose">
         
-          <time datetime=2017-12-18T00:00:00Z class="post-date">Mon, Dec 18, 2017</time>
+          <h2 class="text-primary mb-16 text-6xl font-bold">Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature</h2>
         
-      </p>
-      <div class="content"><p>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a
+        
+        
+          <div class="prose prose-lg max-w-none">
+            <p>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a
 <code>ZeroDivisionError</code>:</p>
 <pre tabindex="0"><code>&gt;&gt;&gt; 1. / 0.
 Traceback (most recent call last):
@@ -196,21 +365,21 @@ to the operation . . .</p>
 </blockquote>
 <p>In many programming languages, the expression <code>1. / 0.</code> gives the positive
 infinity without raising an error; like in Julia, for example,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-julia" data-lang="julia"><span style="display:flex;"><span>julia<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#099">1.</span> <span style="color:#000;font-weight:bold">/</span> <span style="color:#099">0.</span>
-</span></span><span style="display:flex;"><span><span style="color:#0086b3">Inf</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-julia" data-lang="julia"><span style="display:flex;"><span>julia<span style="color:#0550ae">&gt;</span> <span style="color:#0550ae">1.</span> <span style="color:#0550ae">/</span> <span style="color:#0550ae">0.</span>
+</span></span><span style="display:flex;"><span><span style="color:#6639ba">Inf</span>
 </span></span></code></pre></div><p>In C, the expression <code>1. / 0.</code> can sometimes be used to define the infinity
 that is compiler independent (before the C99 standard),</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#ifndef INFINITY
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#define INFINITY 1. / 0.
-</span></span></span><span style="display:flex;"><span><span style="color:#999;font-weight:bold;font-style:italic">#endif
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#57606a">#ifndef INFINITY
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a">#define INFINITY 1. / 0.
+</span></span></span><span style="display:flex;"><span><span style="color:#57606a">#endif
 </span></span></span></code></pre></div><p>The fact that Python raises a <code>ZeroDivisionError</code> instead of returning <code>inf</code>
 from zero division seems to be in violation of the IEEE 754 standard.</p>
 <p>There is also a special case where both the dividend and the divisor are zero.
 How this exception should be handled has not been specified in the IEEE 754
 standard. In many programming languages, <code>0. / 0.</code> is evaluated as <code>NaN</code>. In
 Haskell, for example,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#900;font-weight:bold">ghci</span><span style="color:#000;font-weight:bold">&gt;</span> (<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Double</span>) <span style="color:#000;font-weight:bold">/</span> (<span style="color:#099">0</span> <span style="color:#000;font-weight:bold">::</span> <span style="color:#458;font-weight:bold">Double</span>)
-</span></span><span style="display:flex;"><span><span style="color:#458;font-weight:bold">NaN</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#6639ba">ghci</span><span style="color:#0550ae">&gt;</span> <span style="color:#1f2328">(</span><span style="color:#0550ae">0</span> <span style="color:#0550ae">::</span> <span style="color:#cf222e">Double</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">/</span> <span style="color:#1f2328">(</span><span style="color:#0550ae">0</span> <span style="color:#0550ae">::</span> <span style="color:#cf222e">Double</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">NaN</span>
 </span></span></code></pre></div><p>The aforementioned mechanism for handling the division by zero exceptions has
 an important advantage &mdash; it ensures that the division between two
 floating-point numbers returns a floating-number type, no matter what. In
@@ -220,16 +389,16 @@ tested with standard library functions like <code>isnan()</code> and <code>isinf
 has a practical benefit to skip the hassle of error handling.</p>
 <p>But in Python, one has to catch the <code>ZeroDivisionError</code> first with the <code>try</code>
 and <code>except</code> statement.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">zerodiv</span>(a, b):
-</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;&#34;&#34;Division that overrides the ZeroDivisionError.&#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">try</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> a <span style="color:#000;font-weight:bold">/</span> b
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">ZeroDivisionError</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">if</span> b <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0.</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">if</span> a <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0.</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">float</span>(<span style="color:#d14">&#39;NaN&#39;</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#000;font-weight:bold">else</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">float</span>(<span style="color:#d14">&#39;Inf&#39;</span>)
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">zerodiv</span><span style="color:#1f2328">(</span>a<span style="color:#1f2328">,</span> b<span style="color:#1f2328">):</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#0a3069">&#34;&#34;&#34;Division that overrides the ZeroDivisionError.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">try</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> a <span style="color:#0550ae">/</span> b
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">except</span> ZeroDivisionError<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">if</span> b <span style="color:#0550ae">==</span> <span style="color:#0550ae">0.</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">if</span> a <span style="color:#0550ae">==</span> <span style="color:#0550ae">0.</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">return</span> <span style="color:#6639ba">float</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;NaN&#39;</span><span style="color:#1f2328">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#cf222e">return</span> <span style="color:#6639ba">float</span><span style="color:#1f2328">(</span><span style="color:#0a3069">&#39;Inf&#39;</span><span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p>In other words, with the floating-point <code>ZeroDivisionError</code>, Python has created
 a problem that does not even exist in other languages!</p>
 <p>Why does Python have the <code>ZeroDivisionError</code> for floating-point arithmetic in
@@ -243,95 +412,66 @@ for error handling. I hope this flaw could be righted in Python 4.</p>
 <li>Zuras, D. <em>et al.</em> (2008). IEEE Standard for Floating-Point Arithmetic.
 <em>IEEE Std 754-2008</em>, 1–70, doi:10.1109/ieeestd.2008.4610935.</li>
 </ol>
-</div>
+
+          </div>
+        
+      </div>
     </div>
-  </div>
+  </section>
 </div>
-
-  </div>
-
-  <div class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="footer-inner">
-          <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <div id="footer-menu" class="footer-menu">
-  <ul>
-    
-    
-    
-    
-    <li class="menu-item-home ">
-      <a href="/">
-        
-        <span>home</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-contact ">
-      <a href="/contact/">
-        
-        <span>contact</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
+      <footer class="bg-tertiary/25 py-16">
+  <div class="container mx-auto px-4">
+    <div class="mb-8 grid gap-8 xl:grid-cols-12">
+      <div class="flex flex-col items-center gap-4 xl:col-span-4 xl:items-start">
+        <a class="flex items-center" href="https://wusun.name/">
+          <span class="text-primary text-xl font-semibold xl:text-3xl">Sun Lab</span>
+        </a>
+        <p class="text-center text-sm xl:text-start">The Breathing Biosphere and Climate Change</p>
+      </div>
+      <div class="xl:col-span-2">
+        <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">About</h2>
+        <ul class="flex flex-col gap-1 text-sm">
           
-        </div>
+            <li class="text-center xl:text-start">
+              <a class="" href="/">Home</a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="xl:col-span-3">
+        <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">Location</h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          
+            <li class="flex flex-col items-center gap-4 xl:flex-row">
+              <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+</span>
+              <span class="text-center xl:text-start">140 E Green St., Athens, GA 30602, USA</span>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="xl:col-span-3">
+        <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">Contact</h2>
+        <ul class="flex flex-col gap-1 text-sm">
+          
+            <li class="text-center xl:text-start">wusun {at} uga.edu</li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-sm">
+      <div class="">
+        
+          <p class="">© 2019–2026 Wu Sun. All rights reserved.</p>
+        
       </div>
     </div>
   </div>
-</div>
-  <div class="sub-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="sub-footer-inner">
-          
-            
-<div class="social">
-    
-        <a href="https://github.com/wusunlab" target="blank"><img src="/images/social/github.svg" title="Github" alt="Github" /></a>
-    
-        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ" target="blank"><img src="/images/social/google-scholar.svg" title="Google Scholar" alt="Google Scholar" /></a>
-    
-        <a href="https://orcid.org/0000-0002-2333-6282" target="blank"><img src="/images/social/orcid.svg" title="ORCID" alt="ORCID" /></a>
-    
-        <a href="https://twitter.com/dr_wusun" target="blank"><img src="/images/social/twitter.svg" title="Twitter" alt="Twitter" /></a>
-    
-</div>
+</footer>
 
-          
-          
-            <div class="copyright">© 2019–2024 Wu Sun. All rights reserved.</div>
-          
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-
-
-  
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
-  
-
-  
-
-
-  
-
-
-</body>
-
+  </body>
 </html>

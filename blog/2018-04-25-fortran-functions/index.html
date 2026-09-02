@@ -1,187 +1,352 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    
+    
+      <title>Some common pitfalls in writing Fortran functions | Sun Lab</title>
+    
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Some common pitfalls in writing Fortran functions - Wu Sun, Ph.D.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+    
+    
+      
+    
+    <meta name="description" content="" />
+
+    
+    
+    <meta property="og:url" content="https://wusun.name/blog/2018-04-25-fortran-functions/">
+	<meta property="og:site_name" content="Sun Lab">
+	<meta property="og:title" content="Some common pitfalls in writing Fortran functions">
+	<meta property="og:description" content="Recently, I have been trying to port or interface some Fortran code for a project in Python. It was quite an uphill struggle for me. I thought I knew how to write subroutines in Fortran 90, but when I decided to write pure functions in the latest Fortran style, which was Fortran 2008, it did not go as well as I expected. The compiler yelled at me a screenful of errors. After quite a while of debugging a simple array function and reading a bunch of StackOverflow questions, I learned how to deal with these pitfalls the hard way.">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="blog">
+		<meta property="article:published_time" content="2018-04-25T00:00:00+00:00">
+		<meta property="article:modified_time" content="2021-12-22T00:00:00+00:00">
+		<meta property="article:tag" content="Fortran">
+		<meta property="article:tag" content="Scientific Computing">
+
+    
+	<meta itemprop="name" content="Some common pitfalls in writing Fortran functions">
+	<meta itemprop="description" content="Recently, I have been trying to port or interface some Fortran code for a project in Python. It was quite an uphill struggle for me. I thought I knew how to write subroutines in Fortran 90, but when I decided to write pure functions in the latest Fortran style, which was Fortran 2008, it did not go as well as I expected. The compiler yelled at me a screenful of errors. After quite a while of debugging a simple array function and reading a bunch of StackOverflow questions, I learned how to deal with these pitfalls the hard way.">
+	<meta itemprop="datePublished" content="2018-04-25T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2021-12-22T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1155">
+	<meta itemprop="keywords" content="Fortran,Scientific Computing">
+    
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="Some common pitfalls in writing Fortran functions">
+	<meta name="twitter:description" content="Recently, I have been trying to port or interface some Fortran code for a project in Python. It was quite an uphill struggle for me. I thought I knew how to write subroutines in Fortran 90, but when I decided to write pure functions in the latest Fortran style, which was Fortran 2008, it did not go as well as I expected. The compiler yelled at me a screenful of errors. After quite a while of debugging a simple array function and reading a bunch of StackOverflow questions, I learned how to deal with these pitfalls the hard way.">
+
+
+
+    
+    
+
+    
+
+    
+
+    
+
+    
+      <link rel="manifest" href="https://wusun.name/site.webmanifest" />
+    
+
+    
+
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+
+    
+    
+    
+      
+        
+          
+          
+            <link
+              rel="stylesheet"
+              href="/css/styles.931d2710182ae4130ebb66d42b42f91c39b7f2af83717d37d861b230c1b913ad.css"
+              integrity="sha256-kx0nEBgq5BMOu2bUK0L5HDm38q&#43;DcX032GGyMMG5E60="
+              crossorigin="anonymous"
+            />
+          
+        
+      
+    
+
+
+    
+    
+      
+        
+        
+          <link rel="stylesheet" href="/css/fonts.3adc60c71af4d8f7d4e1021149da4ac886c184b23c1d084680ca93e0badc7265.css" integrity="sha256-Otxgxxr02PfU4QIRSdpKyIbBhLI8HQhGgMqT4LrccmU=" crossorigin="anonymous" />
+        
+      
+    
+
+
+    
+        
+      
+      <script src="/js/main.7b57960741aab0c5345ed2de96e3271beece68496732534388fb608dad5f5490.min.js" defer></script>
+    
+  </head>
+  <body class="">
+    <div class="flex min-h-screen flex-col">
+      <nav class="bg-primary text-white">
+  <div class="container mx-auto flex items-center justify-between px-4 py-6">
+    <a class="flex items-center gap-3" href="https://wusun.name/">
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
+
   
-  
-  <link rel="stylesheet" href="/css/style.min.e573342d2954c81c20f4fa42020fb699b19345f079b4fd7d2cb50c42ee2649fd.css">
+
   
 
   
 
-</head>
+  
 
-<body class='page page-default-single'>
-  <div id="main-menu-mobile" class="main-menu-mobile">
-  <ul>
-    
-    
-    
-    
-    <li class="menu-item-home ">
-      <a href="/">
-        <span>home</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-research ">
-      <a href="/research/">
-        <span>research</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-publications ">
-      <a href="/publications/">
-        <span>publications</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-data &amp; code ">
-      <a href="/data/">
-        <span>data &amp; code</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-teaching ">
-      <a href="/teaching/">
-        <span>teaching</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-cv ">
-      <a href="/cv/">
-        <span>cv</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-blog ">
-      <a href="/blog/">
-        <span>blog</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-  <div class="wrapper">
-    <div class='header'>
-  <div class="container">
-    <div class="logo">
-      <a href="/"><img height=36px alt="Wu Sun, Ph.D." src="/images/logo/logo.svg" /></a>
+
+
+
+
+
+
+
+<img
+  src="https://wusun.name/images/logo.png"
+  width="200"
+  height="200"
+  
+  
+  class="size-6 xl:size-8"
+  alt="map[class:size-6 xl:size-8 src:images/logo.png]"
+/>
+
+      <span class="text-xl font-semibold xl:text-3xl">Sun Lab</span>
+    </a>
+    <button
+      class="cursor-pointer xl:hidden"
+      type="button"
+      data-toggle-target="#navbarContent"
+      data-toggle-class="-translate-y-full"
+      aria-label="Toggle Navigation"
+    >
+      <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke-width="1.5"
+  stroke="currentColor"
+  
+    class="size-6"
+  
+>
+  <path
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"
+  />
+</svg>
+
+
+    </button>
+    <div
+      class="bg-primary fixed inset-0 flex -translate-y-full flex-col items-center justify-center gap-8 duration-500 xl:relative xl:translate-y-0 xl:flex-row"
+      id="navbarContent"
+    >
+      <div class="container absolute top-0 mx-auto flex items-center justify-between px-4 py-6 xl:hidden">
+        <a class="flex items-center gap-3 xl:hidden" href="https://wusun.name/">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+<img
+  src="https://wusun.name/images/logo.png"
+  width="200"
+  height="200"
+  
+  
+  class="size-6 xl:size-8"
+  alt="map[class:size-6 xl:size-8 src:images/logo.png]"
+/>
+
+          <span class="text-xl font-semibold xl:text-3xl">Sun Lab</span>
+        </a>
+        <button
+          class="cursor-pointer xl:hidden"
+          type="button"
+          data-toggle-target="#navbarContent"
+          data-toggle-class="-translate-y-full"
+          aria-label="Toggle Navigation"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke-width="1.5"
+  stroke="currentColor"
+  
+    class="size-6"
+  
+>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+</svg>
+
+        </button>
+      </div>
+      <ul class="flex flex-col gap-8 xl:flex-row xl:items-center">
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/">Home</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/team/">Team</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/research/">Research</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/publications/">Publications</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/data/">Data &amp; Code</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/teaching/">Teaching</a>
+              
+            </li>
+          
+        
+          
+            
+            
+            
+            <li class="text-center xl:relative xl:text-left ">
+              
+                <a class="text-lg xl:text-xl text-white " href="/opportunities/">Join Us</a>
+              
+            </li>
+          
+        
+      </ul>
+      <ul class="flex flex-col gap-8 xl:flex-row">
+        
+      </ul>
     </div>
-    <div class="logo-mobile">
-      <a href="/"><img height=32px alt="Wu Sun, Ph.D." src="/images/logo/logo-mobile.png" /></a>
-    </div>
-    <div id="main-menu" class="main-menu">
-  <ul>
-    
-    
-    
-    
-    <li class="menu-item-home ">
-      <a href="/">
-        
-        <span>home</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-research ">
-      <a href="/research/">
-        
-        <span>research</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-publications ">
-      <a href="/publications/">
-        
-        <span>publications</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-data &amp; code ">
-      <a href="/data/">
-        
-        <span>data &amp; code</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-teaching ">
-      <a href="/teaching/">
-        
-        <span>teaching</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-cv ">
-      <a href="/cv/">
-        
-        <span>cv</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-blog ">
-      <a href="/blog/">
-        
-        <span>blog</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
-    <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button" aria-label="Mobile Menu">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-</button>
   </div>
-</div>
+</nav>
 
-    
-<div class="container pb-6 pt-6 pt-md-10 pb-md-10">
-  <div class="row justify-content-start">
-    <div class="col-12 col-md-8">
-      <h1 class="title">Some common pitfalls in writing Fortran functions</h1>
-      <p>
+      <div class="grow">
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="mx-auto max-w-prose">
         
-          <time datetime=2018-04-25T00:00:00Z class="post-date">Created on Wed, Apr 25, 2018</time>
-          <time datetime=2021-12-22T00:00:00Z class="post-date"><br>Updated on Wed, Dec 22, 2021</time>
+          <h2 class="text-primary mb-16 text-6xl font-bold">Some common pitfalls in writing Fortran functions</h2>
         
-      </p>
-      <div class="content"><p>Recently, I have been trying to port or interface some Fortran code for a
+        
+        
+          <div class="prose prose-lg max-w-none">
+            <p>Recently, I have been trying to port or interface some Fortran code for a
 project in Python. It was quite an uphill struggle for me. I thought I knew how
 to write subroutines in Fortran 90, but when I decided to write pure functions
 in the latest Fortran style, which was Fortran 2008, it did not go as well as I
@@ -192,32 +357,32 @@ questions, I learned how to deal with these pitfalls the hard way.</p>
 <li>
 <p>&ldquo;Function result &hellip; at (1) has no implicit type&rdquo;</p>
 <p>The example below will raises an error of this at the compile-time.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">implicit</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">none</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(in)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>x<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>bar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">implicit</span><span style="color:#fff"> </span><span style="color:#cf222e">none</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>in<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>x<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span>bar<span style="color:#fff"> </span><span style="color:#0550ae">=</span><span style="color:#fff"> </span><span style="color:#0550ae">42</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>This is a common compiler error thrown at functions. What it means is that
 the compiler cannot determine the return type of the function; it must be
 explicitly declared. But where and how to declare the type? There are two
 ways to fix it. One way is to declare the type of function at the
 beginning,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">implicit</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">none</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(in)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>x<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>bar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">implicit</span><span style="color:#fff"> </span><span style="color:#cf222e">none</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>in<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>x<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span>bar<span style="color:#fff"> </span><span style="color:#0550ae">=</span><span style="color:#fff"> </span><span style="color:#0550ae">42</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>This seems to be the recommended way, because it makes it clear that this
 function returns an integer (kinda like how you would write a C function.)</p>
 <p>Another way is to declare the result variable inside the function body.
 This works just fine. But nowadays it seems that the former one is the more
 prevalent style.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">implicit</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">none</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(in)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>x<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>bar<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>bar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">implicit</span><span style="color:#fff"> </span><span style="color:#cf222e">none</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>in<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>x<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>bar<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span>bar<span style="color:#fff"> </span><span style="color:#0550ae">=</span><span style="color:#fff"> </span><span style="color:#0550ae">42</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>Note that you <em>cannot</em> initialize the result variable <code>bar</code> in the example
 above. For example, if you write <code>integer :: bar = 42</code>, the compiler will
 again yell at you &ldquo;Function result &lsquo;bar&rsquo; at (1) cannot have an
@@ -232,15 +397,15 @@ body, because there is no C-like <code>return</code> statement (or, you could al
 say, the Fortran <code>return</code> statement has an entirely different meaning).</p>
 <p>The <strong>result variable</strong> is defined with the <code>result</code> keyword. For example,
 in</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>the variable to return to the caller is <code>bar</code> and cannot be anything else.</p>
 <p>The <code>result</code> statement can be omitted. In this case, the result variable
 will have the same name as the function. For example, in</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>the result variable is <code>foo</code>.</p>
 <p>On the other hand, the absence of a C-like <code>return</code> statement makes perfect
 sense because the function already knows which variable is the result
@@ -251,22 +416,22 @@ variable the moment it is declared.</p>
 variable type is already declared in the function header, there is no need
 to declare it again in the function body. This means the following example
 is wrong.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(in)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>x<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>bar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>in<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>x<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>bar<span style="color:#fff"> </span><span style="color:#0550ae">=</span><span style="color:#fff"> </span><span style="color:#0550ae">42</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>The compiler would raise an error for duplicate declarations, &ldquo;Symbol &lsquo;bar&rsquo;
 at (1) already has basic type of INTEGER&rdquo;.</p>
 </li>
 <li>
 <p>Do not use <code>intent(out)</code> in the declaration of the result variable in the
 function body. The following example is wrong.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">implicit</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">none</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(in)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>x<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(out)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>bar<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>bar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#099">42</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">implicit</span><span style="color:#fff"> </span><span style="color:#cf222e">none</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>in<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>x<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>out<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>bar<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span>bar<span style="color:#fff"> </span><span style="color:#0550ae">=</span><span style="color:#fff"> </span><span style="color:#0550ae">42</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>The compiler will raise an error at the line <code>function foo(x) result(bar)</code>:
 &ldquo;Symbol at (1) is not a DUMMY variable&rdquo;. It is not obvious that this
 message would refer to the misuse of <code>intent(out)</code>.</p>
@@ -277,18 +442,18 @@ message would refer to the misuse of <code>intent(out)</code>.</p>
 <p>Functions that return an array</p>
 <p>When the result variable is an array, we cannot declare its type in the
 function header. This means the following would not work.</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">integer</span>(<span style="color:#099">1</span>:<span style="color:#099">5</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>vec_foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>vec_foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">integer</span><span style="color:#1f2328">(</span><span style="color:#0550ae">1</span><span style="color:#1f2328">:</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>vec_foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>vec_foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>In this case, we do need to declare the result variable in the body of the
 function. For example,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#998;font-style:italic">! an array function that returns a fixed-length array
-</span></span></span><span style="display:flex;"><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">result</span>(bar)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">implicit</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">none</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">intent</span>(in)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>x<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span>,<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">dimension</span>(<span style="color:#099">5</span>)<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">::</span><span style="color:#bbb"> </span>bar<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>bar<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>[<span style="color:#099">1</span>,<span style="color:#bbb"> </span><span style="color:#099">2</span>,<span style="color:#bbb"> </span><span style="color:#099">3</span>,<span style="color:#bbb"> </span><span style="color:#099">4</span>,<span style="color:#bbb"> </span><span style="color:#099">5</span>]<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#57606a">! an array function that returns a fixed-length array
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">result</span><span style="color:#1f2328">(</span>bar<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">implicit</span><span style="color:#fff"> </span><span style="color:#cf222e">none</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">intent</span><span style="color:#1f2328">(</span>in<span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>x<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#cf222e">dimension</span><span style="color:#1f2328">(</span><span style="color:#0550ae">5</span><span style="color:#1f2328">)</span><span style="color:#fff"> </span><span style="color:#cf222e">::</span><span style="color:#fff"> </span>bar<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span>bar<span style="color:#fff"> </span><span style="color:#0550ae">=</span><span style="color:#fff"> </span><span style="color:#1f2328">[</span><span style="color:#0550ae">1</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#0550ae">2</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#0550ae">3</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#0550ae">4</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span><span style="color:#0550ae">5</span><span style="color:#1f2328">]</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
 </span></span></span></code></pre></div><p>A function may also return a automatically allocated array whose size
 depends on the arguments. The result variable just needs to be declared with
 dimension variables determined from the arguments.</p>
@@ -305,35 +470,35 @@ declaration statement at (1)&rdquo;. See also:
 <li>
 <p>There are two ways for a program to use a function defined in the same
 source file. The function may be included in the program,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">program</span><span style="color:#bbb"> </span>my_program<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">print</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span>,<span style="color:#bbb"> </span>foo(x)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">contains</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">program</span><span style="color:#bbb"> </span>my_program<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">program</span><span style="color:#fff"> </span>my_program<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">print</span><span style="color:#fff"> </span><span style="color:#0550ae">*</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">contains</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">        </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">program</span><span style="color:#fff"> </span>my_program<span style="color:#fff">
 </span></span></span></code></pre></div><p>Or, the function can be defined in a module that is placed in the same
 source file as the main program. (This seems to be the preferred style.)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">module</span><span style="color:#bbb"> </span>my_module<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">contains</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">integer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo(x)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">        </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">function</span><span style="color:#bbb"> </span>foo<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span>my_module<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">program</span><span style="color:#bbb"> </span>my_program<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">use</span><span style="color:#bbb"> </span>my_module<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">implicit</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">none</span><span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span>...<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb">    </span><span style="color:#000;font-weight:bold">print</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span>,<span style="color:#bbb"> </span>foo(x)<span style="color:#bbb">
-</span></span></span><span style="display:flex;"><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">end</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">program</span><span style="color:#bbb"> </span>my_program<span style="color:#bbb">
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-fortran" data-lang="fortran"><span style="display:flex;"><span><span style="color:#cf222e">module</span><span style="color:#fff"> </span>my_module<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">contains</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">integer</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">        </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">function</span><span style="color:#fff"> </span>foo<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span>my_module<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">program</span><span style="color:#fff"> </span>my_program<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">use</span><span style="color:#fff"> </span>my_module<span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">implicit</span><span style="color:#fff"> </span><span style="color:#cf222e">none</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#1f2328">...</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#fff">    </span><span style="color:#cf222e">print</span><span style="color:#fff"> </span><span style="color:#0550ae">*</span><span style="color:#1f2328">,</span><span style="color:#fff"> </span>foo<span style="color:#1f2328">(</span>x<span style="color:#1f2328">)</span><span style="color:#fff">
+</span></span></span><span style="display:flex;"><span><span style="color:#cf222e">end</span><span style="color:#fff"> </span><span style="color:#cf222e">program</span><span style="color:#fff"> </span>my_program<span style="color:#fff">
 </span></span></span></code></pre></div><p>If something goes wrong, the <code>gfortran</code> compiler will raise an error
 &ldquo;Function result has no implicit type&rdquo;, which is not very helpful in my
 opinion.</p>
@@ -349,19 +514,19 @@ overloading can work on <code>real</code> and <code>real, dimension(10)</code>, 
 on <code>real</code> and <code>character, dimension(80)</code> (a string of 80 characters long).
 For example, there is no easy way to mimic the Julia behavior of multiple
 dispatch</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-julia" data-lang="julia"><span style="display:flex;"><span>add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">Number</span>) <span style="color:#000;font-weight:bold">=</span> x <span style="color:#000;font-weight:bold">+</span> y
-</span></span><span style="display:flex;"><span>add(x<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>, y<span style="color:#000;font-weight:bold">::</span><span style="color:#458;font-weight:bold">String</span>) <span style="color:#000;font-weight:bold">=</span> string(x, y)
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-julia" data-lang="julia"><span style="display:flex;"><span>add<span style="color:#1f2328">(</span>x<span style="color:#0550ae">::</span><span style="color:#cf222e">Number</span><span style="color:#1f2328">,</span> y<span style="color:#0550ae">::</span><span style="color:#cf222e">Number</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">=</span> x <span style="color:#0550ae">+</span> y
+</span></span><span style="display:flex;"><span>add<span style="color:#1f2328">(</span>x<span style="color:#0550ae">::</span><span style="color:#cf222e">String</span><span style="color:#1f2328">,</span> y<span style="color:#0550ae">::</span><span style="color:#cf222e">String</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">=</span> string<span style="color:#1f2328">(</span>x<span style="color:#1f2328">,</span> y<span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p>It also means that a function cannot decide to return a scalar or vector
 based on the result of evaluating a condition within the function at
 runtime. For example, in Python, we can write</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">numpy</span> <span style="color:#000;font-weight:bold">as</span> <span style="color:#555">np</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#cf222e">import</span> <span style="color:#24292e">numpy</span> <span style="color:#cf222e">as</span> <span style="color:#24292e">np</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">scalar_or_vector</span>(flag: <span style="color:#0086b3">bool</span>) <span style="color:#000;font-weight:bold">-&gt;</span> Union[<span style="color:#0086b3">int</span>, np<span style="color:#000;font-weight:bold">.</span>ndarray]:
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">if</span> flag:
-</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#099">0</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">else</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#000;font-weight:bold">return</span> np<span style="color:#000;font-weight:bold">.</span>ones(<span style="color:#099">10</span>)
+</span></span><span style="display:flex;"><span><span style="color:#cf222e">def</span> <span style="color:#6639ba">scalar_or_vector</span><span style="color:#1f2328">(</span>flag<span style="color:#1f2328">:</span> <span style="color:#6639ba">bool</span><span style="color:#1f2328">)</span> <span style="color:#0550ae">-&gt;</span> Union<span style="color:#1f2328">[</span><span style="color:#6639ba">int</span><span style="color:#1f2328">,</span> np<span style="color:#0550ae">.</span>ndarray<span style="color:#1f2328">]:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">if</span> flag<span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> <span style="color:#0550ae">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#cf222e">else</span><span style="color:#1f2328">:</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#cf222e">return</span> np<span style="color:#0550ae">.</span>ones<span style="color:#1f2328">(</span><span style="color:#0550ae">10</span><span style="color:#1f2328">)</span>
 </span></span></code></pre></div><p>Again, there is no way this can be easily reproduced in Fortran.</p>
 <p>With some effort, however, there is a workaround using the <code>interface</code>
 construct. See the example presented in:
@@ -375,95 +540,66 @@ them because these restrictions will help you write the program in a
 defensible way.</p>
 </li>
 </ol>
-</div>
+
+          </div>
+        
+      </div>
     </div>
-  </div>
+  </section>
 </div>
-
-  </div>
-
-  <div class="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="footer-inner">
-          <h3 class="footer-title">Wu Sun, Ph.D.</h3>
-          <div id="footer-menu" class="footer-menu">
-  <ul>
-    
-    
-    
-    
-    <li class="menu-item-home ">
-      <a href="/">
-        
-        <span>home</span>
-      </a>
-    </li>
-    
-    
-    
-    <li class="menu-item-contact ">
-      <a href="/contact/">
-        
-        <span>contact</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-
+      <footer class="bg-tertiary/25 py-16">
+  <div class="container mx-auto px-4">
+    <div class="mb-8 grid gap-8 xl:grid-cols-12">
+      <div class="flex flex-col items-center gap-4 xl:col-span-4 xl:items-start">
+        <a class="flex items-center" href="https://wusun.name/">
+          <span class="text-primary text-xl font-semibold xl:text-3xl">Sun Lab</span>
+        </a>
+        <p class="text-center text-sm xl:text-start">The Breathing Biosphere and Climate Change</p>
+      </div>
+      <div class="xl:col-span-2">
+        <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">About</h2>
+        <ul class="flex flex-col gap-1 text-sm">
           
-        </div>
+            <li class="text-center xl:text-start">
+              <a class="" href="/">Home</a>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="xl:col-span-3">
+        <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">Location</h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          
+            <li class="flex flex-col items-center gap-4 xl:flex-row">
+              <span class="text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+  <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+  <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+</span>
+              <span class="text-center xl:text-start">140 E Green St., Athens, GA 30602, USA</span>
+            </li>
+          
+        </ul>
+      </div>
+      <div class="xl:col-span-3">
+        <h2 class="text-primary mb-2 text-center text-lg font-bold xl:text-start">Contact</h2>
+        <ul class="flex flex-col gap-1 text-sm">
+          
+            <li class="text-center xl:text-start">wusun {at} uga.edu</li>
+          
+        </ul>
+      </div>
+    </div>
+    <div class="text-center text-sm">
+      <div class="">
+        
+          <p class="">© 2019–2026 Wu Sun. All rights reserved.</p>
+        
       </div>
     </div>
   </div>
-</div>
-  <div class="sub-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="sub-footer-inner">
-          
-            
-<div class="social">
-    
-        <a href="https://github.com/wusunlab" target="blank"><img src="/images/social/github.svg" title="Github" alt="Github" /></a>
-    
-        <a href="https://scholar.google.com/citations?user=YjkYTeoAAAAJ" target="blank"><img src="/images/social/google-scholar.svg" title="Google Scholar" alt="Google Scholar" /></a>
-    
-        <a href="https://orcid.org/0000-0002-2333-6282" target="blank"><img src="/images/social/orcid.svg" title="ORCID" alt="ORCID" /></a>
-    
-        <a href="https://twitter.com/dr_wusun" target="blank"><img src="/images/social/twitter.svg" title="Twitter" alt="Twitter" /></a>
-    
-</div>
+</footer>
 
-          
-          
-            <div class="copyright">© 2019–2024 Wu Sun. All rights reserved.</div>
-          
-        </div>
-      </div>
     </div>
-  </div>
-</div>
-
-
-  
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/scripts.min.8504133605a277da18f0d58cfd2e90d154962f4a961543a6e2f0a459a2d05462.js"></script>
-  
-
-  
-
-
-  
-
-
-</body>
-
+  </body>
 </html>

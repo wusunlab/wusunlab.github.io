@@ -2,10 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wusun.name/cv/</loc>
-    <lastmod>2025-01-23T01:17:51+00:00</lastmod>
+    <loc>https://wusun.name/team/wu-sun/</loc>
+    <lastmod>2026-08-21T11:39:08+00:00</lastmod>
+  </url><url>
+    <loc>https://wusun.name/about/</loc>
+    <lastmod>2026-08-21T11:39:08+00:00</lastmod>
+  </url><url>
+    <loc>https://wusun.name/team/</loc>
+    <lastmod>2026-08-21T11:39:08+00:00</lastmod>
   </url><url>
     <loc>https://wusun.name/</loc>
+    <lastmod>2026-08-21T11:39:08+00:00</lastmod>
+  </url><url>
+    <loc>https://wusun.name/cv/</loc>
     <lastmod>2025-01-23T01:17:51+00:00</lastmod>
   </url><url>
     <loc>https://wusun.name/publications/</loc>
@@ -16,9 +25,6 @@
   </url><url>
     <loc>https://wusun.name/contact/</loc>
     <lastmod>2021-11-27T22:07:09+00:00</lastmod>
-  </url><url>
-    <loc>https://wusun.name/about/</loc>
-    <lastmod>2021-11-27T22:06:57+00:00</lastmod>
   </url><url>
     <loc>https://wusun.name/data/</loc>
     <lastmod>2020-08-07T00:00:00+00:00</lastmod>
@@ -117,5 +123,7 @@
     <lastmod>2012-10-04T12:00:00-07:00</lastmod>
   </url><url>
     <loc>https://wusun.name/categories/</loc>
+  </url><url>
+    <loc>https://wusun.name/opportunities/</loc>
   </url>
 </urlset>

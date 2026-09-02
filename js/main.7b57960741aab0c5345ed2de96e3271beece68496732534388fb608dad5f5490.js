@@ -1,0 +1,1 @@
+(()=>{var a=document.querySelectorAll("[data-toggle-target]");for(let t of a){let o=document.querySelector(t.dataset.toggleTarget),e=t.dataset.toggleClass;t.addEventListener("click",()=>{for(let s of e.split(" "))o.classList.toggle(s)})}})();

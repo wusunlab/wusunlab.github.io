@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Team on Sun Lab</title>
+		<link>https://wusun.name/team/</link>
+		<description>Recent content in Team on Sun Lab</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 21 Aug 2026 11:39:08 +0000</lastBuildDate>
+		
+			<atom:link href="https://wusun.name/team/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Wu Sun</title>
+				<link>https://wusun.name/team/wu-sun/</link>
+				<pubDate>Fri, 21 Aug 2026 11:39:08 +0000</pubDate>
+				<guid>https://wusun.name/team/wu-sun/</guid>
+				<description>&lt;p&gt;Wu Sun is an assistant professor at the Odum School of Ecology. An ecosystem&#xA;ecologist and climate scientist, he combines theory, observations, numerical&#xA;models, and statistics to understand ecosystem carbon cycling and its feedback&#xA;to the Earth system, with the goal of protecting ecosystems and informing&#xA;climate solutions from local to global scales. Before joining the University of&#xA;Georgia, Dr. Sun was a research scientist at the Carnegie Institution’s&#xA;Department of Global Ecology, where he led a NASA-funded project on&#xA;Arctic-boreal carbon cycling. Having worked in ecosystems ranging from&#xA;California drylands to neotropical rainforests, Dr. Sun is particularly&#xA;interested in integrating global ecological problems with local perspectives,&#xA;such as studying how Georgia’s diverse ecosystems respond to intensifying&#xA;climate extremes. Dr. Sun earned his Ph.D. in atmospheric and oceanic sciences&#xA;from UCLA and his bachelor’s degree in geology from Nanjing University.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Python on Wu Sun, Ph.D.</title>
-    <link>https://wusun.name/tags/python/</link>
-    <description>Recent content in Python on Wu Sun, Ph.D.</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://wusun.name/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A simple fix to a common issue with Anaconda libgfortran on macOS</title>
-      <link>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</link>
-      <pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
-      <guid>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</guid>
-      <description>To compile some Fortran code that used features newer than Fortran 95, I switched the default gfortran from the conda one (version 4.8) to the latest GCC one (version 7.3). After that, I found that I could no longer execute some previously compiled Fortran programs and I also ran into troubles with some Anaconda Python packages. (Maybe it was my fault not to statically link them.) I got the same error for all of them:</description>
-    </item>
-    <item>
-      <title>Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature</title>
-      <link>https://wusun.name/blog/2017-12-18-python-zerodiv/</link>
-      <pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
-      <guid>https://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
-      <description>In Python 2.7 and 3.6, dividing a floating-point number by zero results in a ZeroDivisionError:&#xA;&amp;gt;&amp;gt;&amp;gt; 1. / 0. Traceback (most recent call last): File &amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;, line 1, in &amp;lt;module&amp;gt; ZeroDivisionError: float division by zero This is not consistent with mathematics, given that $1 / 0 = \infty$. Wouldn&amp;rsquo;t it be better to just return inf? In fact, the exception &amp;ldquo;division by zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for floating-point arithmetic [1]:</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Python on Sun Lab</title>
+		<link>https://wusun.name/tags/python/</link>
+		<description>Recent content in Python on Sun Lab</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Fri, 27 Apr 2018 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://wusun.name/tags/python/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>A simple fix to a common issue with Anaconda libgfortran on macOS</title>
+				<link>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</link>
+				<pubDate>Fri, 27 Apr 2018 00:00:00 +0000</pubDate>
+				<guid>https://wusun.name/blog/2018-04-27-conda-libgfortran-issue/</guid>
+				<description>&lt;p&gt;To compile some Fortran code that used features newer than Fortran 95, I&#xA;switched the default &lt;code&gt;gfortran&lt;/code&gt; from the conda one (version 4.8) to the latest&#xA;GCC one (version 7.3). After that, I found that I could no longer execute some&#xA;previously compiled Fortran programs and I also ran into troubles with some&#xA;Anaconda Python packages. (Maybe it was my fault not to statically link them.)&#xA;I got the same error for all of them:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Why Python&#39;s ZeroDivisionError for floating-point type is a bad and unnecessary feature</title>
+				<link>https://wusun.name/blog/2017-12-18-python-zerodiv/</link>
+				<pubDate>Mon, 18 Dec 2017 00:00:00 +0000</pubDate>
+				<guid>https://wusun.name/blog/2017-12-18-python-zerodiv/</guid>
+				<description>&lt;p&gt;In Python 2.7 and 3.6, dividing a floating-point number by zero results in a&#xA;&lt;code&gt;ZeroDivisionError&lt;/code&gt;:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; 1. / 0.&#xA;Traceback (most recent call last):&#xA;  File &amp;#34;&amp;lt;stdin&amp;gt;&amp;#34;, line 1, in &amp;lt;module&amp;gt;&#xA;ZeroDivisionError: float division by zero&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;This is not consistent with mathematics&lt;/strong&gt;, given that $1 / 0 = \infty$.&#xA;Wouldn&amp;rsquo;t it be better to just return &lt;code&gt;inf&lt;/code&gt;? In fact, the exception &amp;ldquo;division by&#xA;zero&amp;rdquo; has been stipulated to return infinities in the IEEE 754 standard for&#xA;floating-point arithmetic [1]:&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

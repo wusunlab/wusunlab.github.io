@@ -35,7 +35,5 @@ favicon-32x32.svg
 
 # project specific
 # ----------------
-images/*
-!images/logo
-!images/social
-!images/avatar.png
+# Everything here is Hugo build output and should be published as-is.
+# (A previous images/* whitelist silently dropped new images from deploys.)

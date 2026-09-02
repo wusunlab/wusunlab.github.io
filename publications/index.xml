@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Publications on Wu Sun, Ph.D.</title>
-    <link>https://wusun.name/publications/</link>
-    <description>Recent content in Publications on Wu Sun, Ph.D.</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate></lastBuildDate>
-    <atom:link href="https://wusun.name/publications/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
+	<channel>
+		<title>Publications on Sun Lab</title>
+		<link>https://wusun.name/publications/</link>
+		<description>Recent content in Publications on Sun Lab</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate></lastBuildDate>
+		
+			<atom:link href="https://wusun.name/publications/index.xml" rel="self" type="application/rss+xml" />
+	</channel>
 </rss>
